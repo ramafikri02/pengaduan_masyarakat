@@ -1,0 +1,184 @@
+/* LOGIN & REGISTER */
+
+.image-container {
+    background-color: #FC48B4;
+    display: grid;
+}
+
+.image-container .buildings {
+    margin-left: 40px;
+    width: 80%;
+    margin-top: 10%;
+}
+
+.image-container .people {
+    margin-left: 50px;
+    width: 80%;
+    position: absolute;
+    margin-top: 25%;
+}
+
+p {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    float: left;
+    color: #ffffff;
+}
+
+.form-container {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+}
+
+.form-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.form-box h4 {
+    font-weight: bold;
+    color: #000000;
+}
+
+.form-box .form-input {
+    position: relative;
+}
+
+.form-box .form-input input {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 20px;
+    border: 2px solid;
+    border-color: #777;
+    border-radius: 5px;
+    outline: none;
+    background: #ffffff;
+    padding-left: 45px;
+}
+
+.form-box .form-input span {
+    position: absolute;
+    top: 8px;
+    padding-left: 20px;
+    color: #777;
+}
+
+.form-box .form-input input:focus,
+.form-box .form-input input:valid {
+    border: solid #FC48B4;
+}
+
+.form-box input[type="checkbox"]:not(:checked)+label:before {
+    background: transparent;
+    border: 2px solid;
+    width: 15px;
+    height: 15px;
+}
+
+.forgot-link,
+.custom-control-label {
+    cursor: pointer;
+}
+
+.forgot-link:hover,
+.custom-control-label:hover,
+.register-link:hover,
+.login-link:hover {
+    color: #FC48B4;
+}
+
+.form-box button[type="submit"] {
+    border: 2px solid #FC48B4;
+    cursor: pointer;
+    width: 405px;
+    height: 40px;
+    margin-left: 15px;
+    background-color: #FC48B4;
+    color: #ffffff;
+    font-weight: bold;
+    transition: 0.5s;
+}
+
+.form-box button[type="submit"]:hover {
+    border: 2px solid;
+    border-color: #FC48B4;
+    background-color: #ffffff;
+    color: #FC48B4;
+}
+
+.text-register-link,
+.text-login-link {
+    color: #777;
+}
+
+/* ---------------------------------END--------------------------------- */
+
+/* HOMEPAGE */
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    font-family: 'Raleway', sans-serif;
+}
+
+.banner .navbar{
+	margin-top: 1%;
+}
+
+.banner .navbar-brand{
+	font-size:1.8em;
+	font-weight: 700;
+	margin-left: 5%;
+}
+
+.banner .nav{
+	margin-right: 5%; 
+}
+
+.banner .nav li a{
+	color:#aaa;
+	font-size: 1.2em;
+}
+
+.banner {
+    height: 100vh;
+    width: 100%;
+    background: url();
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.banner .info{
+	margin-top: 15%;
+	transform: translateY(-15%);
+}
+.banner .info h1{
+	font-size: 2.5em;
+	font-weight: 700;
+	color: #fff;
+	letter-spacing: 2px;
+}
+.banner .info p{
+	font-size: 2em;
+	font-weight: 500;
+	color: #aaa;
+	letter-spacing: 2px;
+}
+.banner .info a{
+	margin-left: 50%;
+	transform: translateX(-50%);
+	color: #fff;
+	background: #FC48B4;
+	padding: 10px 20px; 
+	font-size: 1.4em;
+	font-weight: 600;
+}
+.banner .info a:hover{
+	background: #FC48B4;
+}

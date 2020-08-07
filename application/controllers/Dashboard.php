@@ -25,12 +25,12 @@ class Dashboard extends CI_Controller {
 
 	public function login()
 	{
-		$this->load->view('login');
+		$this->load->view('login-register/login');
 	}
 
 	public function register()
 	{
-		$this->load->view('register');
+		$this->load->view('login-register/register');
 	}
 
 	public function pengaduan()

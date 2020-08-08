@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lapor!</title>
+    <title>Ayo Lapor! | Pengaduan</title>
 
     <!-- Style -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/css/homepage/style.css' ?>">
@@ -30,13 +30,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index">Home</a>
+                        <a class="nav-link" href="index">Beranda</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="#">Pengaduan</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link nav-login" href="login">Login</a>
+                        <a class="nav-link nav-login" href="login">Logout</a>
                     </li>
                 </ul>
             </div>

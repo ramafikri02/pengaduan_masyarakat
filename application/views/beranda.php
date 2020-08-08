@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laporin Aja</title>
+    <title>Ayo Lapor! | Beranda</title>
 
     <!-- Style -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/css/homepage/style.css' ?>">
@@ -30,13 +30,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Home</a>
+                        <a class="nav-link active" href="#">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pengaduan">Pengaduan</a>
+                        <a class="nav-link" href="kontak">Kontak</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link nav-login" href="login">Login</a>
+                        <a class="nav-link nav-login" href="<?= base_url('auth/login'); ?>">Login</a>
                     </li>
                 </ul>
             </div>
@@ -50,6 +50,7 @@
                     <p class="title">Layanan Pengaduan Masyarakat</p>
                     <p>Merupakan aplikasi yang dibuat pemerintah yang bersifat dua arah dan dibuat untuk masyarakat dalam memudahkan membuat pegaduan.
                     <br>Laporkan kepada kami jika anda mempunyai keluhan.</p>
+                    <a href="<?php echo base_url() . 'auth/login' ?>" class="menuju-lapor">Lapor Sekarang</a>
                 </div>
                 <div class="col-md-6 text-center">
                     <img src="<?php echo base_url() . 'assets/img/group2.png' ?>" class="img-fluid">

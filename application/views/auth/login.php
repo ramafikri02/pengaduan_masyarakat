@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar</title>
+    <title>Ayo Lapor! | Masuk</title>
 
     <!-- Style -->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/css/login-register/style.css'?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/css/auth/style.css'?>">
 
     <!-- font-awesome -->
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
@@ -31,24 +31,12 @@
             <div class="col-md-6 form-container">
                 <div class="col-lg-8 form-box text-center">
                     <div class="heading mb-4">
-                        <h4>Daftar</h4>
+                        <h4>Masuk</h4>
                     </div>
-                    <form action="">
+                    <form action="<?php echo base_url('auth/aksi_login'); ?>" method="post">
                         <div class="form-input">
                             <span><i class="fa fa-user"></i></span>
-                            <input type="text" placeholder="Nama Pengguna" required>
-                        </div>
-                        <div class="form-input">
-                            <span><i class="fa fa-envelope"></i></span>
-                            <input type="email" placeholder="E-mail" required>
-                        </div>
-                        <div class="form-input">
-                            <span><i class="fa fa-phone"></i></span>
-                            <input type="number" placeholder="No Telepon" required>
-                        </div>
-                        <div class="form-input">
-                            <span><i class="fa fa-calendar"></i></span>
-                            <input type="date" required>
+                            <input type="text" placeholder="Nama Pengguna atau E-mail" required>
                         </div>
                         <div class="form-input">
                             <span><i class="fa fa-lock"></i></span>
@@ -56,11 +44,22 @@
                         </div>
                         <div class="row mb-3">
                             <div class="text-left mb-3">
-                                <button type="submit" class="btn">Daftar</button>
+                                <button type="submit" class="btn">Masuk</button>
+                            </div>
+                            <div class="col-6 text-left">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="cb1">
+                                    <label class="custom-control-label" for="cb1">Ingat Saya</label>
+                                </div>
+                            </div>
+                            <div class="col-6 text-right">
+                                <div class="custom-control custom-checkbox">
+                                    <a href="#" class="forgot-link">Lupa Kata Sandi</a>
+                                </div>
                             </div>
                         </div>
-                        <div style="color: #777;">Sudah punya akun?
-                            <a href="login" class="login-link">Masuk disini</a>
+                        <div style="color: #777;">Belum punya akun?
+                            <a href="m_register" class="register-link">Daftar disini</a>
                         </div>
                     </form>
                 </div>

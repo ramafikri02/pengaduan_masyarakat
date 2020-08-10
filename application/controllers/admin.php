@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class index extends CI_Controller {
+class admin extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -20,7 +20,15 @@ class index extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('admin/beranda');
+		$data['title'] = 'My Profile';
+		$data['user'] = $this->db->get_where('petugas', ['username' =>
+		$this->session->userdata('username')])->row_array();
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view('templates/topbar', $data);
+		$this->load->view('admin/index', $data);
+		$this->load->view('templates/footer');
 	}
 
 	public function pengaduan()

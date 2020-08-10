@@ -18,7 +18,7 @@ class index extends CI_Controller {
 	 * map to /index/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function beranda()
+	public function index()
 	{
 		$this->load->view('petugas/beranda');
     }

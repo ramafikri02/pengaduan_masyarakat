@@ -58,7 +58,7 @@
                             </div>
                         </div>
                         <div style="color: #777;">Belum punya akun?
-                            <a href="m_register" class="register-link">Daftar disini</a>
+                            <a href="auth/m_register" class="register-link">Daftar disini</a>
                         </div>
                     </form>
                 </div>

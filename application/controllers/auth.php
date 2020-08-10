@@ -14,20 +14,46 @@ class auth extends CI_Controller
 		$this->form_validation->set_rules('username', 'Username', 'trim|required');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required');
 
-		if($this->form_validation->run() == false) {
+		if ($this->form_validation->run() == false) {
 			$this->load->view('auth/login');
-		}
-		else {
+		} else {
 			$this->_login();
 		}
 	}
 
-	private function _login() {
+	private function _login()
+	{
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
 
-		$petugas = $this->db->get_where('petugas', ['username' => $username])->row_array();
-		
+		$user = $this->db->get_where('petugas', ['username' => $username])->row_array();
+		$u_masyarakat = $this->db->get_where('masyarakat', ['username' => $username])->row_array();
+		// jika user ditemukan
+		if ($user) {
+			// jika password benar
+			if (password_verify($password, $user['password'])) {
+				$data = [
+					'username' => $user['username'],
+					'level' => $user['level']
+				];
+				$this->session->set_userdata($data);
+				// redirect('user');
+				if ($user['level'] == "admin") {
+					redirect('admin');
+				} elseif ($user['level'] == "petugas") {
+					redirect('petugas');
+				} else {
+					redirect('masyarakat');
+				}
+			} else {
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Kata Sandi yang anda masukkan salah!</div>');
+				redirect('auth');
+			}
+		} else {
+			// jika username belum terdaftar
+			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Nama Pengguna atau Kata Sandi yang anda masukkan salah!</div>');
+			redirect('auth');
+		}
 	}
 
 	public function m_register()
@@ -56,8 +82,7 @@ class auth extends CI_Controller
 				'nik' => htmlspecialchars($this->input->post('nik', true)),
 				'nama' => htmlspecialchars($this->input->post('name', true)),
 				'username' => htmlspecialchars($this->input->post('username', true)),
-				'password' => $this->input->post('password'),
-				// 'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+				'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
 				'telp' => $this->input->post('telp')
 			];
 
@@ -81,7 +106,7 @@ class auth extends CI_Controller
 			'min_length' => 'Nomor terlalu pendek',
 			'max_length' => 'Nomor tidak boleh melebihi 13 angka'
 		]);
-		$this->form_validation->set_rules('status', 'Status', 'required');
+		$this->form_validation->set_rules('level', 'level', 'required');
 
 		if ($this->form_validation->run() == false) {
 			$this->load->view('auth/register');
@@ -89,15 +114,23 @@ class auth extends CI_Controller
 			$data = [
 				'nama_petugas' => htmlspecialchars($this->input->post('name', true)),
 				'username' => htmlspecialchars($this->input->post('username', true)),
-				'password' => $this->input->post('password'),
-				// 'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+				'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
 				'telp' => $this->input->post('telp'),
-				'status' => $this->input->post('status')
+				'level' => $this->input->post('level')
 			];
 
 			$this->db->insert('petugas', $data);
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Selamat! Akun anda berhasil di tambahkan</div>');
 			redirect('auth');
 		}
+	}
+
+	public function logout()
+	{
+		$this->session->unset_userdata('username');
+		$this->session->unset_userdata('password');
+
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Kamu berhasil keluar!</div>');
+		redirect('auth');
 	}
 }

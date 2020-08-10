@@ -46,13 +46,13 @@
                             <input type="number" class="form-control form-control-user" name="telp" id="telp" placeholder="No Telepon" value="<?= set_value('telp') ?>">
                             <small class="text-danger text-left"><?= form_error('telp'); ?></small>
                         </div>
-                        <div class="form-status">
+                        <div class="form-level">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="status" id="radioAdmin" value="admin" ">
+                                <input class="form-check-input" type="radio" name="level" id="radioAdmin" value="admin" ">
                                 <label class="form-check-label" for="inlineRadio1">Admin</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="status" id="radioKaryawan" value="petugas">
+                                <input class="form-check-input" type="radio" name="level" id="radioKaryawan" value="petugas">
                                 <label class="form-check-label" for="inlineRadio2">Karyawan</label>
                             </div>
                         </div>

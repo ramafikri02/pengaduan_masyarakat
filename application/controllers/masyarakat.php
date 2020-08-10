@@ -18,11 +18,19 @@ class masyarakat extends CI_Controller {
 	 * map to /index/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function beranda()
+	public function index()
 	{
-		$this->load->view('masyarakat/beranda');
-    }
-    
+		$data['title'] = 'My Profile';
+		$data['user'] = $this->db->get_where('masyarakat', ['nama' =>
+		$this->session->userdata('nama')])->row_array();
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view('templates/topbar', $data);
+		$this->load->view('masyarakat/index', $data);
+		$this->load->view('templates/footer');
+	}
+
 	public function pengaduan()
 	{
 		$this->load->view('masyarakat/pengaduan');

@@ -1,31 +1,26 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class index extends CI_Controller {
+class beranda extends CI_Controller {
 
 	/**
-	 * Index Page for this controller.
+	 * beranda Page for this controller.
 	 *
 	 * Maps to the following URL
-	 * 		http://example.com/index
+	 * 		http://example.com/beranda
 	 *	- or -
-	 * 		http://example.com/index/index
+	 * 		http://example.com/beranda/beranda
 	 *	- or -
 	 * Since this controller is set as the default controller in
 	 * config/routes.php, it's displayed at http://example.com/
 	 *
 	 * So any other public methods not prefixed with an underscore will
-	 * map to /index/<method_name>
+	 * map to /beranda/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function beranda()
+	public function index()
 	{
 		$this->load->view('beranda');
-	}
-
-	public function kontak()
-	{
-		$this->load->view('kontak');
 	}
 
 	public function login()

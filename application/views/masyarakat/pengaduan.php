@@ -30,7 +30,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index">Beranda</a>
+                        <a class="nav-link" href="beranda">Beranda</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="#">Pengaduan</a>

@@ -7,24 +7,20 @@
     <title>Ayo Lapor! | Daftar</title>
 
     <!-- Style -->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/css/auth/style.css' ?>">
-
-    <!-- font-awesome -->
-    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/auth/style.css') ?>">
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="<?= base_url('assets/vendor/bootstrap/css/bootstrap.min.css') ?>">
 </head>
 
 <body>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6 image-container">
-                <img src="<?php echo base_url() . 'assets/img/buildings.png' ?>" alt="" class="buildings">
-                <img src="<?php echo base_url() . 'assets/img/people.png' ?>" alt="" class="people">
+                <img src="<?= base_url('assets/img//buildings.png') ?>" alt="" class="buildings">
+                <img src="<?= base_url('assets/img/people.png') ?>" alt="" class="people">
                 <br>
-                <p>Layanan Pengaduan <br>
+                <p class="title">Layanan Pengaduan <br>
                     Masyarakat Secara Online</p>
             </div>
 
@@ -33,34 +29,30 @@
                     <div class="heading mb-4">
                         <h4>Daftar</h4>
                     </div>
-                    <form action="">
-                        <div class="form-input">
-                            <span><i class="fa fa-user"></i></span>
-                            <input type="number" placeholder="NIK" required>
+                    <form method="post" action="<?= base_url('auth/register') ?>">
+                        <div class="form-group">
+                            <input type="text" class="form-control form-control-user" name="name" id="name" placeholder="Nama Lengkap">
+                            <small class="text-danger text-left"><?= form_error('name'); ?></small>
                         </div>
-                        <div class="form-input">
-                            <span><i class="fa fa-user"></i></span>
-                            <input type="text" placeholder="Nama Lengkap" required>
+                        <div class="form-group">
+                            <input type="text" class="form-control form-control-user" name="usernmae" id="username" placeholder="Nama Pengguna">
+                            <small class="text-danger text-left"><?= form_error('username'); ?></small>
                         </div>
-                        <div class="form-input">
-                            <span><i class="fa fa-user"></i></span>
-                            <input type="text" placeholder="Nama Pengguna" required>
+                        <div class="form-group">
+                            <input type="password" class="form-control form-control-user" name="password" id="password" placeholder="Kata Sandi">
+                            <small class="text-danger text-left"><?= form_error('password'); ?></small>
                         </div>
-                        <div class="form-input">
-                            <span><i class="fa fa-lock"></i></span>
-                            <input type="password" placeholder="Kata Sandi" required>
-                        </div>
-                        <div class="form-input">
-                            <span><i class="fa fa-phone"></i></span>
-                            <input type="number" placeholder="No Telepon" required>
+                        <div class="form-group">
+                            <input type="number" class="form-control form-control-user" name="telp" id="telp" placeholder="No Telepon">
+                            <small class="text-danger text-left"><?= form_error('telp'); ?></small>
                         </div>
                         <div class="form-status">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                <input class="form-check-input" type="radio" name="optionsLevel" id="radioAdmin" value="option1" ">
                                 <label class="form-check-label" for="inlineRadio1">Admin</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                <input class="form-check-input" type="radio" name="optionsLevel" id="radioKaryawan" value="option2">
                                 <label class="form-check-label" for="inlineRadio2">Karyawan</label>
                             </div>
                         </div>

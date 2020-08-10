@@ -3,22 +3,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class auth extends CI_Controller
 {
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->library('form_validation');
+	}
 
-	/**
-	 * auth Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/auth
-	 *	- or -
-	 * 		http://example.com/auth/auth
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /auth/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
 	public function login()
 	{
 		$this->load->view('auth/login');
@@ -31,36 +21,27 @@ class auth extends CI_Controller
 
 	public function register()
 	{
-		$this->load->view('auth/register');
-	}
+		$this->form_validation->set_rules('name', 'Name', 'required|trim');
+		$this->form_validation->set_rules('username', 'Username', 'required|trim|min_length[8]|max_length[16]', [
+			'min_length' => 'Nama Pengguna anda terlalu pendek',
+			'max_length' => 'Nama Pengguna tidak boleh melebihi 16 huruf'
+		]);
+		$this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[3]', [
+			'min_length' => 'Kata Sandi terlalu pendek',
+		]);
+		$this->form_validation->set_rules('telp', 'Telephone', 'required|trim|min_length[12]|max_length[13]', [
+			'min_length' => 'Nomor terlalu pendek',
+			'max_length' => 'Nomor tidak boleh melebihi 13 angka'
+		]);
 
-	function __construct()
-	{
-		parent::__construct();
-		$this->load->model('m_petugas');
-	}
-
-	function aksi_login()
-	{
-		$username = $this->input->post('username');
-		$password = $this->input->post('password');
-		$where = array(
-			'username' => $username,
-			'password' => md5($password)
-		);
-		$cek = $this->m_petugas->cek_login("admin", $where)->num_rows();
-		if ($cek > 0) {
-
-			$data_session = array(
-				'nama' => $username,
-				'status' => "login"
-			);
-
-			$this->session->set_userdata($data_session);
-
-			redirect(base_url("admin"));
+		if ($this->form_validation->run() == false) {
+			$this->load->view('auth/register');
 		} else {
-			echo "Username dan password salah !";
+			$data = [
+				'nik' => $this->input->post('nik'),
+				'nama_lengkap' => $this->input->post('nama_lengkap'),
+				'username' => $this->input->post('username'),
+			];
 		}
 	}
 }

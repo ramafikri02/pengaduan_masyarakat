@@ -7,24 +7,20 @@
     <title>Ayo Lapor! | Masuk</title>
 
     <!-- Style -->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/css/auth/style.css'?>">
-
-    <!-- font-awesome -->
-    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/css/auth/style.css' ?>">
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="<?= base_url('assets/vendor/bootstrap/css/bootstrap.min.css') ?>">
 </head>
 
 <body>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6 image-container">
-                <img src="<?php echo base_url().'assets/img/buildings.png'?>" alt="" class="buildings">
-                <img src="<?php echo base_url().'assets/img/people.png'?>" alt="" class="people">
+                <img src="<?php echo base_url() . 'assets/img/buildings.png' ?>" alt="" class="buildings">
+                <img src="<?php echo base_url() . 'assets/img/people.png' ?>" alt="" class="people">
                 <br>
-                <p>Layanan Pengaduan <br>
+                <p class="title">Layanan Pengaduan <br>
                     Masyarakat Secara Online</p>
             </div>
 
@@ -34,13 +30,11 @@
                         <h4>Masuk</h4>
                     </div>
                     <form action="<?php echo base_url('auth/aksi_login'); ?>" method="post">
-                        <div class="form-input">
-                            <span><i class="fa fa-user"></i></span>
-                            <input type="text" placeholder="Nama Pengguna atau E-mail" required>
+                        <div class="form-group">
+                            <input type="text" class="form-control form-control-user" id="exampleUserName" placeholder="Nama Pengguna">
                         </div>
-                        <div class="form-input">
-                            <span><i class="fa fa-lock"></i></span>
-                            <input type="password" placeholder="Kata Sandi" required>
+                        <div class="form-group">
+                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Kata Sandi">
                         </div>
                         <div class="row mb-3">
                             <div class="text-left mb-3">

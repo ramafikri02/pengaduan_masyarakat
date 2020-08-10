@@ -7,7 +7,7 @@
     <title>Ayo Lapor! | Masuk</title>
 
     <!-- Style -->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/css/auth/style.css' ?>">
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/auth/style.css'); ?>">
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="<?= base_url('assets/vendor/bootstrap/css/bootstrap.min.css') ?>">
@@ -17,8 +17,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6 image-container">
-                <img src="<?php echo base_url() . 'assets/img/buildings.png' ?>" alt="" class="buildings">
-                <img src="<?php echo base_url() . 'assets/img/people.png' ?>" alt="" class="people">
+                <img src="<?= base_url('assets/img/buildings.png'); ?>" alt="" class="buildings">
+                <img src="<?= base_url('assets/img/people.png'); ?>" alt="" class="people">
                 <br>
                 <p class="title">Layanan Pengaduan <br>
                     Masyarakat Secara Online</p>
@@ -29,12 +29,17 @@
                     <div class="heading mb-4">
                         <h4>Masuk</h4>
                     </div>
-                    <form action="<?php echo base_url('auth/aksi_login'); ?>" method="post">
+
+                    <?= $this->session->flashdata('message'); ?>
+
+                    <form action="<?= base_url('auth/index'); ?>" method="post">
                         <div class="form-group">
-                            <input type="text" class="form-control form-control-user" id="exampleUserName" placeholder="Nama Pengguna">
+                            <input type="text" class="form-control form-control-user" name="username" id="username" placeholder="Nama Pengguna" value="<?= set_value('username') ?>">
+                            <small class="text-danger text-left"><?= form_error('username'); ?></small>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Kata Sandi">
+                            <input type="password" class="form-control form-control-user" name="password" id="password" placeholder="Kata Sandi">
+                            <small class="text-danger text-left"><?= form_error('password'); ?></small>
                         </div>
                         <div class="row mb-3">
                             <div class="text-left mb-3">

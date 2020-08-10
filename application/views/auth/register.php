@@ -31,11 +31,11 @@
                     </div>
                     <form method="post" action="<?= base_url('auth/register') ?>">
                         <div class="form-group">
-                            <input type="text" class="form-control form-control-user" name="name" id="name" placeholder="Nama Lengkap">
+                            <input type="text" class="form-control form-control-user" name="name" id="name" placeholder="Nama Lengkap" value="<?= set_value('name') ?>">
                             <small class="text-danger text-left"><?= form_error('name'); ?></small>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control form-control-user" name="usernmae" id="username" placeholder="Nama Pengguna">
+                            <input type="text" class="form-control form-control-user" name="username" id="username" placeholder="Nama Pengguna" value="<?= set_value('username') ?>">
                             <small class="text-danger text-left"><?= form_error('username'); ?></small>
                         </div>
                         <div class="form-group">
@@ -43,16 +43,16 @@
                             <small class="text-danger text-left"><?= form_error('password'); ?></small>
                         </div>
                         <div class="form-group">
-                            <input type="number" class="form-control form-control-user" name="telp" id="telp" placeholder="No Telepon">
+                            <input type="number" class="form-control form-control-user" name="telp" id="telp" placeholder="No Telepon" value="<?= set_value('telp') ?>">
                             <small class="text-danger text-left"><?= form_error('telp'); ?></small>
                         </div>
                         <div class="form-status">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="optionsLevel" id="radioAdmin" value="option1" ">
+                                <input class="form-check-input" type="radio" name="status" id="radioAdmin" value="admin" ">
                                 <label class="form-check-label" for="inlineRadio1">Admin</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="optionsLevel" id="radioKaryawan" value="option2">
+                                <input class="form-check-input" type="radio" name="status" id="radioKaryawan" value="petugas">
                                 <label class="form-check-label" for="inlineRadio2">Karyawan</label>
                             </div>
                         </div>
@@ -62,7 +62,7 @@
                             </div>
                         </div>
                         <div style="color: #777;">Sudah punya akun?
-                            <a href="login" class="login-link">Masuk disini</a>
+                            <a href="index" class="login-link">Masuk disini</a>
                         </div>
                         <div style="color: #777;">Daftar sebagai
                             <a href="m_register" class="login-link">masyarakat</a>

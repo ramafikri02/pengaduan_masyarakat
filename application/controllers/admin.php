@@ -21,8 +21,10 @@ class admin extends CI_Controller {
 	public function index()
 	{
 		$data['title'] = 'My Profile';
-		$data['user'] = $this->db->get_where('petugas', ['username' =>
-		$this->session->userdata('username')])->row_array();
+		$data['user'] = $this->db->get_where('petugas', ['email' =>
+		$this->session->userdata('email')])->row_array();
+		$data['date_created'] = $this->db->get_where('login', ['email' =>
+		$this->session->userdata('email')])->row_array();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);

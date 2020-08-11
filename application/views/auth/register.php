@@ -35,12 +35,15 @@
                             <small class="text-danger text-left"><?= form_error('name'); ?></small>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control form-control-user" name="username" id="username" placeholder="Nama Pengguna" value="<?= set_value('username') ?>">
-                            <small class="text-danger text-left"><?= form_error('username'); ?></small>
+                            <input type="text" class="form-control form-control-user" name="email" id="email" placeholder="Email" value="<?= set_value('email') ?>">
+                            <small class="text-danger text-left"><?= form_error('email'); ?></small>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control form-control-user" name="password" id="password" placeholder="Kata Sandi">
-                            <small class="text-danger text-left"><?= form_error('password'); ?></small>
+                            <input type="password" class="form-control form-control-user" name="password1" id="password1" placeholder="Kata Sandi" value="<?= set_value('password1') ?>">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control form-control-user" name="password2" id="password2" placeholder="Ketik ulang kata sandi">
+                            <small class="text-danger text-left"><?= form_error('password2'); ?></small>
                         </div>
                         <div class="form-group">
                             <input type="number" class="form-control form-control-user" name="telp" id="telp" placeholder="No Telepon" value="<?= set_value('telp') ?>">
@@ -49,7 +52,7 @@
                         <div class="form-level">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="level" id="radioAdmin" value="admin" ">
-                                <label class="form-check-label" for="inlineRadio1">Admin</label>
+                                <label class=" form-check-label" for="inlineRadio1">Admin</label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="level" id="radioKaryawan" value="petugas">

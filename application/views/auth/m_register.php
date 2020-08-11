@@ -39,12 +39,15 @@
                             <small class="text-danger text-left"><?= form_error('name'); ?></small>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control form-control-user" name="username" id="username" placeholder="Nama Pengguna" value="<?= set_value('username') ?>">
-                            <small class="text-danger text-left"><?= form_error('username'); ?></small>
+                            <input type="text" class="form-control form-control-user" name="email" id="email" placeholder="Email" value="<?= set_value('email') ?>">
+                            <small class="text-danger text-left"><?= form_error('email'); ?></small>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control form-control-user" name="password" id="password" placeholder="Kata Sandi">
-                            <small class="text-danger text-left"><?= form_error('password'); ?></small>
+                            <input type="password" class="form-control form-control-user" name="password1" id="password1" placeholder="Kata Sandi" value="<?= set_value('password1') ?>">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control form-control-user" name="password2" id="password2" placeholder="Ketik ulang kata sandi">
+                            <small class="text-danger text-left"><?= form_error('password2'); ?></small>
                         </div>
                         <div class="form-group">
                             <input type="number" class="form-control form-control-user" name="telp" id="telp" placeholder="No Telepon" value="<?= set_value('telp') ?>">
@@ -59,7 +62,7 @@
                             <a href="index" class="login-link">Masuk disini</a>
                         </div>
                         <div style="color: #777;">Daftar sebagai
-                            <a href="register" class="login-link">admin atau karyawan</a>
+                            <a href="register" class="login-link">admin atau petugas</a>
                         </div>
                     </form>
                 </div>

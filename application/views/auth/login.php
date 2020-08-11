@@ -32,10 +32,10 @@
 
                     <?= $this->session->flashdata('message'); ?>
 
-                    <form action="<?= base_url('auth/index'); ?>" method="post">
+                    <form action="<?= base_url('auth'); ?>" method="post">
                         <div class="form-group">
-                            <input type="text" class="form-control form-control-user" name="username" id="username" placeholder="Nama Pengguna" value="<?= set_value('username') ?>">
-                            <small class="text-danger text-left"><?= form_error('username'); ?></small>
+                            <input type="text" class="form-control form-control-user" name="email" id="email" placeholder="Email" value="<?= set_value('email') ?>">
+                            <small class="text-danger text-left"><?= form_error('email'); ?></small>
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control form-control-user" name="password" id="password" placeholder="Kata Sandi">

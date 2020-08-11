@@ -92,7 +92,7 @@ class auth extends CI_Controller
 			$data = [
 				'nik' => htmlspecialchars($this->input->post('nik', true)),
 				'nama' => htmlspecialchars($this->input->post('name', true)),
-				'email' => htmlspecialchars($this->input->post('email', true)),
+				'email' => htmlspecialchars($this->input->post('e	mail', true)),
 				'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
 				'telp' => $this->input->post('telp'),
 				'date_created' => time()

@@ -29,7 +29,7 @@
                     <div class="heading mb-4">
                         <h4>Daftar</h4>
                     </div>
-                    <form method="post" action="<?= base_url('auth/register') ?>">
+                    <form method="post" action="<?= base_url('auth/register') ?>" enctype="multipart/form-data">
                         <div class="form-group">
                             <input type="text" class="form-control form-control-user" name="name" id="name" placeholder="Nama Lengkap" value="<?= set_value('name') ?>">
                             <small class="text-danger text-left"><?= form_error('name'); ?></small>
@@ -48,6 +48,9 @@
                         <div class="form-group">
                             <input type="number" class="form-control form-control-user" name="telp" id="telp" placeholder="No Telepon" value="<?= set_value('telp') ?>">
                             <small class="text-danger text-left"><?= form_error('telp'); ?></small>
+                        </div>
+                        <div class="form-group">
+                            <input type="file" class="form-control-file" name="gambar" id="gambar">
                         </div>
                         <div class="form-level">
                             <div class="form-check form-check-inline">

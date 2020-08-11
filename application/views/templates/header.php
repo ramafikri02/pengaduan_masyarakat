@@ -18,6 +18,10 @@
     <!-- Custom styles for this template-->
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/sidebar/sb-admin-2.css'); ?>">
 
+    <!-- DataTables -->
+    <script src="<?= base_url('assets/'); ?>vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <link rel="stylesheet" href="<?= base_url('assets/'); ?>vendor/datatables/dataTables.bootstrap4.min.css">
+
 </head>
 
 <body id="page-top">

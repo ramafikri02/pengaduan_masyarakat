@@ -4,7 +4,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                    <i class="fas fa-angry"></i>
                 </div>
                 <div class="sidebar-brand-text mx-3">Yuk Lapor</div>
             </a>
@@ -13,14 +13,14 @@
             <hr class="sidebar-divider">
 
             <div class="sidebar-heading">
-                Administrator
+                User
             </div>
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
                 <a class="nav-link" href="index.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                    <i class="fas fa-id-card"></i>
+                    <span>Profile</span></a>
             </li>
 
             <!-- Divider -->
@@ -28,14 +28,19 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                User
+                Pengaduan
             </div>
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
                 <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
+                    <i class="fas fa-envelope"></i>
+                    <span>Permintaan</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="charts.html">
+                    <i class="fas fa-check-square"></i>
+                    <span>Selesai</span></a>
             </li>
 
             <!-- Divider -->

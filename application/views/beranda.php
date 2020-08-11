@@ -19,7 +19,7 @@
 <body>
     <section id="nav-bar">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <img src="<?php echo base_url() . 'assets/img/logo1.png' ?>" class="logo">
+            <img src="<?= base_url('assets/img/logo1.png') ?>" class="logo">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
             </button>

@@ -25,7 +25,7 @@
             </div>
 
             <div class="col-md-6 form-container">
-                <div class="col-lg-8 form-box text-center">
+                <div class="col-md-8 form-box text-center">
                     <div class="heading mb-4">
                         <h4>Masuk</h4>
                     </div>

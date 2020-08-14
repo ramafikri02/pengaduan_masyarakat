@@ -32,11 +32,15 @@
             <div class="modal-body">Pilih "Keluar" jika anda ingin mengakhiri sesi ini.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                <a class="btn btn-primary" href="auth">Keluar</a>
+                <a class="btn btn-primary" href="<?= base_url('auth/logout') ?>">Keluar</a>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Datatables -->
+<script src="<?= base_url('assets/'); ?>vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= base_url('assets/'); ?>vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 <!-- Bootstrap core JavaScript-->
 <script src="<?= base_url('assets/'); ?>vendor/jquery/jquery.min.js"></script>

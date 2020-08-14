@@ -33,12 +33,12 @@
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="pengaduan">
+        <a class="nav-link" href="#">
             <i class="fas fa-envelope"></i>
             <span>Permintaan</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="selesai">
+        <a class="nav-link" href="#">
             <i class="fas fa-check-square"></i>
             <span>Selesai</span></a>
     </li>
@@ -48,7 +48,7 @@
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="auth/logout">
+        <a class="nav-link" href="<?= base_url('auth/logout') ?>">
             <i class="fas fa-sign-out-alt"></i>
             <span>Keluar</span></a>
     </li>

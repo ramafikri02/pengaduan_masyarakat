@@ -27,7 +27,7 @@ class petugas extends CI_Controller {
 		$this->session->userdata('email')])->row_array();
 
 		$this->load->view('templates/header', $data);
-		$this->load->view('templates/sidebar_p', $data);
+		$this->load->view('templates/sidebar/sidebar_p', $data);
 		$this->load->view('templates/topbar', $data);
 		$this->load->view('petugas/index', $data);
 		$this->load->view('templates/footer');

@@ -49,6 +49,9 @@
                             <input type="number" class="form-control form-control-user" name="telp" id="telp" placeholder="No Telepon" value="<?= set_value('telp') ?>">
                             <small class="text-danger text-left"><?= form_error('telp'); ?></small>
                         </div>
+                        <div class="form-group">
+                            <input type="file" class="form-control-file" name="image" id="image">
+                        </div>
                         <div class="form-level">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="level" id="radioAdmin" value="admin" ">

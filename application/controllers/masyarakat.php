@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class masyarakat extends CI_Controller {
+class masyarakat extends CI_Controller
+{
 	function __construct()
 	{
 		parent::__construct();
@@ -10,12 +11,28 @@ class masyarakat extends CI_Controller {
 		$this->load->model('m_masyarakat');
 	}
 
+	private function _uploadImage()
+    {
+        $config['upload_path']          = './assets/img/pengaduan/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['encrypt_name']         = TRUE;
+        $config['max_size']             = 2048;
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('image')) {
+            return $this->upload->data("encrypt_name");
+        }
+        print_r($this->upload->display_errors());
+
+        return "default.jpg";
+    }
+
 	public function index()
 	{
 		$data['title'] = 'Pengaduan';
-		$data['name'] = $this->db->get_where('masyarakat', ['email' =>
+		$data['user'] = $this->db->get_where('masyarakat', ['email' =>
 		$this->session->userdata('email')])->row_array();
-		$data['pengaduan'] = $this->m_masyarakat->data_pengaduan();
+		$data['pengaduan'] = $this->m_masyarakat->get_data_pengaduan();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar/sidebar_m', $data);
@@ -27,7 +44,7 @@ class masyarakat extends CI_Controller {
 	public function selesai()
 	{
 		$data['title'] = 'My Profile';
-		$data['name'] = $this->db->get_where('masyarakat', ['email' =>
+		$data['user'] = $this->db->get_where('masyarakat', ['email' =>
 		$this->session->userdata('email')])->row_array();
 		$data['pengaduan'] = $this->m_masyarakat->data_pengaduan();
 
@@ -41,7 +58,7 @@ class masyarakat extends CI_Controller {
 	public function profile()
 	{
 		$data['title'] = 'My Profile';
-		$data['name'] = $this->db->get_where('login', ['email' =>
+		$data['user'] = $this->db->get_where('login', ['email' =>
 		$this->session->userdata('email')])->row_array();
 		$data['date_created'] = $this->db->get_where('login', ['email' =>
 		$this->session->userdata('email')])->row_array();
@@ -51,5 +68,43 @@ class masyarakat extends CI_Controller {
 		$this->load->view('templates/topbar', $data);
 		$this->load->view('masyarakat/profile', $data);
 		$this->load->view('templates/footer');
+	}
+
+	public function tambah()
+	{
+		$email = $this->session->userdata('email');
+		$masyarakat = $this->m_masyarakat->get_nik($email);
+		$data = [
+			'nik' => $masyarakat['nik'],
+			'judul_laporan' => $this->input->post('judul_laporan'),
+			'isi_laporan' => $this->input->post('isi_laporan'),
+			'tgl_kejadian' => $this->input->post('tgl_kejadian'),
+			'image' => $this->_uploadImage(),
+			'tgl_pengaduan' => time(),
+		];
+
+		$this->m_masyarakat->tambah_pengaduan($data);
+
+		$this->session->set_flashdata('message', '<div class="alert alert-success  alert-dismissible fade show" role="alert"> Data Berhasil ditambahkan.<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button></div>');
+		redirect('masyarakat/index');
+	}
+
+	public function edit($nik)
+	{
+		if ($this->input->post('submit')) {
+			if ($this->m_masyarakat->validation("update")) {
+				$this->m_masyarakat->edit_pengaduan($nik);
+				redirect('masyarakat/index');
+			}
+		}
+		$this->load->view('masyarakat/index');
+	}
+
+	public function hapus($nik)
+	{
+		$this->m_masyarakat->hapus_pengaduan($nik);
+		redirect('siswa');
 	}
 }

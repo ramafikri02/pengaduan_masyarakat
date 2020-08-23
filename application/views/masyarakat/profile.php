@@ -11,7 +11,7 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
-                                    <h5 class="card-title"><?= $name['nama']; ?></h5>
+                                    <h5 class="card-title"><?= $user['nama']; ?></h5>
                                     <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. In voluptatum provident illum molestias repellat? In soluta atque perspiciatis commodi expedita eum. Voluptate veritatis mollitia nobis enim accusantium eaque dignissimos deleniti?</p>
                                     <p class="card-text"><small class="text-muted">Berhabung sejak <?= date('d F Y', $date_created['date_created']); ?></small></p>
                                 </div>

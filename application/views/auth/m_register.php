@@ -53,6 +53,9 @@
                             <input type="number" class="form-control form-control-user" name="telp" id="telp" placeholder="No Telepon" value="<?= set_value('telp') ?>">
                             <small class="text-danger text-left"><?= form_error('telp'); ?></small>
                         </div>
+                        <div class="form-group">
+                            <input type="file" class="form-control-file" name="image" id="image">
+                        </div>
                         <div class="row mb-3">
                             <div class="text-left mb-3">
                                 <button type="submit" class="btn">Daftar</button>

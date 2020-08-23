@@ -1,6 +1,21 @@
 <?php
 class m_admin_petugas extends CI_Model
 {
+    private function _uploadImage()
+    {
+        $config['upload_path']          = './assets/img/pengaduan/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['max_size']             = 2048;
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('image')) {
+            return $this->upload->data();
+        }
+        print_r($this->upload->display_errors());
+
+        return "default.jpg";
+    }
+
     public function register_ap()
     {
         $this->form_validation->set_rules('name', 'Name', 'required|trim', [
@@ -25,15 +40,6 @@ class m_admin_petugas extends CI_Model
         ]);
         $this->form_validation->set_rules('level', 'Level', 'required');
 
-        $config['upload_patch'] = './asessts/img/';
-        $config['allowed_types'] = 'jpg|png|gif';
-        $config['max_size'] = '2048000';
-        $config['file_name'] = url_title($this->input->post('gambar'));
-        $filename = $this->upload->file_name;
-        $this->upload->initialize($config);
-        $this->upload->do_upload('gambar');
-        $data = $this->upload->data();
-
         if ($this->form_validation->run() == false) {
             $this->load->view('auth/register');
         } else {
@@ -42,6 +48,7 @@ class m_admin_petugas extends CI_Model
                 'email' => htmlspecialchars($this->input->post('email', true)),
                 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
                 'telp' => $this->input->post('telp'),
+                'image' => $this->_uploadImage(),
                 'level' => $this->input->post('level'),
                 'date_created' => time()
             );

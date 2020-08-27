@@ -1,54 +1,82 @@
-<!-- Main content -->
-<div class="main-content" id="panel">
-    <!-- Topnav -->
-    <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
-        <div class="container-fluid">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Navbar links -->
-                <ul class="navbar-nav align-items-center  ml-md-auto ">
-                    <li class="nav-item d-xl-none">
-                        <!-- Sidenav toggler -->
-                        <div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin" data-target="#sidenav-main">
-                            <div class="sidenav-toggler-inner">
-                                <i class="sidenav-toggler-line"></i>
-                                <i class="sidenav-toggler-line"></i>
-                                <i class="sidenav-toggler-line"></i>
-                            </div>
+<!-- PAGE CONTAINER-->
+<div class="page-container2">
+    <!-- HEADER DESKTOP-->
+    <header class="header-desktop2">
+        <div class="section__content section__content--p30">
+            <div class="container-fluid">
+                <div class="header-wrap2">
+                    <div class="logo d-block d-lg-none">
+                        <a href="#">
+                            <img src="<?= base_url('assets/img/logo1.png'); ?>" alt="Fidelya" />
+                        </a>
+                    </div>
+                    <div class="header-button2">
+                        <div class="header-button-item mr-0 js-sidebar-btn">
+                            <i class="zmdi zmdi-menu"></i>
                         </div>
-                    </li>
-                </ul>
-                <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <div class="media align-items-center">
-                                <span class="avatar avatar-sm rounded-circle">
-                                    <img alt="" src="">
-                                </span>
-                                <div class="media-body  ml-2  d-none d-lg-block">
-                                    <span class="mb-0 text-sm  font-weight-bold">Fikri</span>
+                        <div class="setting-menu js-right-sidebar d-none d-lg-block">
+                            <div class="account-dropdown__body">
+                                <div class="account-dropdown__item">
+                                    <a href="#">
+                                        <i class="zmdi zmdi-account"></i>Akun Saya</a>
+                                </div>
+                                <div class="account-dropdown__item">
+                                    <a href="#">
+                                        <i class="zmdi zmdi-settings"></i>Pengaturan</a>
                                 </div>
                             </div>
-                        </a>
-                        <div class="dropdown-menu  dropdown-menu-right ">
-                            <div class="dropdown-header noti-title">
-                                <h6 class="text-overflow m-0">Selamat Datang!</h6>
+                            <div class="account-dropdown__body">
+                                <div class="account-dropdown__item">
+                                    <a href="#">
+                                        <i class="zmdi zmdi-run"></i>Keluar</a>
+                                </div>
                             </div>
-                            <a href="#!" class="dropdown-item">
-                                <i class="ni ni-single-02"></i>
-                                <span>Profil Saya</span>
-                            </a>
-                            <a href="#!" class="dropdown-item">
-                                <i class="ni ni-calendar-grid-58"></i>
-                                <span>Activity</span>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="<?= base_url('auth/logout') ?>" class="dropdown-item">
-                                <i class="ni ni-user-run"></i>
-                                <span>Keluar</span>
-                            </a>
                         </div>
-                    </li>
-                </ul>
+                    </div>
+                </div>
             </div>
         </div>
-    </nav>
+    </header>
+    <aside class="menu-sidebar2 js-right-sidebar d-block d-lg-none">
+        <div class="logo">
+            <a href="#">
+                <img src="images/icon/logo-white.png" alt="Cool Admin" />
+            </a>
+        </div>
+        <div class="menu-sidebar2__content js-scrollbar2">
+            <div class="account2">
+                <div class="image img-cir img-120">
+                    <img src="<?= base_url('assets/img/profile/default.png'); ?>" alt="User" />
+                </div>
+                <h4 class="name">M.Ramadhan Fikri</h4>
+                <a href="#">Keluar</a>
+            </div>
+            <nav class="navbar-sidebar2">
+                <ul class="list-unstyled navbar__list">
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-user"></i>Profile</a>
+                    </li>
+                    <li class="active has-sub">
+                        <a class="js-arrow" href="#">
+                            <i class="fas fa-tachometer-alt"></i>Pengaduan
+                            <span class="arrow">
+                                <i class="fas fa-angle-down"></i>
+                            </span>
+                        </a>
+                        <ul class="list-unstyled navbar__sub-list js-sub-list">
+                            <li>
+                                <a href="#">
+                                    <i class="fas fa-tachometer-alt"></i>Dashboard 1</a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fas fa-tachometer-alt"></i>Dashboard 2</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+    <!-- END HEADER DESKTOP-->

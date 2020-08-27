@@ -1,61 +1,44 @@
-<!-- Sidenav -->
-<nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
-    <div class="scrollbar-inner">
-        <!-- Brand -->
-        <div class="sidenav-header  align-items-center">
-            <img src="" class="navbar-brand-img" alt="">
-            <h3>Yuk Lapor!</h3>
-            </a>
-        </div>
-        <div class="navbar-inner">
-            <!-- Collapse -->
-            <div class="collapse navbar-collapse" id="sidenav-collapse-main">
-                <!-- Nav items -->
-                <ul class="navbar-nav">
-                    <!-- <li class="nav-item">
-                            <a class="nav-link active" href="examples/dashboard.html">
-                                <i class="ni ni-tv-2 text-primary"></i>
-                                <span class="nav-link-text">Dashboard</span>
-                            </a>
-                        </li> -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="profile">
-                            <i class="ni ni-single-02 text-yellow"></i>
-                            <span class="nav-link-text">Profile</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index">
-                            <i class="ni ni-key-25 text-info"></i>
-                            <span class="nav-link-text">Pengaduan</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="ni ni-pin-3 text-primary"></i>
-                            <span class="nav-link-text">Google</span>
-                        </a>
-                    </li>
-                </ul>
-
-                <!-- Divider -->
-                <hr class="my-3">
-
-                <!-- Heading -->
-                <h6 class="navbar-heading p-0 text-muted">
-                    <span class="docs-normal">Documentation</span>
-                </h6>
-
-                <!-- Navigation -->
-                <ul class="navbar-nav mb-md-3">
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('auth/logout') ?>">
-                            <i class="ni ni-user-run"></i>
-                            <span class="nav-link-text">Keluar</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+<!-- MENU SIDEBAR-->
+<aside class="menu-sidebar2">
+    <div class="logo">
+        <a href="#">
+            <img src="<?= base_url('assets/img/logo1.png'); ?>" alt="Fidelya" />
+        </a>
     </div>
-</nav>
+    <div class="menu-sidebar2__content js-scrollbar1">
+        <div class="account2">
+            <div class="image img-cir img-120">
+                <img src="<?= base_url('assets/img/profile/default.png'); ?>" alt="User" />
+            </div>
+            <h4 class="name">M.Ramadhan Fikri</h4>
+            <a href="#">Keluar</a>
+        </div>
+        <nav class="navbar-sidebar2">
+            <ul class="list-unstyled navbar__list">
+                <li>
+                    <a href="#">
+                        <i class="fas fa-user"></i>Profile</a>
+                </li>
+                <li class="has-sub">
+                    <a class="js-arrow" href="#">
+                        <i class="fas fa-tachometer-alt"></i>Pengaduan
+                        <span class="arrow">
+                            <i class="fas fa-angle-down"></i>
+                        </span>
+                    </a>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-tachometer-alt"></i>Dashboard 1</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-tachometer-alt"></i>Dashboard 2</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</aside>
+<!-- END MENU SIDEBAR-->

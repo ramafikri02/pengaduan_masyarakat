@@ -1,47 +1,36 @@
-<!-- Footer -->
-<footer class="footer pt-0">
-    <div class="row align-items-center justify-content-lg-between">
-        <div class="col-lg-6">
-            <div class="copyright text-center  text-lg-left  text-muted">
-                &copy; 2020 <a href="#" class="font-weight-bold ml-1" target="_blank">Fidelya Team</a>
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <p>Copyright © 2020 Fidelya. All rights reserved. Coded by <a href="#">M.Ramadhan Fikri</a>.</p>
+                </div>
             </div>
         </div>
     </div>
-</footer>
+</section>
+<!-- END PAGE CONTAINER-->
 </div>
+
 </div>
-</body>
 
-<!-- Datatables -->
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#tabelPengaduan').DataTable();
-    });
-</script>
+<!-- Jquery JS-->
+<script src="<?= base_url('assets/vendor/jquery-3.2.1.min.js') ?>"></script>
+<!-- Bootstrap JS-->
+<script src="<?= base_url('assets/vendor/bootstrap-4.1/popper.min.js') ?>"></script>
+<script src="<?= base_url('assets/vendor/bootstrap-4.1/bootstrap.min.js') ?>"></script>
+<!-- Vendor JS       -->
+<script src="<?= base_url('assets/vendor/animsition/animsition.min.js') ?>"></script>
+<script src="<?= base_url('assets/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js') ?>"></script>
+<script src="<?= base_url('assets/vendor/circle-progress/circle-progress.min.js') ?>"></script>
+<script src="<?= base_url('assets/vendor/perfect-scrollbar/perfect-scrollbar.js') ?>"></script>
+<script src="<?= base_url('assets/vendor/chartjs/Chart.bundle.min.js') ?>"></script>
+<script src="<?= base_url('assets/vendor/select2/select2.min.js') ?>"></script>
 
-<script src="assets/ya/assets/vendor/jquery/dist/jquery.min.js"></script>
-<script src="assets/ya/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="assets/ya/assets/vendor/js-cookie/js.cookie.js"></script>
-<script src="assets/ya/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-<script src="assets/ya/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
-<!-- Optional JS -->
-<script src="assets/ya/assets/vendor/chart.js/dist/Chart.min.js"></script>
-<script src="assets/ya/assets/vendor/chart.js/dist/Chart.extension.js"></script>
-<!-- Argon JS -->
-<script src="assets/ya/assets/js/argon.js?v=1.2.0"></script>
-
-<!-- Bootstrap core JavaScript-->
-<script src="<?= base_url('assets/'); ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- Core plugin JavaScript-->
-<script src="<?= base_url('assets/'); ?>vendor/jquery-easing/jquery.easing.min.js"></script>
-
-<!-- Custom scripts for all pages-->
-<script src="<?= base_url('assets/'); ?>js/sb-admin-2.min.js"></script>
+<!-- Main JS-->
+<script src="<?= base_url('assets/js/main.js') ?>"></script>
 
 </body>
 
 </html>
+<!-- end document-->

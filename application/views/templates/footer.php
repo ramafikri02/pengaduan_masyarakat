@@ -1,42 +1,16 @@
 <!-- Footer -->
-<footer class="sticky-footer bg-white">
-    <div class="container my-auto">
-        <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Fidelya <?= date('Y') ?></span>
+<footer class="footer pt-0">
+    <div class="row align-items-center justify-content-lg-between">
+        <div class="col-lg-6">
+            <div class="copyright text-center  text-lg-left  text-muted">
+                &copy; 2020 <a href="#" class="font-weight-bold ml-1" target="_blank">Fidelya Team</a>
+            </div>
         </div>
     </div>
 </footer>
-<!-- End of Footer -->
-
 </div>
-<!-- End of Content Wrapper -->
-
 </div>
-<!-- End of Page Wrapper -->
-
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
-
-<!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ingin eluar?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Pilih "Keluar" jika anda ingin mengakhiri sesi ini.</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                <a class="btn btn-primary" href="<?= base_url('auth/logout') ?>">Keluar</a>
-            </div>
-        </div>
-    </div>
-</div>
+</body>
 
 <!-- Datatables -->
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -47,6 +21,17 @@
         $('#tabelPengaduan').DataTable();
     });
 </script>
+
+<script src="assets/ya/assets/vendor/jquery/dist/jquery.min.js"></script>
+<script src="assets/ya/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/ya/assets/vendor/js-cookie/js.cookie.js"></script>
+<script src="assets/ya/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+<script src="assets/ya/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+<!-- Optional JS -->
+<script src="assets/ya/assets/vendor/chart.js/dist/Chart.min.js"></script>
+<script src="assets/ya/assets/vendor/chart.js/dist/Chart.extension.js"></script>
+<!-- Argon JS -->
+<script src="assets/ya/assets/js/argon.js?v=1.2.0"></script>
 
 <!-- Bootstrap core JavaScript-->
 <script src="<?= base_url('assets/'); ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

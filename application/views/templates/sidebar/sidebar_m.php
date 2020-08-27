@@ -1,65 +1,61 @@
-<!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-    <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-angry"></i>
+<!-- Sidenav -->
+<nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
+    <div class="scrollbar-inner">
+        <!-- Brand -->
+        <div class="sidenav-header  align-items-center">
+            <img src="" class="navbar-brand-img" alt="">
+            <h3>Yuk Lapor!</h3>
+            </a>
         </div>
-        <div class="sidebar-brand-text mx-3">Yuk Lapor</div>
-    </a>
+        <div class="navbar-inner">
+            <!-- Collapse -->
+            <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+                <!-- Nav items -->
+                <ul class="navbar-nav">
+                    <!-- <li class="nav-item">
+                            <a class="nav-link active" href="examples/dashboard.html">
+                                <i class="ni ni-tv-2 text-primary"></i>
+                                <span class="nav-link-text">Dashboard</span>
+                            </a>
+                        </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile">
+                            <i class="ni ni-single-02 text-yellow"></i>
+                            <span class="nav-link-text">Profile</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index">
+                            <i class="ni ni-key-25 text-info"></i>
+                            <span class="nav-link-text">Pengaduan</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="ni ni-pin-3 text-primary"></i>
+                            <span class="nav-link-text">Google</span>
+                        </a>
+                    </li>
+                </ul>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
+                <!-- Divider -->
+                <hr class="my-3">
 
-    <div class="sidebar-heading">
-        User
+                <!-- Heading -->
+                <h6 class="navbar-heading p-0 text-muted">
+                    <span class="docs-normal">Documentation</span>
+                </h6>
+
+                <!-- Navigation -->
+                <ul class="navbar-nav mb-md-3">
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url('auth/logout') ?>">
+                            <i class="ni ni-user-run"></i>
+                            <span class="nav-link-text">Keluar</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
-
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item">
-        <a class="nav-link" href="profile">
-            <i class="fas fa-id-card"></i>
-            <span>Profile</span></a>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Pengaduan
-    </div>
-
-    <!-- Nav Item - Charts -->
-    <li class="nav-item">
-        <a class="nav-link" href="index">
-            <i class="fas fa-envelope"></i>
-            <span>Permintaan</span></a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="selesai">
-            <i class="fas fa-check-square"></i>
-            <span>Selesai</span></a>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">>
-
-    <!-- Nav Item - Charts -->
-    <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('auth/logout') ?>">
-            <i class="fas fa-sign-out-alt"></i>
-            <span>Keluar</span></a>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-    </div>
-
-</ul>
-<!-- End of Sidebar -->
+</nav>

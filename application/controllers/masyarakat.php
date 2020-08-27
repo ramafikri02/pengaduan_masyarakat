@@ -32,7 +32,9 @@ class masyarakat extends CI_Controller
 		$data['title'] = 'Pengaduan';
 		$data['user'] = $this->db->get_where('masyarakat', ['email' =>
 		$this->session->userdata('email')])->row_array();
-		$data['pengaduan'] = $this->m_masyarakat->get_data_pengaduan();
+
+		$nik = $this->session->userdata('nik');
+		$data['pengaduan'] = $this->m_masyarakat->get_data_pengaduan($nik);
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar/sidebar_m', $data);
@@ -91,20 +93,41 @@ class masyarakat extends CI_Controller
 		redirect('masyarakat/index');
 	}
 
-	public function edit($nik)
+	public function edit($nik) {
+		$where = array('nik' => $nik);
+		$data['pengaduan'] = $this->m_masyarakat->edit_data($where,'pengaduan')->result();
+	}
+
+	public function update()
 	{
-		if ($this->input->post('submit')) {
-			if ($this->m_masyarakat->validation("update")) {
-				$this->m_masyarakat->edit_pengaduan($nik);
-				redirect('masyarakat/index');
-			}
-		}
-		$this->load->view('masyarakat/index');
+		$email = $this->session->userdata('email');
+		$masyarakat = $this->m_masyarakat->get_nik($email);
+		$data = [
+			'nik' => $masyarakat['nik'],
+			'judul_laporan' => $this->input->post('judul_laporan'),
+			'isi_laporan' => $this->input->post('isi_laporan'),
+			'tgl_kejadian' => $this->input->post('tgl_kejadian'),
+			'image' => $this->_uploadImage(),
+		];
+
+		$where = array(
+			'nik' => $masyarakat['nik']
+		);
+		$this->m_masyarakat->edit_pengaduan($where,$data,'pengaduan');
+
+		$this->session->set_flashdata('message', '<div class="alert alert-success  alert-dismissible fade show" role="alert"> Data Berhasil diubah.<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button></div>');
+		redirect('masyarakat/index');
 	}
 
 	public function hapus($nik)
 	{
 		$this->m_masyarakat->hapus_pengaduan($nik);
-		redirect('siswa');
+
+		$this->session->set_flashdata('message', '<div class="alert alert-success  alert-dismissible fade show" role="alert"> Data Berhasil dihapus.<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button></div>');
+		redirect('masyarakat/index');
 	}
 }

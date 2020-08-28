@@ -11,7 +11,7 @@
                 <img src="<?= base_url('assets/img/profile/default.png'); ?>" alt="User" />
             </div>
             <h4 class="name">M.Ramadhan Fikri</h4>
-            <a href="#">Keluar</a>
+            <p>Admin</p>
         </div>
         <nav class="navbar-sidebar2">
             <ul class="list-unstyled navbar__list">

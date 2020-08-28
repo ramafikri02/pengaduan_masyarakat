@@ -49,7 +49,7 @@
                                         <th>Tanggal Kejadian</th>
                                         <th>Foto</th>
                                         <th>Tanggal Pengaduan</th>
-                                        <th>Action</th>
+                                        <th width="80px">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -64,53 +64,12 @@
                                             <td><?= date('d F Y', $p->tgl_pengaduan) ?></td>
                                             <td>
                                                 <!-- Button trigger modal -->
-                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ubahPengaduan">
+                                                <a href="#" class="btn btn-primary tmbl-edit" data-id="<?= $p->id_pengaduan; ?>" data-judul="<?= $p->judul_laporan; ?>" data-isi="<?= $p->isi_laporan; ?>">
                                                     <i class="fas fa-edit"></i>
-                                                </button>
-
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="ubahPengaduan" tabindex="-1" aria-labelledby="judulUbah" aria-hidden="true">
-                                                    <div class="modal-dialog modal-lg">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="judulUbah">Ubah Pengaduan</h5>
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-body ">
-                                                                <form method="POST" action="<?= base_url('masyarakat/update') ?>">
-                                                                    <div class="form-group">
-                                                                        <label for="exampleFormControlInput1">Judul Laporan</label>
-                                                                        <input type="text" class="form-control" name="judul_laporan" id="exampleFormControlInput1">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label for="exampleFormControlTextarea1">Isi Laporan</label>
-                                                                        <textarea class="form-control" name="isi_laporan" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label for="exampleFormControlFile1">Tanggal Kejadian</label>
-                                                                        <input type="date" name="tgl_kejadian" class="form-control" required="true">
-                                                                        <p class="text-danger" id="err_tgl_kejadian"></p>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label for="exampleFormControlFile1">Masukkan Gambar</label>
-                                                                        <input type="file" class="form-control-file" name="image" id="image">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
-                                                                            <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Simpan Perubahan</button>
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <form method="POST" action="<?= base_url('masyarakat/hapus') ?>" style="float:right;">
-                                                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                                                </form>
+                                                </a>
+                                                <a href="#" class="btn btn-danger tmbl-delete" data-id="<?= $p->id_pengaduan; ?>" data-judul="<?= $p->judul_laporan; ?>" data-isi="<?= $p->isi_laporan; ?>">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
@@ -157,8 +116,8 @@
                     </div>
                     <div class="form-group">
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
-                            <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Simpan Perubahan</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Simpan Pengaduan</button>
                         </div>
                     </div>
                 </form>
@@ -167,3 +126,71 @@
     </div>
 </div>
 <!-- end tambah pengaduan -->
+
+<!-- edit pengaduan -->
+<div class="modal fade" id="ubahPengaduan" tabindex="-1" aria-labelledby="judulUbah" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="judulUbah">Ubah Pengaduan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body ">
+                <form method="POST" action="<?= base_url('masyarakat/update'); ?>">
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Judul Laporan</label>
+                        <input type="text" class="form-control judul_laporan" name="judul_laporan" id="exampleFormControlInput1">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Isi Laporan</label>
+                        <textarea class="form-control isi_laporan" name="isi_laporan" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">Tanggal Kejadian</label>
+                        <input type="date" name="tgl_kejadian" class="form-control tgl_kejadian" required="true">
+                        <p class="text-danger" id="err_tgl_kejadian"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">Masukkan Gambar</label>
+                        <input type="file" class="form-control-file" name="image" id="image">
+                    </div>
+                    <div class="form-group">
+                        <div class="modal-footer">
+                            <input type="hidden" name="id" class="id">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Simpan Perubahan</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end edit pengaduan -->
+
+<!-- Delete Pengaduan-->
+<form action="<?= base_url('masyarakat/hapus'); ?>" method="post">
+    <div class="modal fade" id="deletePengaduan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Hapus Pengaduan</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label for="exampleFormControlInput1">Apa anda yakin ingin menghapus pengaduan ini?</label>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="id" class="id">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Hapus</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- End Delete Pengaduan-->

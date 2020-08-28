@@ -12,20 +12,20 @@ class masyarakat extends CI_Controller
 	}
 
 	private function _uploadImage()
-    {
-        $config['upload_path']          = './assets/img/pengaduan/';
-        $config['allowed_types']        = 'gif|jpg|png';
-        $config['encrypt_name']         = TRUE;
-        $config['max_size']             = 2048;
-        $this->load->library('upload', $config);
+	{
+		$config['upload_path']          = './assets/img/pengaduan/';
+		$config['allowed_types']        = 'gif|jpg|png';
+		$config['encrypt_name']         = TRUE;
+		$config['max_size']             = 2048;
+		$this->load->library('upload', $config);
 
-        if ($this->upload->do_upload('image')) {
-            return $this->upload->data("encrypt_name");
-        }
-        print_r($this->upload->display_errors());
+		if ($this->upload->do_upload('image')) {
+			return $this->upload->data("encrypt_name");
+		}
+		print_r($this->upload->display_errors());
 
-        return "default.jpg";
-    }
+		return "default.jpg";
+	}
 
 	public function index()
 	{
@@ -77,12 +77,12 @@ class masyarakat extends CI_Controller
 		$email = $this->session->userdata('email');
 		$masyarakat = $this->m_masyarakat->get_nik($email);
 		$data = [
-			'nik' => $masyarakat['nik'],
-			'judul_laporan' => $this->input->post('judul_laporan'),
-			'isi_laporan' => $this->input->post('isi_laporan'),
-			'tgl_kejadian' => $this->input->post('tgl_kejadian'),
-			'image' => $this->_uploadImage(),
-			'tgl_pengaduan' => time(),
+			'nik' 			 => $masyarakat['nik'],
+			'judul_laporan'  => $this->input->post('judul_laporan'),
+			'isi_laporan'    => $this->input->post('isi_laporan'),
+			'tgl_kejadian'   => $this->input->post('tgl_kejadian'),
+			'image' 		 => $this->_uploadImage(),
+			'tgl_pengaduan'  => time(),
 		];
 
 		$this->m_masyarakat->tambah_pengaduan($data);
@@ -93,41 +93,29 @@ class masyarakat extends CI_Controller
 		redirect('masyarakat/index');
 	}
 
-	public function edit($nik) {
-		$where = array('nik' => $nik);
-		$data['pengaduan'] = $this->m_masyarakat->edit_data($where,'pengaduan')->result();
-	}
-
 	public function update()
 	{
-		$email = $this->session->userdata('email');
-		$masyarakat = $this->m_masyarakat->get_nik($email);
-		$data = [
-			'nik' => $masyarakat['nik'],
-			'judul_laporan' => $this->input->post('judul_laporan'),
-			'isi_laporan' => $this->input->post('isi_laporan'),
-			'tgl_kejadian' => $this->input->post('tgl_kejadian'),
-			'image' => $this->_uploadImage(),
-		];
-
-		$where = array(
-			'nik' => $masyarakat['nik']
+		$id = $this->input->post('id');
+		$data = array(
+			'judul_laporan'  => $this->input->post('judul_laporan'),
+			'isi_laporan'    => $this->input->post('isi_laporan'),
+			'tgl_kejadian'   => $this->input->post('tgl_kejadian'),
+			'image' 		 => $this->_uploadImage(),
 		);
-		$this->m_masyarakat->edit_pengaduan($where,$data,'pengaduan');
+		$this->m_masyarakat->ubah_pengaduan($data, $id);
 
 		$this->session->set_flashdata('message', '<div class="alert alert-success  alert-dismissible fade show" role="alert"> Data Berhasil diubah.<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button></div>');
+        <span aria-hidden="true">&times;</span></button></div>');
 		redirect('masyarakat/index');
 	}
 
-	public function hapus($nik)
+	public function hapus()
 	{
-		$this->m_masyarakat->hapus_pengaduan($nik);
+		$id = $this->input->post('id');
+		$this->m_masyarakat->hapus_pengaduan($id);
 
 		$this->session->set_flashdata('message', '<div class="alert alert-success  alert-dismissible fade show" role="alert"> Data Berhasil dihapus.<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button></div>');
+        <span aria-hidden="true">&times;</span></button></div>');
 		redirect('masyarakat/index');
 	}
 }

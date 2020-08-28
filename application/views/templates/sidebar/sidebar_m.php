@@ -11,31 +11,17 @@
                 <img src="<?= base_url('assets/img/profile/default.png'); ?>" alt="User" />
             </div>
             <h4 class="name">M.Ramadhan Fikri</h4>
-            <a href="#">Keluar</a>
+            <p>Masyarakat</p>
         </div>
         <nav class="navbar-sidebar2">
             <ul class="list-unstyled navbar__list">
                 <li>
-                    <a href="#">
+                    <a href="profile">
                         <i class="fas fa-user"></i>Profile</a>
                 </li>
-                <li class="has-sub">
-                    <a class="js-arrow" href="#">
-                        <i class="fas fa-tachometer-alt"></i>Pengaduan
-                        <span class="arrow">
-                            <i class="fas fa-angle-down"></i>
-                        </span>
-                    </a>
-                    <ul class="list-unstyled navbar__sub-list js-sub-list">
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard 1</a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard 2</a>
-                        </li>
-                    </ul>
+                <li>
+                    <a href="index">
+                        <i class="fas fa-tachometer-alt"></i>Pengaduan</a>
                 </li>
             </ul>
         </nav>

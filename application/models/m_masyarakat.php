@@ -82,28 +82,15 @@ class m_masyarakat extends CI_Model
         return $this->db->get()->row_array();
     }
 
-    public function get_id($nik)
+    public function ubah_pengaduan($data, $id)
     {
-        $this->db->select("id_pengaduan");
-        $this->db->from('masyarakat');
-        $this->db->where('nik', $nik);
-        return $this->db->get()->row_array();
+        $this->db->where('id_pengaduan', $id);
+        $this->db->update('pengaduan', $data);
     }
 
-    public function edit_pengaduan($where, $table)
+    public function hapus_pengaduan($id)
     {
-        return $this->db->get_where($table, $where);
-    }
-
-    public function update_pengaduan($where, $data, $table)
-    {
-        $this->db->where($where);
-        $this->db->update($table, $data);
-    }
-
-    public function hapus_pengaduan($nik)
-    {
-        $this->db->where('nik', $nik);
+        $this->db->where('id_pengaduan', $id);
         $this->db->delete('pengaduan');
     }
 

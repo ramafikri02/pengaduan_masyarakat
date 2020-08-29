@@ -14,8 +14,6 @@
                                 <li class="list-inline-item">Pengaduan</li>
                             </ul>
                         </div>
-                        <button class="au-btn au-btn-icon au-btn--green" data-toggle="modal" data-target="#mediumModal">
-                            <i class="zmdi zmdi-plus"></i>Tambah Pengaduan</button>
                     </div>
                 </div>
             </div>
@@ -39,10 +37,10 @@
                     <div class="card-body">
                         <h5 class="card-title">Data Pengaduan</h5>
                         <form action="<?= base_url('sistem/cetak_xls') ?>">
-                        <button class="btn btn-primary tmbl-excel" style="float: right;">Export Excel</button>
+                            <button class="btn btn-primary tmbl-excel" style="float: right;">Export Excel</button>
                         </form>
                         <form action="<?= base_url('sistem/cetak_pdf') ?>">
-                        <button class="btn btn-primary tmbl-pdf" style="float: right; margin-right:10px; margin-bottom:20px">Export PDF</button>
+                            <button class="btn btn-primary tmbl-pdf" style="float: right; margin-right:10px; margin-bottom:20px">Export PDF</button>
                         </form>
                         <div class="table-responsive">
                             <?= $this->session->flashdata('message'); ?>
@@ -53,26 +51,23 @@
                                         <th>Judul Laporan</th>
                                         <th>Kategori</th>
                                         <th>Tanggal Pengaduan</th>
-                                        <th width="120px">Action</th>
+                                        <th width="80px">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php $no = 1;
                                     foreach ($pengaduan as $p) : ?>
                                         <tr>
-                                            <td><?= $p['id_pengaduan'] ?></td>
-                                            <td><?= $p['judul_laporan'] ?></td>
-                                            <td><?= $p['kategori'] ?></td>
-                                            <td><?= date('d F Y', $p['tgl_pengaduan']) ?></td>
+                                            <td><?= $p->id_pengaduan ?></td>
+                                            <td><?= $p->judul_laporan ?></td>
+                                            <td><?= $p->kategori ?></td>
+                                            <td><?= date('d F Y', $p->tgl_pengaduan) ?></td>
                                             <td>
                                                 <!-- Button trigger modal -->
-                                                <a href="#" class="btn btn-success tmbl-lihat" data-id="<?= $p['id_pengaduan']; ?>" data-kategori="<?= $p['kategori']; ?>" data-judul="<?= $p['judul_laporan']; ?>" data-isi="<?= $p['isi_laporan']; ?>">
+                                                <a href="#" class="btn btn-success tmbl-lihat" data-id="<?= $p->id_pengaduan; ?>" data-kategori="<?= $p->kategori; ?>" data-judul="<?= $p->judul_laporan; ?>" data-isi="<?= $p->isi_laporan; ?>">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
-                                                <a href="#" class="btn btn-warning tmbl-edit" data-id="<?= $p['id_pengaduan']; ?>" data-kategori="<?= $p['kategori']; ?>" data-judul="<?= $p['judul_laporan']; ?>" data-isi="<?= $p['isi_laporan']; ?>">
-                                                    <i class="fas fa-edit"></i>
-                                                </a>
-                                                <a href="#" class="btn btn-danger tmbl-hapus" data-id="<?= $p['id_pengaduan']; ?>">
+                                                <a href="#" class="btn btn-danger tmbl-hapus" data-id="<?= $p->id_pengaduan; ?>">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </a>
                                             </td>
@@ -105,7 +100,7 @@
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Kategori</label>
                         <select class="form-control" name="kategori" id="kategori" disabled>
-                            <option><?= $p['kategori'] ?></option>
+                            <option><?= $p->kategori ?></option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -118,7 +113,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlFile1">Gambar</label> <br>
-                        <img src="<?= base_url('assets/img/pengaduan/') . $p['image'] ?>" alt="" width="200px">
+                        <img src="<?= base_url('assets/img/pengaduan/') . $p->image ?>" alt="" width="200px">
                     </div>
                     <div class="form-group">
                         <div class="modal-footer">

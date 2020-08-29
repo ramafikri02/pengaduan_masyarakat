@@ -34,9 +34,9 @@ class m_auth extends CI_Model
                 ];
                 $this->session->set_userdata($data);
                 // nentuin dia nanti masuknya kemana berdasarkan level
-                if ($user['level'] == "admin") {
+                if ($user['level'] == "Admin") {
                     redirect('admin/index');
-                } elseif ($user['level'] == "petugas") {
+                } elseif ($user['level'] == "Petugas") {
                     redirect('petugas/index');
                 } else {
                     redirect('masyarakat/index');
@@ -51,7 +51,7 @@ class m_auth extends CI_Model
             redirect('auth/login');
         }
     }
-
+ 
     public function aksi_logout()
     {
         $this->session->unset_userdata('email');

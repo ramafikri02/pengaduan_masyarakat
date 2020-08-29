@@ -2,18 +2,35 @@
 <html lang="en">
 
 <head>
+    <!-- Required meta tags-->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ayo Lapor! | Daftar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
+
+    <!-- Title Page-->
+    <title>Yuk Lapor! | Daftar</title>
 
     <!-- Style -->
-    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/auth/s.css') ?>">
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/auth/s.css'); ?>">
+
+    <!-- font-awesome -->
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/vendor/fontawesome-free/css/all.min.css'); ?>">
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="<?= base_url('assets/vendor/bootstrap/css/bootstrap.min.css') ?>">
+
+    <!-- Vendor CSS-->
+    <link href="<?= base_url('assets/vendor/animsition/animsition.min.css') ?>" rel="stylesheet" media="all">
+    <link href="<?= base_url('assets/vendor/perfect-scrollbar/perfect-scrollbar.css') ?>" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="<?= base_url('assets/css/st.css') ?>" rel="stylesheet" media="all">
+
 </head>
 
-<body>
+<body class="animsition">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6 image-container">
@@ -79,5 +96,11 @@
         </div>
     </div>
 </body>
+<!-- Jquery JS-->
+<script src="<?= base_url('assets/vendor/jquery-3.2.1.min.js') ?>"></script>
+<!-- Vendor JS       -->
+<script src="<?= base_url('assets/vendor/animsition/animsition.min.js') ?>"></script>
+<!-- Main JS-->
+<script src="<?= base_url('assets/js/main.js') ?>"></script>
 
 </html>

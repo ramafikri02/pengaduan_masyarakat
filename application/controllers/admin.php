@@ -39,12 +39,24 @@ class admin extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 
+	public function pengaduan()
+	{
+		$data['user'] = $this->db->get_where('login', ['email' =>
+		$this->session->userdata('email')])->row_array();
+		$data['pengaduan'] = $this->m_data->get_data_pengaduan();
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar/sidebar_a', $data);
+		$this->load->view('templates/topbar', $data);
+		$this->load->view('admin/pengaduan', $data);
+		$this->load->view('templates/footer');
+	}
+
 	public function masyarakat()
 	{
 		$data['user'] = $this->db->get_where('login', ['email' =>
 		$this->session->userdata('email')])->row_array();
-		$data['admin'] = $this->db->get_where('petugas', ['email' =>
-		$this->session->userdata('email')])->row_array();
+		$data['masyarakat'] = $this->m_data->get_data_masyarakat();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar/sidebar_a', $data);
@@ -57,8 +69,7 @@ class admin extends CI_Controller
 	{
 		$data['user'] = $this->db->get_where('login', ['email' =>
 		$this->session->userdata('email')])->row_array();
-		$data['admin'] = $this->db->get_where('petugas', ['email' =>
-		$this->session->userdata('email')])->row_array();
+		$data['petugas'] = $this->m_data->get_data_petugas();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar/sidebar_a', $data);

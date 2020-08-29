@@ -37,38 +37,40 @@
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Data Pengaduan</h5>
+                        <h5 class="card-title">Data Petugas</h5>
                         <div class="table-responsive">
                             <?= $this->session->flashdata('message'); ?>
-                            <table class="table table-bordered" id="tabelPengaduan" width="100%" cellspacing="0">
+                            <table class="table table-bordered" id="tabelPetugas" width="100%" cellspacing="0">
                                 <thead style="font-weight: bold;">
                                     <tr class="text-center">
                                         <th>ID</th>
-                                        <th>Judul Laporan</th>
-                                        <th>Kategori</th>
-                                        <th>Foto</th>
-                                        <th>Tanggal Pengaduan</th>
+                                        <th>Nama</th>
+                                        <th>Email</th>
+                                        <th>No Telepon</th>
+                                        <th>Level</th>
+                                        <th width="110px">Tanggal Ditambahkan</th>
                                         <th width="120px">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $no = 1;
-                                    foreach ($pengaduan as $p) : ?>
+                                    <?php
+                                    foreach ($petugas as $p) : ?>
                                         <tr>
-                                            <td><?= $p->id_pengaduan ?></td>
-                                            <td><?= $p->judul_laporan ?></td>
-                                            <td><?= $p->kategori ?></td>
-                                            <td><img src="<?= base_url('assets/img/pengaduan/') . $p->image ?>"' width=' 100' height='100'></td>
-                                            <td><?= date('d F Y', $p->tgl_pengaduan) ?></td>
+                                            <td><?= $p->id_petugas ?></td>
+                                            <td><?= $p->nama ?></td>
+                                            <td><?= $p->email ?></td>
+                                            <td><?= $p->telp ?></td>
+                                            <td><?= $p->level ?></td>
+                                            <td><?= date('d F Y', $p->tgl_ditambahkan) ?></td>
                                             <td>
                                                 <!-- Button trigger modal -->
-                                                <a href="#" class="btn btn-success tmbl-lihat" data-id="<?= $p->id_pengaduan; ?>" data-judul="<?= $p->kategori; ?>" data-judul="<?= $p->judul_laporan; ?>" data-isi="<?= $p->isi_laporan; ?>">
+                                                <a href="#" class="btn btn-success tmbl-lihat-petugas" data-id_petugas="<?= $p->id_petugas; ?>" data-nama="<?= $p->nama; ?>" data-email="<?= $p->email; ?>" data-password="<?= $p->password; ?>" data-telp="<?= $p->telp; ?>" data-level="<?= $p->level; ?>" data-tgl_ditambahkan="<?= $p->tgl_ditambahkan; ?>">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
-                                                <a href="#" class="btn btn-warning tmbl-edit" data-id="<?= $p->id_pengaduan; ?>" data-judul="<?= $p->kategori; ?>" data-judul="<?= $p->judul_laporan; ?>" data-isi="<?= $p->isi_laporan; ?>">
+                                                <a href="#" class="btn btn-warning tmbl-edit-petugas" data-id_petugas="<?= $p->id_petugas; ?>" data-nama="<?= $p->nama; ?>" data-email="<?= $p->email; ?>" data-password="<?= $p->password; ?>" data-telp="<?= $p->telp; ?>" data-level="<?= $p->level; ?>" data-tgl_ditambahkan="<?= $p->tgl_ditambahkan; ?>">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
-                                                <a href="#" class="btn btn-danger tmbl-hapus" data-id="<?= $p->id_pengaduan; ?>">
+                                                <a href="#" class="btn btn-danger tmbl-hapus-petugas" data-id_petugas="<?= $p->id_petugas; ?>">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </a>
                                             </td>
@@ -86,43 +88,109 @@
 <!-- End Of Content -->
 
 <!-- Modal -->
-<!-- tambah pengaduan -->
-<div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+<!-- lihat Petugas -->
+<div class="modal fade" id="lihatPetugas" tabindex="-1" aria-labelledby="judulUbah" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="judulTambah">Buat Pengaduan</h5>
+                <h5 class="modal-title" id="judulUbah">Lihat Petugas</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body ">
-                <?= form_open_multipart('masyarakat/tambah') ?>
+                <form method="POST" action="<?= base_url('Petugas/update'); ?>">
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">id_petugas</label>
+                        <input type="text" class="form-control id_petugas" name="id_petugas" id="exampleFormControlInput1" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Nama</label>
+                        <input type="text" class="form-control nama" name="nama" id="exampleFormControlInput1" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Email</label>
+                        <input type="text" class="form-control email" name="email" id="exampleFormControlInput1" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Password</label>
+                        <input type="text" class="form-control password" name="password" id="exampleFormControlInput1" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">No Telepon</label>
+                        <input type="text" class="form-control telp" name="telp" id="exampleFormControlInput1" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Level</label>
+                        <select class="form-control level" name="level" id="level" disabled>
+                            <?php
+                            foreach ($petugas as $p) : ?>
+                                <option><?= $p->level ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">Gambar</label> <br>
+                        <img src="<?= base_url('assets/img/Petugas/') . $p->image ?>" alt="" width="200px">
+                    </div>
+                    <div class="form-group">
+                        <div class="modal-footer">
+                            <input type="hidden" name="id" class="id">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end lihat Petugas -->
+
+<!-- tambah Petugas -->
+<div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="judulTambah">Buat Petugas</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body ">
+                <?= form_open_multipart('admin/tambah_Petugas') ?>
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1">Kategori</label>
-                    <select class="form-control" name="kategori" id="kategori">
+                    <label for="exampleFormControlInput1">id_petugas</label>
+                    <input type="text" class="form-control" name="id_petugas" id="exampleFormControlInput1" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Nama</label>
+                    <input type="text" class="form-control" name="nama" id="exampleFormControlInput1" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Email</label>
+                    <input type="email" class="form-control" name="email" id="exampleFormControlInput1" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">No Telepon</label>
+                    <input type="number" class="form-control" name="telp" id="exampleFormControlInput1" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Level</label>
+                    <select class="form-control level" name="level" id="level">
                         <?php
-                        foreach ($kategori as $k) : ?>
-                            <option><?= $k->nama_kategori ?></option>
+                        foreach ($petugas as $p) : ?>
+                            <option><?= $p->level ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlInput1">Judul Laporan</label>
-                    <input type="text" class="form-control" name="judul_laporan" id="exampleFormControlInput1" placeholder="">
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Isi Laporan</label>
-                    <textarea class="form-control" name="isi_laporan" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlFile1">Masukkan Gambar</label>
+                    <label for="exampleFormControlFile1">Gambar</label>
                     <input type="file" class="form-control-file" name="image" id="exampleFormControlFile1">
                 </div>
                 <div class="form-group">
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Simpan Pengaduan</button>
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Simpan Petugas</button>
                     </div>
                 </div>
                 <?= form_close() ?>
@@ -130,89 +198,53 @@
         </div>
     </div>
 </div>
-<!-- end tambah pengaduan -->
+<!-- end tambah Petugas -->
 
-<!-- lihat pengaduan -->
-<div class="modal fade" id="lihatPengaduan" tabindex="-1" aria-labelledby="judulUbah" aria-hidden="true">
+<!-- edit Petugas -->
+<div class="modal fade" id="ubahPetugas" tabindex="-1" aria-labelledby="judulUbah" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="judulUbah">Lihat Pengaduan</h5>
+                <h5 class="modal-title" id="judulUbah">Ubah Petugas</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body ">
-                <form method="POST" action="<?= base_url('masyarakat/update'); ?>">
+                <form method="POST" action="<?= base_url('admin/ubah_petugas'); ?>">
                     <div class="form-group">
-                        <label for="exampleFormControlSelect1">Kategori</label>
-                        <select class="form-control" name="kategori" id="kategori" disabled>
-                            <option><?= $p->kategori ?></option>
-                        </select>
+                        <label for="exampleFormControlInput1">Nama</label>
+                        <input type="text" class="form-control nama" name="nama" id="exampleFormControlInput1">
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Judul Laporan</label>
-                        <input type="text" class="form-control judul_laporan" name="judul_laporan" id="exampleFormControlInput1" disabled>
+                        <label for="exampleFormControlInput1">Email</label>
+                        <input type="text" class="form-control email" name="email" id="exampleFormControlInput1">
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Isi Laporan</label>
-                        <textarea class="form-control isi_laporan" name="isi_laporan" id="exampleFormControlTextarea1" rows="3" disabled></textarea>
+                        <label for="exampleFormControlInput1">Password</label>
+                        <input type="text" class="form-control password" name="password" id="exampleFormControlInput1">
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlFile1">Gambar</label> <br>
-                        <img src="<?= base_url('assets/img/pengaduan/') . $p->image ?>" alt="" width="200px">
+                        <label for="exampleFormControlInput1">No Telepon</label>
+                        <input type="text" class="form-control telp" name="telp" id="exampleFormControlInput1">
                     </div>
                     <div class="form-group">
-                        <div class="modal-footer">
-                            <input type="hidden" name="id" class="id">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                            <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Simpan Perubahan</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end lihat pengaduan -->
-
-<!-- edit pengaduan -->
-<div class="modal fade" id="ubahPengaduan" tabindex="-1" aria-labelledby="judulUbah" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="judulUbah">Ubah Pengaduan</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body ">
-                <form method="POST" action="<?= base_url('masyarakat/update'); ?>">
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Kategori</label>
-                        <select class="form-control kategori" name="kategori" id="kategori">
+                        <label for="exampleFormControlSelect1">Petugas</label>
+                        <select class="form-control" name="petugas" id="petugas">
                             <?php
-                            foreach ($kategori as $k) : ?>
-                                <option><?= $k->nama_kategori ?></option>
+                            foreach ($petugas as $p) : ?>
+                                <option><?= $p->level ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Judul Laporan</label>
-                        <input type="text" class="form-control judul_laporan" name="judul_laporan" id="exampleFormControlInput1">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Isi Laporan</label>
-                        <textarea class="form-control isi_laporan" name="isi_laporan" id="exampleFormControlTextarea1" rows="3"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlFile1">Masukkan Gambar</label>
-                        <input type="file" class="form-control-file" name="image" id="image">
+                        <label for="exampleFormControlFile1">Gambar</label> <br>
+                        <img src="<?= base_url('assets/img/profile/') . $p->image ?>" alt="" width="200px">
                     </div>
                     <div class="form-group">
                         <div class="modal-footer">
                             <input type="hidden" name="id" class="id">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                             <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Simpan Perubahan</button>
                         </div>
                     </div>
@@ -221,21 +253,21 @@
         </div>
     </div>
 </div>
-<!-- end edit pengaduan -->
+<!-- end edit Petugas -->
 
-<!-- Delete Pengaduan-->
-<form action="<?= base_url('masyarakat/hapus'); ?>" method="post">
-    <div class="modal fade" id="deletePengaduan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Delete Petugas-->
+<form action="<?= base_url('admin/ubah_petugas'); ?>" method="post">
+    <div class="modal fade" id="hapusPetugas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Hapus Pengaduan</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Hapus Petugas</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <label for="exampleFormControlInput1">Apa anda yakin ingin menghapus pengaduan ini?</label>
+                    <label for="exampleFormControlInput1">Apa anda yakin ingin menghapus Petugas ini?</label>
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="id" class="id">
@@ -246,4 +278,4 @@
         </div>
     </div>
 </form>
-<!-- End Delete Pengaduan-->
+<!-- End Delete Petugas-->

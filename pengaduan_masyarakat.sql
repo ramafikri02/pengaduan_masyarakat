@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 29 Agu 2020 pada 08.25
+-- Waktu pembuatan: 29 Agu 2020 pada 18.28
 -- Versi server: 10.4.8-MariaDB
 -- Versi PHP: 7.3.11
 
@@ -55,7 +55,7 @@ CREATE TABLE `login` (
   `nama` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `level` enum('admin','petugas','masyarakat') NOT NULL,
+  `level` enum('Admin','Petugas','Masyarakat') NOT NULL,
   `date_created` int(11) NOT NULL,
   `status` enum('Online','Offline') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -65,10 +65,10 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`id_login`, `nama`, `email`, `password`, `level`, `date_created`, `status`) VALUES
-(7, 'Oden', 'oden01@gmail.com', '$2y$10$WO79CFhfdG4Xkp7XMVD1teR2vL16TQapS4MKViZxyWftUvunlaqeW', 'masyarakat', 1598675309, 'Online'),
-(8, 'Menos', 'menos01@gmail.com', '$2y$10$In.AsG18DQ7UV3LN4LAy6.J52o8mRcd.zLXLTtKXwHlMuc3axwcca', 'masyarakat', 1598675345, 'Online'),
-(9, 'Jack', 'jack01@gmail.com', '$2y$10$VfWtok17SXMYzP92ajimH.OBREnRPDdtWKXDK7.2dMPiwVSYi/8eW', 'admin', 1598675376, 'Online'),
-(10, 'Casper Z', 'casper01@gmail.com', '$2y$10$8zSyqIyt1j588vMF1Ki0I.zCBmOZOAZINm3q9cXzv8efQ2B6PvjYq', 'petugas', 1598675398, 'Online');
+(7, 'Oden', 'oden01@gmail.com', '$2y$10$WO79CFhfdG4Xkp7XMVD1teR2vL16TQapS4MKViZxyWftUvunlaqeW', 'Masyarakat', 1598675309, 'Online'),
+(8, 'Menos', 'menos01@gmail.com', '$2y$10$In.AsG18DQ7UV3LN4LAy6.J52o8mRcd.zLXLTtKXwHlMuc3axwcca', 'Masyarakat', 1598675345, 'Online'),
+(9, 'Jack', 'jack01@gmail.com', '$2y$10$VfWtok17SXMYzP92ajimH.OBREnRPDdtWKXDK7.2dMPiwVSYi/8eW', 'Admin', 1598675376, 'Online'),
+(10, 'Casper Z', 'casper01@gmail.com', '$2y$10$8zSyqIyt1j588vMF1Ki0I.zCBmOZOAZINm3q9cXzv8efQ2B6PvjYq', 'Petugas', 1598675398, 'Online');
 
 -- --------------------------------------------------------
 
@@ -83,14 +83,14 @@ CREATE TABLE `masyarakat` (
   `password` varchar(255) NOT NULL,
   `telp` varchar(13) NOT NULL,
   `image` int(255) NOT NULL,
-  `date_created` int(11) NOT NULL
+  `tgl_ditambahkan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `masyarakat`
 --
 
-INSERT INTO `masyarakat` (`nik`, `nama`, `email`, `password`, `telp`, `image`, `date_created`) VALUES
+INSERT INTO `masyarakat` (`nik`, `nama`, `email`, `password`, `telp`, `image`, `tgl_ditambahkan`) VALUES
 ('132323232323232', 'Menos', 'menos01@gmail.com', '$2y$10$In.AsG18DQ7UV3LN4LAy6.J52o8mRcd.zLXLTtKXwHlMuc3axwcca', '081212121212', 0, 1598675345),
 ('1787878787878787', 'Oden', 'oden01@gmail.com', '$2y$10$WO79CFhfdG4Xkp7XMVD1teR2vL16TQapS4MKViZxyWftUvunlaqeW', '081818181818', 0, 1598675309);
 
@@ -110,7 +110,7 @@ CREATE TRIGGER `level_masyarakat` AFTER INSERT ON `masyarakat` FOR EACH ROW BEGI
     set nama = NEW.nama,
     email = NEW.email,
     password = NEW.password,
-    level = 'masyarakat',
+    level = 'Masyarakat',
     date_created = NEW.date_created; 
 END
 $$
@@ -139,6 +139,7 @@ CREATE TABLE `pengaduan` (
   `judul_laporan` varchar(255) NOT NULL,
   `isi_laporan` text NOT NULL,
   `image` varchar(255) NOT NULL,
+  `status` enum('Pending','Proses','Selesai') NOT NULL,
   `tgl_pengaduan` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -146,10 +147,10 @@ CREATE TABLE `pengaduan` (
 -- Dumping data untuk tabel `pengaduan`
 --
 
-INSERT INTO `pengaduan` (`id_pengaduan`, `nik`, `kategori`, `judul_laporan`, `isi_laporan`, `image`, `tgl_pengaduan`) VALUES
-(18, '1787878787878787', 'Covid-19', 'Warga Frindavan Positif covid-19', 'Tolongggggg', 'default.jpg', 1598677064),
-(19, '1787878787878787', 'Pertanian', 'Lahan Padi Terbakar', 'Tolongggggggg', 'default.jpg', 1598677304),
-(20, '132323232323232', 'Kesehatan', 'Ada warga yang meninggal', 'Tolongggggggggggg', 'default.jpg', 1598679793);
+INSERT INTO `pengaduan` (`id_pengaduan`, `nik`, `kategori`, `judul_laporan`, `isi_laporan`, `image`, `status`, `tgl_pengaduan`) VALUES
+(18, '1787878787878787', 'Covid-19', 'Warga Frindavan Positif covid-19', 'Tolongggggg', 'default.jpg', 'Pending', 1598677064),
+(19, '1787878787878787', 'Pertanian', 'Lahan Padi Terbakar', 'Tolongggggggg', 'default.jpg', 'Pending', 1598677304),
+(20, '132323232323232', 'Kesehatan', 'Ada warga yang meninggal', 'Tolongggggggggggg', 'default.jpg', 'Pending', 1598679793);
 
 -- --------------------------------------------------------
 
@@ -164,17 +165,17 @@ CREATE TABLE `petugas` (
   `password` varchar(255) NOT NULL,
   `telp` varchar(13) NOT NULL,
   `image` varchar(255) NOT NULL,
-  `level` enum('admin','petugas') NOT NULL,
-  `date_created` int(11) NOT NULL
+  `level` enum('Admin','Petugas') NOT NULL,
+  `tgl_ditambahkan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `petugas`
 --
 
-INSERT INTO `petugas` (`id_petugas`, `nama`, `email`, `password`, `telp`, `image`, `level`, `date_created`) VALUES
-(7, 'Jack', 'jack01@gmail.com', '$2y$10$VfWtok17SXMYzP92ajimH.OBREnRPDdtWKXDK7.2dMPiwVSYi/8eW', '0124124124', 'default.jpg', 'admin', 1598675376),
-(8, 'Casper Z', 'casper01@gmail.com', '$2y$10$8zSyqIyt1j588vMF1Ki0I.zCBmOZOAZINm3q9cXzv8efQ2B6PvjYq', '0421241224', 'default.jpg', 'petugas', 1598675398);
+INSERT INTO `petugas` (`id_petugas`, `nama`, `email`, `password`, `telp`, `image`, `level`, `tgl_ditambahkan`) VALUES
+(7, 'Jack', 'jack01@gmail.com', '$2y$10$VfWtok17SXMYzP92ajimH.OBREnRPDdtWKXDK7.2dMPiwVSYi/8eW', '0124124124', 'default.jpg', 'Admin', 1598675376),
+(8, 'Casper Z', 'casper01@gmail.com', '$2y$10$8zSyqIyt1j588vMF1Ki0I.zCBmOZOAZINm3q9cXzv8efQ2B6PvjYq', '0421241224', 'default.jpg', 'Petugas', 1598675398);
 
 --
 -- Trigger `petugas`

@@ -7,7 +7,7 @@
     <title>Ayo Lapor! | Masuk</title>
 
     <!-- Style -->
-    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/auth/style.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/auth/s.css'); ?>">
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="<?= base_url('assets/vendor/bootstrap/css/bootstrap.min.css') ?>">
@@ -32,7 +32,7 @@
 
                     <?= $this->session->flashdata('message'); ?>
 
-                    <form action="<?= base_url('auth'); ?>" method="post">
+                    <form action="<?= base_url('auth/login'); ?>" method="post">
                         <div class="form-group">
                             <input type="text" class="form-control form-control-user" name="email" id="email" placeholder="Email" value="<?= set_value('email') ?>">
                             <small class="text-danger text-left"><?= form_error('email'); ?></small>
@@ -58,7 +58,7 @@
                             </div>
                         </div>
                         <div style="color: #777;">Belum punya akun?
-                            <a href="auth/m_register" class="register-link">Daftar disini</a>
+                            <a href="m_register" class="register-link">Daftar disini</a>
                         </div>
                     </form>
                 </div>

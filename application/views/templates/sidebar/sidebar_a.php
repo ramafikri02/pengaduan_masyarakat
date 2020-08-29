@@ -10,32 +10,44 @@
             <div class="image img-cir img-120">
                 <img src="<?= base_url('assets/img/profile/default.png'); ?>" alt="User" />
             </div>
-            <h4 class="name">M.Ramadhan Fikri</h4>
-            <p>Admin</p>
+            <h4 class="name"><?= $user['nama'] ?></h4>
+            <p><?= $user['level'] ?></p>
         </div>
         <nav class="navbar-sidebar2">
             <ul class="list-unstyled navbar__list">
                 <li>
-                    <a href="#">
+                    <a href="profile">
+                        <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                </li>
+                <li>
+                    <a href="profile">
                         <i class="fas fa-user"></i>Profile</a>
+                </li>
+                <li>
+                    <a href="pengaduan">
+                        <i class="fas fa-book"></i>Pengaduan</a>
                 </li>
                 <li class="has-sub">
                     <a class="js-arrow" href="#">
-                        <i class="fas fa-tachometer-alt"></i>Pengaduan
+                        <i class="fas fa-users"></i>User
                         <span class="arrow">
                             <i class="fas fa-angle-down"></i>
                         </span>
                     </a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list">
                         <li>
-                            <a href="#">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard 1</a>
+                            <a href="masyarakat">
+                                <i class="fas fa-user"></i>Masyarakat</a>
                         </li>
                         <li>
-                            <a href="#">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard 2</a>
+                            <a href="petugas">
+                                <i class="fas fa-user"></i>Petugas</a>
                         </li>
                     </ul>
+                </li>
+                <li>
+                    <a href="kategori">
+                        <i class="fas fa-bars"></i>Kategori</a>
                 </li>
             </ul>
         </nav>

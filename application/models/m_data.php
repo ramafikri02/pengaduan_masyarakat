@@ -1,15 +1,15 @@
 <?php
 class m_data extends CI_Model
 {
-    public function data_user()
+    public function get_kategori()
     {
-        $data = $this->db->get('login');
+        $data = $this->db->get('kategori');
         return $data->result();
     }
 
-    public function count_user()
+    public function get_data_pengaduan()
     {
-        $data = $this->db->get('login');
-        return $data->num_rows();
+        $data = $this->db->get('pengaduan');
+        return $data->result();
     }
 }

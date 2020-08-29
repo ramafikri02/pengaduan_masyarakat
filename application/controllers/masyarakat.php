@@ -13,14 +13,18 @@ class masyarakat extends CI_Controller
 
 	private function _uploadImage()
 	{
-		$config['upload_path']          = './assets/img/pengaduan/';
+		$this->load->helper('file');
+		$config['upload_path'] 			= '.assets/img/pengaduan/';
 		$config['allowed_types']        = 'gif|jpg|png';
-		$config['encrypt_name']         = TRUE;
+		$config['file_name']            = 'item-' . date('ymd');
+		$config['overwrite']            = true;
 		$config['max_size']             = 2048;
-		$this->load->library('upload', $config);
+
+		$this->load->library('upload');
+		$this->upload->initialize($config);
 
 		if ($this->upload->do_upload('image')) {
-			return $this->upload->data("encrypt_name");
+			return $this->upload->data('file_name');
 		}
 		print_r($this->upload->display_errors());
 
@@ -29,9 +33,10 @@ class masyarakat extends CI_Controller
 
 	public function index()
 	{
-		$data['title'] = 'Pengaduan';
-		$data['user'] = $this->db->get_where('masyarakat', ['email' =>
+		$data['user'] = $this->db->get_where('login', ['email' =>
 		$this->session->userdata('email')])->row_array();
+
+		$data['kategori'] = $this->m_data->get_kategori();
 
 		$nik = $this->session->userdata('nik');
 		$data['pengaduan'] = $this->m_masyarakat->get_data_pengaduan($nik);
@@ -45,8 +50,7 @@ class masyarakat extends CI_Controller
 
 	public function selesai()
 	{
-		$data['title'] = 'My Profile';
-		$data['user'] = $this->db->get_where('masyarakat', ['email' =>
+		$data['user'] = $this->db->get_where('login', ['email' =>
 		$this->session->userdata('email')])->row_array();
 		$data['pengaduan'] = $this->m_masyarakat->data_pengaduan();
 
@@ -59,10 +63,9 @@ class masyarakat extends CI_Controller
 
 	public function profile()
 	{
-		$data['title'] = 'My Profile';
 		$data['user'] = $this->db->get_where('login', ['email' =>
 		$this->session->userdata('email')])->row_array();
-		$data['date_created'] = $this->db->get_where('login', ['email' =>
+		$data['masyarakat'] = $this->db->get_where('masyarakat', ['email' =>
 		$this->session->userdata('email')])->row_array();
 
 		$this->load->view('templates/header', $data);
@@ -78,9 +81,9 @@ class masyarakat extends CI_Controller
 		$masyarakat = $this->m_masyarakat->get_nik($email);
 		$data = [
 			'nik' 			 => $masyarakat['nik'],
+			'kategori'       => $this->input->post('kategori'),
 			'judul_laporan'  => $this->input->post('judul_laporan'),
 			'isi_laporan'    => $this->input->post('isi_laporan'),
-			'tgl_kejadian'   => $this->input->post('tgl_kejadian'),
 			'image' 		 => $this->_uploadImage(),
 			'tgl_pengaduan'  => time(),
 		];
@@ -97,9 +100,9 @@ class masyarakat extends CI_Controller
 	{
 		$id = $this->input->post('id');
 		$data = array(
+			'kategori'       => $this->input->post('kategori'),
 			'judul_laporan'  => $this->input->post('judul_laporan'),
 			'isi_laporan'    => $this->input->post('isi_laporan'),
-			'tgl_kejadian'   => $this->input->post('tgl_kejadian'),
 			'image' 		 => $this->_uploadImage(),
 		);
 		$this->m_masyarakat->ubah_pengaduan($data, $id);

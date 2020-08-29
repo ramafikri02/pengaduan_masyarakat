@@ -11,11 +11,11 @@
                                 <li class="list-inline-item seprate">
                                     <span>/</span>
                                 </li>
-                                <li class="list-inline-item">Pengaduan</li>
+                                <li class="list-inline-item">Masyarakat</li>
                             </ul>
                         </div>
                         <button class="au-btn au-btn-icon au-btn--green" data-toggle="modal" data-target="#mediumModal">
-                            <i class="zmdi zmdi-plus"></i>Tambah Pengaduan</button>
+                            <i class="zmdi zmdi-plus"></i>Tambah Masyarakat</button>
                     </div>
                 </div>
             </div>

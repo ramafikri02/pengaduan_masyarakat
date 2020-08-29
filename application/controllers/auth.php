@@ -7,13 +7,10 @@ class auth extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->library('form_validation');
-		$this->load->model('m_masyarakat');
-		$this->load->model('m_admin_petugas');
-		$this->load->model('m_login');
-		$this->load->model('m_logout');
+		$this->load->model('m_auth');
 	}
 
-	public function index()
+	public function login()
 	{
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required');
@@ -27,21 +24,21 @@ class auth extends CI_Controller
 
 	private function _aksi_login()
 	{
-		$this->m_login->aksi_login();
+		$this->m_auth->aksi_login();
 	}
 
 	public function m_register()
 	{
-		$this->m_masyarakat->register_m();
+		$this->m_auth->register_m();
 	}
 
 	public function register()
 	{
-		$this->m_admin_petugas->register_ap();
+		$this->m_auth->register_ap();
 	}
 
 	public function logout()
 	{
-		$this->m_logout->aksi_logout();
+		$this->m_auth->aksi_logout();
 	}
 }

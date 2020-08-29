@@ -7,7 +7,7 @@
     <title>Ayo Lapor! | Daftar</title>
 
     <!-- Style -->
-    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/auth/style.css') ?>">
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/auth/s.css') ?>">
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="<?= base_url('assets/vendor/bootstrap/css/bootstrap.min.css') ?>">
@@ -68,7 +68,7 @@
                             </div>
                         </div>
                         <div style="color: #777;">Sudah punya akun?
-                            <a href="index" class="login-link">Masuk disini</a>
+                            <a href="login" class="login-link">Masuk disini</a>
                         </div>
                         <div style="color: #777;">Daftar sebagai
                             <a href="m_register" class="login-link">masyarakat</a>

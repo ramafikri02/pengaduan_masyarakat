@@ -10,8 +10,8 @@
             <div class="image img-cir img-120">
                 <img src="<?= base_url('assets/img/profile/default.png'); ?>" alt="User" />
             </div>
-            <h4 class="name">M.Ramadhan Fikri</h4>
-            <p>Masyarakat</p>
+            <h4 class="name"><?= $user['nama'] ?></h4>
+            <p><?= $user['level'] ?></p>
         </div>
         <nav class="navbar-sidebar2">
             <ul class="list-unstyled navbar__list">
@@ -21,7 +21,7 @@
                 </li>
                 <li>
                     <a href="index">
-                        <i class="fas fa-tachometer-alt"></i>Pengaduan</a>
+                        <i class="fas fa-book"></i>Pengaduan</a>
                 </li>
             </ul>
         </nav>

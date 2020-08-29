@@ -10,8 +10,8 @@
             <div class="image img-cir img-120">
                 <img src="<?= base_url('assets/img/profile/default.png'); ?>" alt="User" />
             </div>
-            <h4 class="name">M.Ramadhan Fikri</h4>
-            <p>Petugas</p>
+            <h4 class="name"><?= $user['nama'] ?></h4>
+            <p><?= $user['level'] ?></p>
         </div>
         <nav class="navbar-sidebar2">
             <ul class="list-unstyled navbar__list">
@@ -21,21 +21,11 @@
                 </li>
                 <li class="has-sub">
                     <a class="js-arrow" href="#">
-                        <i class="fas fa-tachometer-alt"></i>Pengaduan
+                        <i class="fas fa-book"></i>Pengaduan
                         <span class="arrow">
                             <i class="fas fa-angle-down"></i>
                         </span>
                     </a>
-                    <ul class="list-unstyled navbar__sub-list js-sub-list">
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard 1</a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard 2</a>
-                        </li>
-                    </ul>
                 </li>
             </ul>
         </nav>

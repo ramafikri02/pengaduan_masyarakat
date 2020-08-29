@@ -32,7 +32,7 @@
     <link href="<?= base_url('assets/vendor/perfect-scrollbar/perfect-scrollbar.css') ?>" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
-    <link href="<?= base_url('assets/css/style.css') ?>" rel="stylesheet" media="all">
+    <link href="<?= base_url('assets/css/st.css') ?>" rel="stylesheet" media="all">
 
 </head>
 

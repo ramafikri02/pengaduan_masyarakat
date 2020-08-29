@@ -38,7 +38,9 @@ class masyarakat extends CI_Controller
 
 		$data['kategori'] = $this->m_data->get_kategori();
 
-		$nik = $this->session->userdata('nik');
+		$email = $this->session->userdata('email');
+		$masyarakat = $this->m_masyarakat->get_nik($email);
+		$nik = $masyarakat['nik'];
 		$data['pengaduan'] = $this->m_masyarakat->get_data_pengaduan($nik);
 
 		$this->load->view('templates/header', $data);
@@ -126,7 +128,7 @@ class masyarakat extends CI_Controller
 	{
 		$nik = $this->input->post('nik');
 		$this->m_masyarakat->ubah_profile($nik);
-
+		
 		$this->session->set_flashdata('message', '<div class="alert alert-success  alert-dismissible fade show" role="alert"> Data Berhasil diubah.<button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span></button></div>');
 		redirect('masyarakat/profile');

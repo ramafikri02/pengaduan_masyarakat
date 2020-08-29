@@ -37,6 +37,7 @@
                     <div class="card-body">
                         <h4 class="card-title mb-4">Edit Profile</h4>
                         <form method="POST" action="<?= base_url('masyarakat/ubah_profile') ?>">
+                        <?= $this->session->flashdata('message'); ?>
                             <div class="form-group">
                                 <label for="inputAddress">NIK</label>
                                 <input type="text" class="form-control" name="nik" id="nik" value="<?= $masyarakat['nik'] ?>" readonly>

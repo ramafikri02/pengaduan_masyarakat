@@ -12,7 +12,6 @@ class test extends CI_Controller
 
     function index()
     {
-        $data['pengaduan'] = $this->m_masyarakat->get_data_pengaduan();
-        $this->load->view('test', $data);
+        $this->load->view('test');
     }
 }

@@ -2,9 +2,15 @@
 <html lang="en">
 
 <head>
+    <!-- Required meta tags-->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yuk Lapor! | Beranda</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
+
+    <!-- Title Page-->
+    <title>Beranda | Yuk Lapor!</title>
 
     <!-- Style -->
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/homepage/style.css'); ?>">
@@ -14,9 +20,17 @@
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="<?= base_url('assets/vendor/bootstrap/css/bootstrap.min.css') ?>">
+
+    <!-- Vendor CSS-->
+    <link href="<?= base_url('assets/vendor/animsition/animsition.min.css') ?>" rel="stylesheet" media="all">
+    <link href="<?= base_url('assets/vendor/perfect-scrollbar/perfect-scrollbar.css') ?>" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="<?= base_url('assets/css/st.css') ?>" rel="stylesheet" media="all">
+
 </head>
 
-<body>
+<body class="animsition">
     <section id="nav-bar">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <img src="<?= base_url('assets/img/logo1.png') ?>" class="logo">
@@ -45,7 +59,7 @@
                 <div class="col-md-6">
                     <p class="title">Layanan Pengaduan Masyarakat</p>
                     <p>Merupakan aplikasi yang dibuat pemerintah yang bersifat dua arah dan dibuat untuk masyarakat dalam memudahkan membuat pegaduan.
-                    <br>Laporkan kepada kami jika anda mempunyai keluhan.</p>
+                        <br>Laporkan kepada kami jika anda mempunyai keluhan.</p>
                     <a href="<?php echo base_url() . 'auth/login' ?>" class="menuju-lapor">Lapor Sekarang</a>
                 </div>
                 <div class="col-md-6 text-center">
@@ -93,6 +107,14 @@
             </div>
         </div>
     </section>
+    
 </body>
+<!-- Jquery JS-->
+<script src="<?= base_url('assets/vendor/jquery-3.2.1.min.js') ?>"></script>
+<!-- Vendor JS       -->
+<script src="<?= base_url('assets/vendor/animsition/animsition.min.js') ?>"></script>
+<!-- Main JS-->
+<script src="<?= base_url('assets/js/main.js') ?>"></script>
 
 </html>
+<!-- end document-->

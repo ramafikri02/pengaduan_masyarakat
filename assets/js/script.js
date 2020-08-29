@@ -5,10 +5,12 @@ $(document).ready(function () {
 	$('.tmbl-lihat').on('click', function () {
 		// get data from button
 		var id = $(this).data('id');
+		var kategori = $(this).data('kategori');
 		var judul = $(this).data('judul');
 		var isi = $(this).data('isi');
 		// Set data to Form
 		$('.id').val(id);
+		$('.kategori').val(kategori);
 		$('.judul_laporan').val(judul);
 		$('.isi_laporan').val(isi);
 		// Call Modal
@@ -17,10 +19,12 @@ $(document).ready(function () {
 
 	$('.tmbl-edit').on('click', function () {
 		var id = $(this).data('id');
+		var kategori = $(this).data('kategori');
 		var judul = $(this).data('judul');
 		var isi = $(this).data('isi');
 
 		$('.id').val(id);
+		$('.kategori').val(kategori);
 		$('.judul_laporan').val(judul);
 		$('.isi_laporan').val(isi);
 		// $('.isi_laporan').val(isi);

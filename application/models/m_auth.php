@@ -73,7 +73,7 @@ class m_auth extends CI_Model
         $this->form_validation->set_rules('name', 'Name', 'required|trim', [
             'required' => 'Mohon masukkan nama lengkap anda!'
         ]);
-        $this->form_validation->set_rules('email', 'email', 'required|trim|valid_email|is_unique[petugas.email]', [
+        $this->form_validation->set_rules('email', 'email', 'required|trim|valid_email|is_unique[masyarakat.email]', [
             'required' => 'Mohon masukkan email anda!',
             'valid_email' => 'Mohon masukkan email yang tepat!',
             'is_unique' => 'Email ini sudah terdaftar!'

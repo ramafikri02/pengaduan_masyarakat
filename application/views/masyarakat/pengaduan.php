@@ -61,20 +61,20 @@
                                     <?php $no = 1;
                                     foreach ($pengaduan as $p) : ?>
                                         <tr>
-                                            <td><?= $p->id_pengaduan ?></td>
-                                            <td><?= $p->judul_laporan ?></td>
-                                            <td><?= $p->kategori ?></td>
-                                            <td><img src="<?= base_url('assets/img/pengaduan/') . $p->image ?>"' width=' 100' height='100'></td>
-                                            <td><?= date('d F Y', $p->tgl_pengaduan) ?></td>
+                                            <td><?= $p['id_pengaduan'] ?></td>
+                                            <td><?= $p['judul_laporan'] ?></td>
+                                            <td><?= $p['kategori'] ?></td>
+                                            <td><img src="<?= base_url('assets/img/pengaduan/') . $p['image'] ?>"' width=' 100' height='100'></td>
+                                            <td><?= date('d F Y', $p['tgl_pengaduan']) ?></td>
                                             <td>
                                                 <!-- Button trigger modal -->
-                                                <a href="#" class="btn btn-success tmbl-lihat" data-id="<?= $p->id_pengaduan; ?>" data-judul="<?= $p->kategori; ?>" data-judul="<?= $p->judul_laporan; ?>" data-isi="<?= $p->isi_laporan; ?>">
+                                                <a href="#" class="btn btn-success tmbl-lihat" data-id="<?= $p['id_pengaduan']; ?>" data-kategori="<?= $p['kategori']; ?>" data-judul="<?= $p['judul_laporan']; ?>" data-isi="<?= $p['isi_laporan']; ?>">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
-                                                <a href="#" class="btn btn-warning tmbl-edit" data-id="<?= $p->id_pengaduan; ?>" data-judul="<?= $p->kategori; ?>" data-judul="<?= $p->judul_laporan; ?>" data-isi="<?= $p->isi_laporan; ?>">
+                                                <a href="#" class="btn btn-warning tmbl-edit" data-id="<?= $p['id_pengaduan']; ?>" data-kategori="<?= $p['kategori']; ?>" data-judul="<?= $p['judul_laporan']; ?>" data-isi="<?= $p['isi_laporan']; ?>">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
-                                                <a href="#" class="btn btn-danger tmbl-hapus" data-id="<?= $p->id_pengaduan; ?>">
+                                                <a href="#" class="btn btn-danger tmbl-hapus" data-id="<?= $p['id_pengaduan']; ?>">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </a>
                                             </td>
@@ -107,7 +107,7 @@
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Kategori</label>
                         <select class="form-control" name="kategori" id="kategori" disabled>
-                            <option><?= $p->kategori ?></option>
+                            <option><?= $p['kategori'] ?></option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -120,7 +120,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlFile1">Gambar</label> <br>
-                        <img src="<?= base_url('assets/img/pengaduan/') . $p->image ?>" alt="" width="200px">
+                        <img src="<?= base_url('assets/img/pengaduan/') . $p['image'] ?>" alt="" width="200px">
                     </div>
                     <div class="form-group">
                         <div class="modal-footer">

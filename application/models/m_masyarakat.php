@@ -21,10 +21,12 @@ class m_masyarakat extends CI_Model
 		return "default.jpg";
     }
     
-    public function get_data_pengaduan()
+    public function get_data_pengaduan($nik)
     {
-        $data = $this->db->get('pengaduan');
-        return $data->result();
+        $this->db->select('*');
+        $this->db->from('pengaduan');
+        $this->db->where('nik', $nik);
+        return $this->db->get()->result_array();
     }
 
     public function tambah_pengaduan($data)

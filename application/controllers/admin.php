@@ -6,7 +6,6 @@ class admin extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model('m_data');
 		$this->load->model('m_admin');
 		$this->load->helper('url');
 	}
@@ -43,7 +42,7 @@ class admin extends CI_Controller
 	{
 		$data['user'] = $this->db->get_where('login', ['email' =>
 		$this->session->userdata('email')])->row_array();
-		$data['pengaduan'] = $this->m_data->get_data_pengaduan();
+		$data['pengaduan'] = $this->m_admin->get_data_pengaduan();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar/sidebar_a', $data);
@@ -56,7 +55,7 @@ class admin extends CI_Controller
 	{
 		$data['user'] = $this->db->get_where('login', ['email' =>
 		$this->session->userdata('email')])->row_array();
-		$data['masyarakat'] = $this->m_data->get_data_masyarakat();
+		$data['masyarakat'] = $this->m_admin->get_data_masyarakat();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar/sidebar_a', $data);
@@ -69,7 +68,7 @@ class admin extends CI_Controller
 	{
 		$data['user'] = $this->db->get_where('login', ['email' =>
 		$this->session->userdata('email')])->row_array();
-		$data['petugas'] = $this->m_data->get_data_petugas();
+		$data['petugas'] = $this->m_admin->get_data_petugas();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar/sidebar_a', $data);
@@ -82,7 +81,7 @@ class admin extends CI_Controller
 	{
 		$data['user'] = $this->db->get_where('login', ['email' =>
 		$this->session->userdata('email')])->row_array();
-		$data['kategori'] = $this->m_data->get_kategori();
+		$data['kategori'] = $this->m_admin->get_kategori();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar/sidebar_a', $data);

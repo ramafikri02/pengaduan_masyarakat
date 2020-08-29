@@ -29,6 +29,12 @@ class m_masyarakat extends CI_Model
         return $this->db->get()->result_array();
     }
 
+    public function get_kategori()
+    {
+        $data = $this->db->get('kategori');
+        return $data->result();
+    }
+
     public function tambah_pengaduan($data)
     {
         $this->db->insert('pengaduan', $data);

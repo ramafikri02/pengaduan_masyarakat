@@ -1,6 +1,45 @@
 <?php
 class m_admin extends CI_Model
 {
+    public function get_kategori()
+    {
+        $data = $this->db->get('kategori');
+        return $data->result();
+    }
+
+    public function get_data_pengaduan()
+    {
+        $data = $this->db->get('pengaduan');
+        return $data->result();
+    }
+
+    public function get_data_masyarakat()
+    {
+        $data = $this->db->get('masyarakat');
+        return $data->result();
+    }
+
+    public function get_data_petugas()
+    {
+        $data = $this->db->get('petugas');
+        return $data->result();
+    }
+
+    // public function count_user() {
+    //     $data = $this->db->get('login');
+    //     return $data->num_rows();
+    // }
+
+    // public function count_pengaduan() {
+
+    // }
+
+    // public function count_kategori() {
+
+    // }
+
+    // =========================================================================
+
     public function tambah_kategori()
     {
         $data = [

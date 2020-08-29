@@ -52,8 +52,9 @@
                                         <th>ID</th>
                                         <th>Judul Laporan</th>
                                         <th>Kategori</th>
+                                        <th>Status</th>
                                         <th>Tanggal Pengaduan</th>
-                                        <th width="120px">Action</th>
+                                        <th width="130px">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -63,6 +64,7 @@
                                             <td><?= $p['id_pengaduan'] ?></td>
                                             <td><?= $p['judul_laporan'] ?></td>
                                             <td><?= $p['kategori'] ?></td>
+                                            <td><?= $p['status'] ?></td>
                                             <td><?= date('d F Y', $p['tgl_pengaduan']) ?></td>
                                             <td>
                                                 <!-- Button trigger modal -->

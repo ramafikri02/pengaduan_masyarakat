@@ -2,39 +2,52 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class petugas extends CI_Controller {
-
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index
-	 *	- or -
-	 * 		http://example.com/index/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
-	public function index()
+	function __construct()
 	{
-		$data['title'] = 'My Profile';
-		$data['name'] = $this->db->get_where('petugas', ['email' =>
+		parent::__construct();
+		$this->load->helper('url');
+		$this->load->model('m_petugas');
+	}
+
+	public function profile()
+	{
+		$data['user'] = $this->db->get_where('login', ['email' =>
 		$this->session->userdata('email')])->row_array();
-		$data['date_created'] = $this->db->get_where('login', ['email' =>
+		$data['petugas'] = $this->db->get_where('petugas', ['email' =>
 		$this->session->userdata('email')])->row_array();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar/sidebar_p', $data);
 		$this->load->view('templates/topbar', $data);
-		$this->load->view('petugas/index', $data);
+		$this->load->view('petugas/profile', $data);
 		$this->load->view('templates/footer');
 	}
 
-	public function pengaduan()
+	public function index()
 	{
-		$this->load->view('petugas/pengaduan');
+		$data['user'] = $this->db->get_where('login', ['email' =>
+		$this->session->userdata('email')])->row_array();
+
+		$data['pengaduan'] = $this->m_petugas->get_pengaduan_proses();
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar/sidebar_p', $data);
+		$this->load->view('templates/topbar', $data);
+		$this->load->view('petugas/pengaduan_proses', $data);
+		$this->load->view('templates/footer');
+	}
+
+	public function selesai()
+	{
+		$data['user'] = $this->db->get_where('login', ['email' =>
+		$this->session->userdata('email')])->row_array();
+
+		$data['pengaduan'] = $this->m_petugas->get_pengaduan_selesai();
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar/sidebar_p', $data);
+		$this->load->view('templates/topbar', $data);
+		$this->load->view('petugas/pengaduan_selesai', $data);
+		$this->load->view('templates/footer');
 	}
 }

@@ -16,7 +16,7 @@
         <nav class="navbar-sidebar2">
             <ul class="list-unstyled navbar__list">
                 <li>
-                    <a href="#">
+                    <a href="profile">
                         <i class="fas fa-user"></i>Profile</a>
                 </li>
                 <li class="has-sub">
@@ -26,6 +26,16 @@
                             <i class="fas fa-angle-down"></i>
                         </span>
                     </a>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+                        <li>
+                            <a href="index">
+                                <i class="fas fa-clock-o"></i>Pending</a>
+                        </li>
+                        <li>
+                            <a href="selesai">
+                                <i class="fas fa-check-circle"></i>Selesai</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>

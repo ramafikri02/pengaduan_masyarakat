@@ -29,7 +29,7 @@
                     <ul class="list-unstyled navbar__sub-list js-sub-list">
                         <li>
                             <a href="index">
-                                <i class="fas fa-clock-o"></i>Pending</a>
+                                <i class="fas fa-gears"></i>Proses</a>
                         </li>
                         <li>
                             <a href="selesai">

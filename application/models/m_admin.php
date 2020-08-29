@@ -7,10 +7,28 @@ class m_admin extends CI_Model
         return $data->result();
     }
 
-    public function get_data_pengaduan()
+    public function get_pengaduan_pending()
     {
-        $data = $this->db->get('pengaduan');
-        return $data->result();
+        $this->db->select('*');
+        $this->db->from('pengaduan');
+        $this->db->where('status', 'Pending');
+        return $this->db->get()->result_array();
+    }
+
+    public function get_pengaduan_proses()
+    {
+        $this->db->select('*');
+        $this->db->from('pengaduan');
+        $this->db->where('status', 'Proses');
+        return $this->db->get()->result_array();
+    }
+
+    public function get_pengaduan_selesai()
+    {
+        $this->db->select('*');
+        $this->db->from('pengaduan');
+        $this->db->where('status', 'Selesai');
+        return $this->db->get()->result_array();
     }
 
     public function get_data_masyarakat()

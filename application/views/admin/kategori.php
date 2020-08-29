@@ -54,11 +54,11 @@
                                     foreach ($kategori as $k) : ?>
                                         <tr>
                                             <td><?= $k->id_kategori ?></td>
-                                            <td><?= $k->nama_kategori ?></td>
+                                            <td><?= $k->kategori ?></td>
                                             <td><?= date('d F Y', $k->tgl_ditambahkan) ?></td>
                                             <td>
                                                 <!-- Button trigger modal -->
-                                                <a href="#" class="btn btn-warning tmbl-edit-kategori" data-id="<?= $k->id_kategori; ?>" data-nama="<?= $k->nama_kategori; ?>">
+                                                <a href="#" class="btn btn-warning tmbl-edit-kategori" data-id="<?= $k->id_kategori; ?>" data-nama="<?= $k->kategori; ?>">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
                                                 <a href="#" class="btn btn-danger tmbl-hapus-kategori" data-id="<?= $k->id_kategori; ?>">

@@ -67,8 +67,8 @@ class m_auth extends CI_Model
     {
         $this->form_validation->set_rules('nik', 'Nik', 'required|trim|min_length[15]|max_length[16]', [
             'required' => 'Mohon masukkan NIK!',
-            'min_length' => 'NIK tidak boleh kurang dari 13 suku kata',
-            'max_length' => 'NIK tidak boleh melibihi 13 suku kata'
+            'min_length' => 'NIK tidak boleh kurang dari 15 suku kata',
+            'max_length' => 'NIK tidak boleh melibihi 16 suku kata'
         ]);
         $this->form_validation->set_rules('name', 'Name', 'required|trim', [
             'required' => 'Mohon masukkan nama lengkap anda!'
@@ -99,14 +99,14 @@ class m_auth extends CI_Model
                 'nama' => htmlspecialchars($this->input->post('name', true)),
                 'email' => htmlspecialchars($this->input->post('email', true)),
                 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
-                'telp' => $this->input->post('telp'),
+                'telp' => $this->input->post('telp', true),
                 'image' => $this->_uploadImage(),
                 'date_created' => time()
             );
 
             $this->db->insert('masyarakat', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Selamat! Akun anda berhasil di tambahkan</div>');
-            redirect('auth');
+            redirect('auth/login');
         }
     }
 
@@ -141,7 +141,7 @@ class m_auth extends CI_Model
                 'nama' => htmlspecialchars($this->input->post('name', true)),
                 'email' => htmlspecialchars($this->input->post('email', true)),
                 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
-                'telp' => $this->input->post('telp'),
+                'telp' => $this->input->post('telp', true),
                 'image' => $this->_uploadImage(),
                 'level' => $this->input->post('level'),
                 'date_created' => time()
@@ -149,7 +149,7 @@ class m_auth extends CI_Model
 
             $this->db->insert('petugas', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Selamat! Akun anda berhasil di tambahkan</div>');
-            redirect('auth');
+            redirect('auth/login');
         }
     }
 }

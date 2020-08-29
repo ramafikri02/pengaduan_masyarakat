@@ -15,7 +15,8 @@ class admin extends CI_Controller
 	{
 		$data['user'] = $this->db->get_where('login', ['email' =>
 		$this->session->userdata('email')])->row_array();
-		$data['pengaduan'] = $this->m_data->get_data_pengaduan();
+		$data['admin'] = $this->db->get_where('petugas', ['email' =>
+		$this->session->userdata('email')])->row_array();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar/sidebar_a', $data);

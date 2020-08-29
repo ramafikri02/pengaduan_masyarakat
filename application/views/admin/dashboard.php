@@ -11,7 +11,7 @@
                                 <li class="list-inline-item seprate">
                                     <span>/</span>
                                 </li>
-                                <li class="list-inline-item">Profile</li>
+                                <li class="list-inline-item">Dashboard</li>
                             </ul>
                         </div>
                     </div>
@@ -38,8 +38,8 @@
                         <h4 class="card-title mb-4">Edit Profile</h4>
                         <form>
                             <div class="form-group">
-                                <label for="inputAddress">NIK</label>
-                                <input type="text" class="form-control" name="nik" id="nik" value="<?= $masyarakat['nik'] ?>" readonly>
+                                <label for="inputAddress">ID</label>
+                                <input type="text" class="form-control" name="id" id="id" value="<?= $admin['id_petugas'] ?>" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="inputAddress">Nama</label>
@@ -61,7 +61,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="inputAddress2">No Telepon</label>
-                                <input type="number" class="form-control" name="telp" value="<?= $masyarakat['telp'] ?>" id="inputAddress2">
+                                <input type="number" class="form-control" name="telp" value="<?= $admin['telp'] ?>" id="inputAddress2">
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlFile1">Foto Profile</label>

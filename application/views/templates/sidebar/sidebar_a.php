@@ -16,7 +16,7 @@
         <nav class="navbar-sidebar2">
             <ul class="list-unstyled navbar__list">
                 <li>
-                    <a href="profile">
+                    <a href="index">
                         <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                 </li>
                 <li>

@@ -16,10 +16,10 @@ class sistem extends CI_Controller
         $this->load->view('cetak/preview', $data);
     }
 
-    public function cetak()
+    public function cetak_pdf()
     {
         ob_start();
-        $data['pengaduan'] = $this->m_masyarakat->view();
+        $data['pengaduan'] = $this->m_masyarakat->view(); 
         $this->load->view('cetak/print_p', $data);
         $html = ob_get_contents();
         ob_end_clean();

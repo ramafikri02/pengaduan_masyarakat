@@ -75,7 +75,7 @@ class masyarakat extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 
-	public function tambah()
+	public function tambah_pengaduan()
 	{
 		$email = $this->session->userdata('email');
 		$masyarakat = $this->m_masyarakat->get_nik($email);
@@ -96,7 +96,7 @@ class masyarakat extends CI_Controller
 		redirect('masyarakat/index');
 	}
 
-	public function update()
+	public function ubah_pengaduan()
 	{
 		$id = $this->input->post('id');
 		$data = array(
@@ -112,7 +112,7 @@ class masyarakat extends CI_Controller
 		redirect('masyarakat/index');
 	}
 
-	public function hapus()
+	public function hapus_pengaduan()
 	{
 		$id = $this->input->post('id');
 		$this->m_masyarakat->hapus_pengaduan($id);
@@ -120,5 +120,15 @@ class masyarakat extends CI_Controller
 		$this->session->set_flashdata('message', '<div class="alert alert-success  alert-dismissible fade show" role="alert"> Data Berhasil dihapus.<button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span></button></div>');
 		redirect('masyarakat/index');
+	}
+
+	public function ubah_profile()
+	{
+		$nik = $this->input->post('nik');
+		$this->m_masyarakat->ubah_profile($nik);
+
+		$this->session->set_flashdata('message', '<div class="alert alert-success  alert-dismissible fade show" role="alert"> Data Berhasil diubah.<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span></button></div>');
+		redirect('masyarakat/profile');
 	}
 }

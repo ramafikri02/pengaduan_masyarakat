@@ -1,7 +1,7 @@
 $(document).ready(function () {
 	$('#tabelPengaduan').DataTable();
 
-	// get data
+	// get data Pengaduan
 	$('.tmbl-lihat').on('click', function () {
 		// get data from button
 		var id = $(this).data('id');
@@ -35,7 +35,6 @@ $(document).ready(function () {
 
 		$('#hapusPengaduan').modal('show');
 	});
-
 
 	// Kategori
 	$('.tmbl-edit-kategori').on('click', function () {

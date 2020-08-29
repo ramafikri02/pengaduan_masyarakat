@@ -4,7 +4,7 @@ class m_admin extends CI_Model
     public function tambah_kategori()
     {
         $data = [
-            'nama_kategori'       => $this->input->post('nama_kategori'),
+            'kategori'       => $this->input->post('nama_kategori'),
             'tgl_ditambahkan'  => time(),
         ];
 
@@ -19,7 +19,7 @@ class m_admin extends CI_Model
     {
         $id = $this->input->post('id');
         $data = array(
-            'nama_kategori'       => $this->input->post('nama_kategori'),
+            'kategori'       => $this->input->post('nama_kategori'),
         );
 
         $this->db->where('id_kategori', $id);

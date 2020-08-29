@@ -38,6 +38,12 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Data Pengaduan</h5>
+                        <form action="<?= base_url('sistem/cetak_xls') ?>">
+                        <button class="btn btn-primary tmbl-excel" style="float: right;">Export Excel</button>
+                        </form>
+                        <form action="<?= base_url('sistem/cetak_pdf') ?>">
+                        <button class="btn btn-primary tmbl-pdf" style="float: right; margin-right:10px; margin-bottom:20px">Export PDF</button>
+                        </form>
                         <div class="table-responsive">
                             <?= $this->session->flashdata('message'); ?>
                             <table class="table table-bordered" id="tabelPengaduan" width="100%" cellspacing="0">
@@ -86,6 +92,49 @@
 <!-- End Of Content -->
 
 <!-- Modal -->
+<!-- lihat pengaduan -->
+<div class="modal fade" id="lihatPengaduan" tabindex="-1" aria-labelledby="judulUbah" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="judulUbah">Lihat Pengaduan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body ">
+                <form>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Kategori</label>
+                        <select class="form-control" name="kategori" id="kategori" disabled>
+                            <option><?= $p->kategori ?></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Judul Laporan</label>
+                        <input type="text" class="form-control judul_laporan" name="judul_laporan" id="exampleFormControlInput1" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Isi Laporan</label>
+                        <textarea class="form-control isi_laporan" name="isi_laporan" id="exampleFormControlTextarea1" rows="3" disabled></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">Gambar</label> <br>
+                        <img src="<?= base_url('assets/img/pengaduan/') . $p->image ?>" alt="" width="200px">
+                    </div>
+                    <div class="form-group">
+                        <div class="modal-footer">
+                            <input type="hidden" name="id" class="id">
+                            <button type="button" class="btn btn-secondary">Tutup</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end lihat pengaduan -->
+
 <!-- tambah pengaduan -->
 <div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -97,13 +146,13 @@
                 </button>
             </div>
             <div class="modal-body ">
-                <?= form_open_multipart('masyarakat/tambah') ?>
+                <?= form_open_multipart('masyarakat/tambah_pengaduan') ?>
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Kategori</label>
                     <select class="form-control" name="kategori" id="kategori">
                         <?php
                         foreach ($kategori as $k) : ?>
-                            <option><?= $k->nama_kategori ?></option>
+                            <option><?= $k->kategori ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -132,50 +181,6 @@
 </div>
 <!-- end tambah pengaduan -->
 
-<!-- lihat pengaduan -->
-<div class="modal fade" id="lihatPengaduan" tabindex="-1" aria-labelledby="judulUbah" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="judulUbah">Lihat Pengaduan</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body ">
-                <form method="POST" action="<?= base_url('masyarakat/update'); ?>">
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Kategori</label>
-                        <select class="form-control" name="kategori" id="kategori" disabled>
-                            <option><?= $p->kategori ?></option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlInput1">Judul Laporan</label>
-                        <input type="text" class="form-control judul_laporan" name="judul_laporan" id="exampleFormControlInput1" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Isi Laporan</label>
-                        <textarea class="form-control isi_laporan" name="isi_laporan" id="exampleFormControlTextarea1" rows="3" disabled></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlFile1">Gambar</label> <br>
-                        <img src="<?= base_url('assets/img/pengaduan/') . $p->image ?>" alt="" width="200px">
-                    </div>
-                    <div class="form-group">
-                        <div class="modal-footer">
-                            <input type="hidden" name="id" class="id">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                            <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Simpan Perubahan</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end lihat pengaduan -->
-
 <!-- edit pengaduan -->
 <div class="modal fade" id="ubahPengaduan" tabindex="-1" aria-labelledby="judulUbah" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -187,13 +192,13 @@
                 </button>
             </div>
             <div class="modal-body ">
-                <form method="POST" action="<?= base_url('masyarakat/update'); ?>">
+                <form method="POST" action="<?= base_url('masyarakat/ubah_pengaduan'); ?>">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Kategori</label>
                         <select class="form-control kategori" name="kategori" id="kategori">
                             <?php
                             foreach ($kategori as $k) : ?>
-                                <option><?= $k->nama_kategori ?></option>
+                                <option><?= $k->kategori ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -224,8 +229,8 @@
 <!-- end edit pengaduan -->
 
 <!-- Delete Pengaduan-->
-<form action="<?= base_url('masyarakat/hapus'); ?>" method="post">
-    <div class="modal fade" id="deletePengaduan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<form action="<?= base_url('masyarakat/hapus_pengaduan'); ?>" method="post">
+    <div class="modal fade" id="hapusPengaduan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">

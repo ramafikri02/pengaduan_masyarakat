@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 24 Agu 2020 pada 02.24
+-- Waktu pembuatan: 29 Agu 2020 pada 08.25
 -- Versi server: 10.4.8-MariaDB
 -- Versi PHP: 7.3.11
 
@@ -34,6 +34,16 @@ CREATE TABLE `kategori` (
   `tgl_ditambahkan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `kategori`
+--
+
+INSERT INTO `kategori` (`id_kategori`, `kategori`, `tgl_ditambahkan`) VALUES
+(3, 'Kesehatan', 1598666839),
+(4, 'Covid-19', 1598667236),
+(5, 'Pertanian', 1598667243),
+(6, 'Bencana Alam', 1598667259);
+
 -- --------------------------------------------------------
 
 --
@@ -41,6 +51,7 @@ CREATE TABLE `kategori` (
 --
 
 CREATE TABLE `login` (
+  `id_login` int(11) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -53,8 +64,11 @@ CREATE TABLE `login` (
 -- Dumping data untuk tabel `login`
 --
 
-INSERT INTO `login` (`nama`, `email`, `password`, `level`, `date_created`, `status`) VALUES
-('Oden', 'oden01@gmail.com', '$2y$10$mif5Zqs.VDk712qbyck9hOb9ewQLJTHoTHEBU3YdvQUvVdsQXzWqq', 'masyarakat', 1598156593, 'Online');
+INSERT INTO `login` (`id_login`, `nama`, `email`, `password`, `level`, `date_created`, `status`) VALUES
+(7, 'Oden', 'oden01@gmail.com', '$2y$10$WO79CFhfdG4Xkp7XMVD1teR2vL16TQapS4MKViZxyWftUvunlaqeW', 'masyarakat', 1598675309, 'Online'),
+(8, 'Menos', 'menos01@gmail.com', '$2y$10$In.AsG18DQ7UV3LN4LAy6.J52o8mRcd.zLXLTtKXwHlMuc3axwcca', 'masyarakat', 1598675345, 'Online'),
+(9, 'Jack', 'jack01@gmail.com', '$2y$10$VfWtok17SXMYzP92ajimH.OBREnRPDdtWKXDK7.2dMPiwVSYi/8eW', 'admin', 1598675376, 'Online'),
+(10, 'Casper Z', 'casper01@gmail.com', '$2y$10$8zSyqIyt1j588vMF1Ki0I.zCBmOZOAZINm3q9cXzv8efQ2B6PvjYq', 'petugas', 1598675398, 'Online');
 
 -- --------------------------------------------------------
 
@@ -67,7 +81,7 @@ CREATE TABLE `masyarakat` (
   `nama` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `telp` int(13) NOT NULL,
+  `telp` varchar(13) NOT NULL,
   `image` int(255) NOT NULL,
   `date_created` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -77,7 +91,8 @@ CREATE TABLE `masyarakat` (
 --
 
 INSERT INTO `masyarakat` (`nik`, `nama`, `email`, `password`, `telp`, `image`, `date_created`) VALUES
-('123212321232122', 'Oden', 'oden01@gmail.com', '$2y$10$mif5Zqs.VDk712qbyck9hOb9ewQLJTHoTHEBU3YdvQUvVdsQXzWqq', 2147483647, 0, 1598156593);
+('132323232323232', 'Menos', 'menos01@gmail.com', '$2y$10$In.AsG18DQ7UV3LN4LAy6.J52o8mRcd.zLXLTtKXwHlMuc3axwcca', '081212121212', 0, 1598675345),
+('1787878787878787', 'Oden', 'oden01@gmail.com', '$2y$10$WO79CFhfdG4Xkp7XMVD1teR2vL16TQapS4MKViZxyWftUvunlaqeW', '081818181818', 0, 1598675309);
 
 --
 -- Trigger `masyarakat`
@@ -100,6 +115,16 @@ CREATE TRIGGER `level_masyarakat` AFTER INSERT ON `masyarakat` FOR EACH ROW BEGI
 END
 $$
 DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `update_masyarakat` AFTER UPDATE ON `masyarakat` FOR EACH ROW BEGIN
+    UPDATE login
+    set nama = NEW.nama,
+    email = NEW.email,
+    password = NEW.password
+    WHERE email = NEW.email;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -110,9 +135,9 @@ DELIMITER ;
 CREATE TABLE `pengaduan` (
   `id_pengaduan` int(11) NOT NULL,
   `nik` char(16) NOT NULL,
+  `kategori` varchar(255) NOT NULL,
   `judul_laporan` varchar(255) NOT NULL,
   `isi_laporan` text NOT NULL,
-  `tgl_kejadian` date NOT NULL,
   `image` varchar(255) NOT NULL,
   `tgl_pengaduan` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -121,9 +146,10 @@ CREATE TABLE `pengaduan` (
 -- Dumping data untuk tabel `pengaduan`
 --
 
-INSERT INTO `pengaduan` (`id_pengaduan`, `nik`, `judul_laporan`, `isi_laporan`, `tgl_kejadian`, `image`, `tgl_pengaduan`) VALUES
-(5, '123212321232122', 'sfdfdgewgwef', 'asdasdasd', '2020-08-23', 'default.jpg', 1598177187),
-(6, '123212321232122', 'Rumah ijat terbakar', 'Tolong!!!', '2020-08-23', 'default.jpg', 1598191700);
+INSERT INTO `pengaduan` (`id_pengaduan`, `nik`, `kategori`, `judul_laporan`, `isi_laporan`, `image`, `tgl_pengaduan`) VALUES
+(18, '1787878787878787', 'Covid-19', 'Warga Frindavan Positif covid-19', 'Tolongggggg', 'default.jpg', 1598677064),
+(19, '1787878787878787', 'Pertanian', 'Lahan Padi Terbakar', 'Tolongggggggg', 'default.jpg', 1598677304),
+(20, '132323232323232', 'Kesehatan', 'Ada warga yang meninggal', 'Tolongggggggggggg', 'default.jpg', 1598679793);
 
 -- --------------------------------------------------------
 
@@ -136,10 +162,19 @@ CREATE TABLE `petugas` (
   `nama` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `telp` int(13) NOT NULL,
+  `telp` varchar(13) NOT NULL,
+  `image` varchar(255) NOT NULL,
   `level` enum('admin','petugas') NOT NULL,
   `date_created` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `petugas`
+--
+
+INSERT INTO `petugas` (`id_petugas`, `nama`, `email`, `password`, `telp`, `image`, `level`, `date_created`) VALUES
+(7, 'Jack', 'jack01@gmail.com', '$2y$10$VfWtok17SXMYzP92ajimH.OBREnRPDdtWKXDK7.2dMPiwVSYi/8eW', '0124124124', 'default.jpg', 'admin', 1598675376),
+(8, 'Casper Z', 'casper01@gmail.com', '$2y$10$8zSyqIyt1j588vMF1Ki0I.zCBmOZOAZINm3q9cXzv8efQ2B6PvjYq', '0421241224', 'default.jpg', 'petugas', 1598675398);
 
 --
 -- Trigger `petugas`
@@ -162,18 +197,16 @@ CREATE TRIGGER `level_admin_petugas` AFTER INSERT ON `petugas` FOR EACH ROW BEGI
 END
 $$
 DELIMITER ;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `sub_kategori`
---
-
-CREATE TABLE `sub_kategori` (
-  `id_sub_kategori` int(11) NOT NULL,
-  `sub_kategori` varchar(200) NOT NULL,
-  `tgl_ditambahkan` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+DELIMITER $$
+CREATE TRIGGER `update_petugas` AFTER UPDATE ON `petugas` FOR EACH ROW BEGIN
+    UPDATE login
+    set nama = NEW.nama,
+    email = NEW.email,
+    password = NEW.password
+    WHERE email = NEW.email;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -203,7 +236,7 @@ ALTER TABLE `kategori`
 -- Indeks untuk tabel `login`
 --
 ALTER TABLE `login`
-  ADD PRIMARY KEY (`email`);
+  ADD PRIMARY KEY (`id_login`);
 
 --
 -- Indeks untuk tabel `masyarakat`
@@ -224,12 +257,6 @@ ALTER TABLE `petugas`
   ADD PRIMARY KEY (`id_petugas`);
 
 --
--- Indeks untuk tabel `sub_kategori`
---
-ALTER TABLE `sub_kategori`
-  ADD PRIMARY KEY (`id_sub_kategori`);
-
---
 -- Indeks untuk tabel `tanggapan`
 --
 ALTER TABLE `tanggapan`
@@ -243,25 +270,25 @@ ALTER TABLE `tanggapan`
 -- AUTO_INCREMENT untuk tabel `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT untuk tabel `login`
+--
+ALTER TABLE `login`
+  MODIFY `id_login` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `pengaduan`
 --
 ALTER TABLE `pengaduan`
-  MODIFY `id_pengaduan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_pengaduan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT untuk tabel `petugas`
 --
 ALTER TABLE `petugas`
-  MODIFY `id_petugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT untuk tabel `sub_kategori`
---
-ALTER TABLE `sub_kategori`
-  MODIFY `id_sub_kategori` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_petugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `tanggapan`

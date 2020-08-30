@@ -96,4 +96,17 @@ class m_admin extends CI_Model
         $this->session->set_flashdata('message', '<div class="alert alert-success  alert-dismissible fade show" role="alert"> Data Berhasil dihapus.<button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span></button></div>');
     }
+
+    public function setujui_pengaduan() {
+        $id = $this->input->post('id');
+        $data = array(
+            'status'       => 'Proses',
+        );
+
+        $this->db->where('id_pengaduan', $id);
+        $this->db->update('pengaduan', $data);
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success  alert-dismissible fade show" role="alert"> Pengaduan Telah di setujui dan diteruskan kepada petugas.<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span></button></div>');
+    }
 }

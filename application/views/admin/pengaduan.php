@@ -62,10 +62,10 @@
                                             <td><?= date('d F Y', $p['tgl_pengaduan']) ?></td>
                                             <td>
                                                 <!-- Button trigger modal -->
-                                                <a href="#" class="btn btn-success tmbl-lihat" data-id="<?= $p['id_pengaduan']; ?>" data-kategori="<?= $p['kategori']; ?>" data-judul="<?= $p['judul_laporan']; ?>" data-isi="<?= $p['isi_laporan']; ?>">
+                                                <a href="#" class="btn btn-success tmbl-lihat" data-id="<?= $p['id_pengaduan'];?>" data-kategori="<?= $p['kategori']; ?>" data-judul="<?= $p['judul_laporan']; ?>" data-isi="<?= $p['isi_laporan']; ?>">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
-                                                <a href="#" class="btn btn-primary tmbl-hapus" data-id="<?= $p['id_pengaduan']; ?>">
+                                                <a href="#" class="btn btn-primary tmbl-setuju" data-id="<?= $p['id_pengaduan']; ?>">
                                                     <i class="fas fa-check"></i>
                                                 </a>
                                             </td>
@@ -86,8 +86,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Sedang di Proses Petugas</h5>
                         <div class="table-responsive">
-                            <?= $this->session->flashdata('message'); ?>
-                            <table class="table table-bordered" id="tabelPengaduan" width="100%" cellspacing="0">
+                            <table class="table table-bordered" id="tabelPengaduanProses" width="100%" cellspacing="0">
                                 <thead style="font-weight: bold;">
                                     <tr class="text-center">
                                         <th>ID</th>
@@ -130,7 +129,7 @@
                         </form>
                         <div class="table-responsive">
                             <?= $this->session->flashdata('message'); ?>
-                            <table class="table table-bordered" id="tabelPengaduan" width="100%" cellspacing="0">
+                            <table class="table table-bordered" id="tabelPengaduanSelesai" width="100%" cellspacing="0">
                                 <thead style="font-weight: bold;">
                                     <tr class="text-center">
                                         <th>ID</th>
@@ -217,8 +216,8 @@
 <!-- end lihat pengaduan -->
 
 <!-- Setujui Pengaduan-->
-<form action="<?= base_url('masyarakat/proses_pengaduan'); ?>" method="post">
-    <div class="modal fade" id="hapusPengaduan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<form action="<?= base_url('admin/setujui_pengaduan'); ?>" method="post">
+    <div class="modal fade" id="setujuPengaduan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">

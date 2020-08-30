@@ -15,7 +15,7 @@ class m_auth extends CI_Model
 
         return "default.jpg";
     }
-    
+
     public function aksi_login()
     {
         $email = $this->input->post('email');
@@ -28,6 +28,13 @@ class m_auth extends CI_Model
             if (password_verify($password, $user['password']))
             // ini gua gk tau apaan namanya
             {
+                $data = array(
+                    'status'       => 'Online',
+                );
+
+                $this->db->where('email', $user['email']);
+                $this->db->update('login', $data);
+
                 $data = [
                     'email' => $user['email'],
                     'level' => $user['level']
@@ -51,9 +58,18 @@ class m_auth extends CI_Model
             redirect('auth/login');
         }
     }
- 
+
     public function aksi_logout()
     {
+        $user = $this->db->get_where('login', ['email' =>
+		$this->session->userdata('email')])->row_array();
+        $data = array(
+            'status'       => 'Offline',
+        );
+
+        $this->db->where('email', $user['email']);
+        $this->db->update('login', $data);
+
         $this->session->unset_userdata('email');
         $this->session->unset_userdata('password');
 

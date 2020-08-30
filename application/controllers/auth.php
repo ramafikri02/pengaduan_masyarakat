@@ -18,13 +18,8 @@ class auth extends CI_Controller
 		if ($this->form_validation->run() == false) {
 			$this->load->view('auth/login');
 		} else {
-			$this->_aksi_login();
+			$this->m_auth->aksi_login();
 		}
-	}
-
-	private function _aksi_login()
-	{
-		$this->m_auth->aksi_login();
 	}
 
 	public function m_register()

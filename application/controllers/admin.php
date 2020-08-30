@@ -42,6 +42,9 @@ class admin extends CI_Controller
 	{
 		$data['user'] = $this->db->get_where('login', ['email' =>
 		$this->session->userdata('email')])->row_array();
+		
+		$data['kategori'] = $this->m_admin->get_kategori();
+
 		$data['pending'] = $this->m_admin->get_pengaduan_pending();
 		$data['proses'] = $this->m_admin->get_pengaduan_proses();
 		$data['selesai'] = $this->m_admin->get_pengaduan_selesai();
@@ -105,5 +108,10 @@ class admin extends CI_Controller
 	public function hapus_kategori() {
 		$this->m_admin->hapus_kategori();
 		redirect('admin/kategori');
+	}
+
+	public function setujui_pengaduan() {
+		$this->m_admin->setujui_pengaduan();
+		redirect('admin/pengaduan');
 	}
 }

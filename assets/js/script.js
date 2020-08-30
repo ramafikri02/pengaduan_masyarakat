@@ -1,6 +1,8 @@
 $(document).ready(function () {
 
 	$('#tabelPengaduan').DataTable();
+	$('#tabelPengaduanProses').DataTable();
+	$('#tabelPengaduanSelesai').DataTable();
 	// Pengaduan
 	$('.tmbl-lihat').on('click', function () {
 		// get data from button
@@ -38,6 +40,14 @@ $(document).ready(function () {
 		$('.id').val(id);
 
 		$('#hapusPengaduan').modal('show');
+	});
+
+	$('.tmbl-setuju').on('click', function () {
+		var id = $(this).data('id');
+
+		$('.id').val(id);
+
+		$('#setujuPengaduan').modal('show');
 	});
 
 	// Kategori

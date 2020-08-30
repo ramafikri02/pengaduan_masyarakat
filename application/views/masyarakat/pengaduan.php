@@ -39,10 +39,10 @@
                     <div class="card-body">
                         <h5 class="card-title">Data Pengaduan</h5>
                         <form action="<?= base_url('sistem/cetak_xls') ?>">
-                        <button class="btn btn-primary tmbl-excel" style="float: right;">Export Excel</button>
+                            <button class="btn btn-primary tmbl-excel" style="float: right;">Export Excel</button>
                         </form>
                         <form action="<?= base_url('sistem/cetak_pdf') ?>">
-                        <button class="btn btn-primary tmbl-pdf" style="float: right; margin-right:10px; margin-bottom:20px">Export PDF</button>
+                            <button class="btn btn-primary tmbl-pdf" style="float: right; margin-right:10px; margin-bottom:20px">Export PDF</button>
                         </form>
                         <div class="table-responsive">
                             <?= $this->session->flashdata('message'); ?>
@@ -50,10 +50,10 @@
                                 <thead style="font-weight: bold;">
                                     <tr class="text-center">
                                         <th>ID</th>
-                                        <th>Judul Laporan</th>
-                                        <th>Kategori</th>
-                                        <th>Status</th>
-                                        <th>Tanggal Pengaduan</th>
+                                        <th style="max-width:400px;">Judul Laporan</th>
+                                        <th style="max-width:150px;">Kategori</th>
+                                        <th style="max-width:150px;">Status</th>
+                                        <th style="max-width:150px;">Tanggal Pengaduan</th>
                                         <th width="130px">Action</th>
                                     </tr>
                                 </thead>
@@ -106,8 +106,11 @@
                 <form>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Kategori</label>
-                        <select class="form-control" name="kategori" id="kategori" disabled>
-                            <option><?= $p['kategori'] ?></option>
+                        <select class="form-control kategori" name="kategori" id="kategori" disabled>
+                            <?php
+                            foreach ($kategori as $k) : ?>
+                                <option><?= $k->kategori ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="form-group">
@@ -125,7 +128,7 @@
                     <div class="form-group">
                         <div class="modal-footer">
                             <input type="hidden" name="id" class="id">
-                            <button type="button" class="btn btn-secondary">Tutup</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                         </div>
                     </div>
                 </form>

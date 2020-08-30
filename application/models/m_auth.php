@@ -101,7 +101,7 @@ class m_auth extends CI_Model
                 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
                 'telp' => $this->input->post('telp', true),
                 'image' => $this->_uploadImage(),
-                'date_created' => time()
+                'tgl_ditambahkan' => time()
             );
 
             $this->db->insert('masyarakat', $data);
@@ -144,7 +144,7 @@ class m_auth extends CI_Model
                 'telp' => $this->input->post('telp', true),
                 'image' => $this->_uploadImage(),
                 'level' => $this->input->post('level'),
-                'date_created' => time()
+                'tgl_ditambahkan' => time()
             );
 
             $this->db->insert('petugas', $data);

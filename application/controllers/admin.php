@@ -38,42 +38,18 @@ class admin extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 
-	public function pengaduan_pending()
+	public function pengaduan()
 	{
 		$data['user'] = $this->db->get_where('login', ['email' =>
 		$this->session->userdata('email')])->row_array();
-		$data['pengaduan'] = $this->m_admin->get_pengaduan_pending();
+		$data['pending'] = $this->m_admin->get_pengaduan_pending();
+		$data['proses'] = $this->m_admin->get_pengaduan_proses();
+		$data['selesai'] = $this->m_admin->get_pengaduan_selesai();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar/sidebar_a', $data);
 		$this->load->view('templates/topbar', $data);
-		$this->load->view('admin/pengaduan_pending', $data);
-		$this->load->view('templates/footer');
-	}
-
-	public function pengaduan_proses()
-	{
-		$data['user'] = $this->db->get_where('login', ['email' =>
-		$this->session->userdata('email')])->row_array();
-		$data['pengaduan'] = $this->m_admin->get_pengaduan_proses();
-
-		$this->load->view('templates/header', $data);
-		$this->load->view('templates/sidebar/sidebar_a', $data);
-		$this->load->view('templates/topbar', $data);
-		$this->load->view('admin/pengaduan_proses', $data);
-		$this->load->view('templates/footer');
-	}
-
-	public function pengaduan_selesai()
-	{
-		$data['user'] = $this->db->get_where('login', ['email' =>
-		$this->session->userdata('email')])->row_array();
-		$data['pengaduan'] = $this->m_admin->get_pengaduan_selesai();
-
-		$this->load->view('templates/header', $data);
-		$this->load->view('templates/sidebar/sidebar_a', $data);
-		$this->load->view('templates/topbar', $data);
-		$this->load->view('admin/pengaduan_selesai', $data);
+		$this->load->view('admin/pengaduan', $data);
 		$this->load->view('templates/footer');
 	}
 

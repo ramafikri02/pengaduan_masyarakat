@@ -23,27 +23,9 @@
                     <a href="profile">
                         <i class="fas fa-user"></i>Profile</a>
                 </li>
-                <li class="has-sub">
-                    <a class="js-arrow" href="#">
-                        <i class="fas fa-book"></i>Pengaduan
-                        <span class="arrow">
-                            <i class="fas fa-angle-down"></i>
-                        </span>
-                    </a>
-                    <ul class="list-unstyled navbar__sub-list js-sub-list">
-                        <li>
-                            <a href="pengaduan_pending">
-                                <i class="fas fa-clock-o"></i>Pending</a>
-                        </li>
-                        <li>
-                            <a href="pengaduan_proses">
-                                <i class="fas fa-gears"></i>Proses</a>
-                        </li>
-                        <li>
-                            <a href="pengaduan_selesai">
-                                <i class="fas fa-check-circle"></i>Selesai</a>
-                        </li>
-                    </ul>
+                <li>
+                    <a href="pengaduan">
+                        <i class="fas fa-book"></i>Pengaduan</a>
                 </li>
                 <li class="has-sub">
                     <a class="js-arrow" href="#">

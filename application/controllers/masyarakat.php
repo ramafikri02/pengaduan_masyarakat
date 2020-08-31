@@ -12,22 +12,25 @@ class masyarakat extends CI_Controller
 
 	private function _uploadImage()
 	{
-		$this->load->helper('file');
-		$config['upload_path'] 			= '.assets/img/pengaduan/';
-		$config['allowed_types']        = 'gif|jpg|png';
-		$config['file_name']            = 'item-' . date('ymd');
-		$config['overwrite']            = true;
-		$config['max_size']             = 2048;
+		$config['upload_path']          = './assets/img/pengaduan/';
+		$config['allowed_types']        = 'gif|jpg|png|jpeg';
+		$config['max_size']             = 5120;
+		$config['max_width']            = '4480';
+		$config['max_height']           = '4480';
+		$config['file_name']            = $_FILES['image']['name'];
 
-		$this->load->library('upload');
 		$this->upload->initialize($config);
 
-		if ($this->upload->do_upload('image')) {
-			return $this->upload->data('file_name');
+		if (!empty($_FILES['image']['name'])) {
+			if ($this->upload->do_upload('image')) {
+				return $this->upload->data("file_name");
+			} else {
+				echo "Gambar gagal di upload";
+				print_r($this->upload->display_errors());
+			}
+		} else {
+			echo "Gambar gagal di upload";
 		}
-		print_r($this->upload->display_errors());
-
-		return "default.jpg";
 	}
 
 	public function index()
@@ -124,7 +127,7 @@ class masyarakat extends CI_Controller
 	{
 		$nik = $this->input->post('nik');
 		$this->m_masyarakat->ubah_profile($nik);
-		
+
 		$this->session->set_flashdata('message', '<div class="alert alert-success  alert-dismissible fade show" role="alert"> Data Berhasil diubah.<button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span></button></div>');
 		redirect('masyarakat/profile');

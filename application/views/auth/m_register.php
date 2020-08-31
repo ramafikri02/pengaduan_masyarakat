@@ -13,7 +13,7 @@
     <title>Yuk Lapor! | Daftar</title>
 
     <!-- Style -->
-    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/auth/s.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/auth/style.css'); ?>">
 
     <!-- font-awesome -->
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/vendor/fontawesome-free/css/all.min.css'); ?>">
@@ -26,7 +26,7 @@
     <link href="<?= base_url('assets/vendor/perfect-scrollbar/perfect-scrollbar.css') ?>" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
-    <link href="<?= base_url('assets/css/st.css') ?>" rel="stylesheet" media="all">
+    <link href="<?= base_url('assets/css/style.css') ?>" rel="stylesheet" media="all">
 
 </head>
 

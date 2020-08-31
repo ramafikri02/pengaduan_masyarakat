@@ -77,7 +77,7 @@
                     <div class="card-body">
                         <div class="account2">
                             <div class="image img-cir img-120">
-                                <img src="<?= base_url('assets/img/profile/default.png'); ?>" alt="User" />
+                                <img src="<?= base_url('assets/img/profile/') . $admin['image']; ?>" alt="User" />
                             </div>
                             <h4 class="name"><?= $user['nama'] ?></h4>
                             <p>Enim, non delectus eius excepturi corporis consectetur. Sunt aliquid, suscipit nostrum deleniti </p>

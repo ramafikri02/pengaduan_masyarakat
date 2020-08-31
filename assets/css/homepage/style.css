@@ -23,6 +23,10 @@ body {
 	box-shadow: 0px 1px 10px #191926;
 }
 
+.dropitem {
+	color: #32349f !important;
+}
+
 .logo {
 	width: 180px !important;
 	margin-left: 15px;
@@ -110,14 +114,6 @@ body {
 	font-size: 50px;
 	color: #32349f;
 	margin-bottom: 10px;
-}
-
-.form-pengaduan {
-	margin-top: 40px;
-}
-
-.form-group {
-	width: 600px;
 }
 
 .bg-img {

@@ -43,7 +43,7 @@
                         <a class="nav-link active" href="#">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="kontak">Kontak</a>
+                        <a class="nav-link" href="#">Kontak</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link nav-login" href="auth/login">Login</a>

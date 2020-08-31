@@ -43,8 +43,7 @@ class masyarakat extends CI_Controller
 		$data['pengaduan'] = $this->m_masyarakat->get_data_pengaduan($nik);
 
 		$this->load->view('templates/header', $data);
-		$this->load->view('templates/sidebar/sidebar_m', $data);
-		$this->load->view('templates/topbar', $data);
+		$this->load->view('templates/navbar_m', $data);
 		$this->load->view('masyarakat/pengaduan', $data);
 		$this->load->view('templates/footer');
 	}
@@ -56,8 +55,7 @@ class masyarakat extends CI_Controller
 		$data['pengaduan'] = $this->m_masyarakat->data_pengaduan();
 
 		$this->load->view('templates/header', $data);
-		$this->load->view('templates/sidebar/sidebar_m', $data);
-		$this->load->view('templates/topbar', $data);
+		$this->load->view('templates/navbar_m', $data);
 		$this->load->view('masyarakat/selesai', $data);
 		$this->load->view('templates/footer');
 	}
@@ -70,8 +68,7 @@ class masyarakat extends CI_Controller
 		$this->session->userdata('email')])->row_array();
 
 		$this->load->view('templates/header', $data);
-		$this->load->view('templates/sidebar/sidebar_m', $data);
-		$this->load->view('templates/topbar', $data);
+		$this->load->view('templates/navbar_m', $data);
 		$this->load->view('masyarakat/profile', $data);
 		$this->load->view('templates/footer');
 	}

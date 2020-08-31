@@ -1,18 +1,14 @@
-<!-- BREADCRUMB-->
-<section class="au-breadcrumb m-t-75">
+<h2 class="text-center mt-4">Data Pengaduan</h2>
+
+<section class="au-breadcrumb m-t-35">
     <div class="section__content section__content--p30">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <div class="au-breadcrumb-content">
                         <div class="au-breadcrumb-left">
-                            <span class="au-breadcrumb-span">Kamu sedang berada di :</span>
-                            <ul class="list-unstyled list-inline au-breadcrumb__list">
-                                <li class="list-inline-item seprate">
-                                    <span>/</span>
-                                </li>
-                                <li class="list-inline-item">Pengaduan</li>
-                            </ul>
+                            <h4>Selamat Datang <?= $user['nama'] ?></h4>
+                            <p><?= $user['level'] ?></p>
                         </div>
                         <button class="au-btn au-btn-icon au-btn--green" data-toggle="modal" data-target="#mediumModal">
                             <i class="zmdi zmdi-plus"></i>Tambah Pengaduan</button>
@@ -22,13 +18,6 @@
         </div>
     </div>
 </section>
-<!-- END BREADCRUMB-->
-
-<!-- STATISTIC-->
-<section class="statistic">
-
-</section>
-<!-- END STATISTIC-->
 
 <!-- Content -->
 <section>
@@ -37,7 +26,6 @@
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Data Pengaduan</h5>
                         <form action="<?= base_url('sistem/cetak_xls') ?>">
                             <button class="btn btn-primary tmbl-excel" style="float: right;">Export Excel</button>
                         </form>

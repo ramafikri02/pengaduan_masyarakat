@@ -17,11 +17,11 @@ class admin extends CI_Controller
 		$data['admin'] = $this->db->get_where('petugas', ['email' =>
 		$this->session->userdata('email')])->row_array();
 
-		$this->load->view('templates/header', $data);
-		$this->load->view('templates/sidebar/sidebar_a', $data);
-		$this->load->view('templates/topbar', $data);
+		$this->load->view('templates/admin/header', $data);
+		$this->load->view('templates/admin/sidebar', $data);
+		$this->load->view('templates/admin/topbar', $data);
 		$this->load->view('admin/dashboard', $data);
-		$this->load->view('templates/footer');
+		$this->load->view('templates/admin/footer');
 	}
 
 	public function profile()
@@ -31,11 +31,11 @@ class admin extends CI_Controller
 		$data['admin'] = $this->db->get_where('petugas', ['email' =>
 		$this->session->userdata('email')])->row_array();
 
-		$this->load->view('templates/header', $data);
-		$this->load->view('templates/sidebar/sidebar_a', $data);
-		$this->load->view('templates/topbar', $data);
+		$this->load->view('templates/admin/header', $data);
+		$this->load->view('templates/admin/sidebar', $data);
+		$this->load->view('templates/admin/topbar', $data);
 		$this->load->view('admin/profile', $data);
-		$this->load->view('templates/footer');
+		$this->load->view('templates/admin/footer');
 	}
 
 	public function pengaduan()
@@ -49,11 +49,11 @@ class admin extends CI_Controller
 		$data['proses'] = $this->m_admin->get_pengaduan_proses();
 		$data['selesai'] = $this->m_admin->get_pengaduan_selesai();
 
-		$this->load->view('templates/header', $data);
-		$this->load->view('templates/sidebar/sidebar_a', $data);
-		$this->load->view('templates/topbar', $data);
+		$this->load->view('templates/admin/header', $data);
+		$this->load->view('templates/admin/sidebar', $data);
+		$this->load->view('templates/admin/topbar', $data);
 		$this->load->view('admin/pengaduan', $data);
-		$this->load->view('templates/footer');
+		$this->load->view('templates/admin/footer');
 	}
 
 	public function masyarakat()
@@ -62,11 +62,11 @@ class admin extends CI_Controller
 		$this->session->userdata('email')])->row_array();
 		$data['masyarakat'] = $this->m_admin->get_data_masyarakat();
 
-		$this->load->view('templates/header', $data);
-		$this->load->view('templates/sidebar/sidebar_a', $data);
-		$this->load->view('templates/topbar', $data);
+		$this->load->view('templates/admin/header', $data);
+		$this->load->view('templates/admin/sidebar', $data);
+		$this->load->view('templates/admin/topbar', $data);
 		$this->load->view('admin/masyarakat', $data);
-		$this->load->view('templates/footer');
+		$this->load->view('templates/admin/footer');
 	}
 
 	public function petugas()
@@ -75,11 +75,11 @@ class admin extends CI_Controller
 		$this->session->userdata('email')])->row_array();
 		$data['petugas'] = $this->m_admin->get_data_petugas();
 
-		$this->load->view('templates/header', $data);
-		$this->load->view('templates/sidebar/sidebar_a', $data);
-		$this->load->view('templates/topbar', $data);
+		$this->load->view('templates/admin/header', $data);
+		$this->load->view('templates/admin/sidebar', $data);
+		$this->load->view('templates/admin/topbar', $data);
 		$this->load->view('admin/petugas', $data);
-		$this->load->view('templates/footer');
+		$this->load->view('templates/admin/footer');
 	}
 
 	public function kategori()
@@ -88,11 +88,11 @@ class admin extends CI_Controller
 		$this->session->userdata('email')])->row_array();
 		$data['kategori'] = $this->m_admin->get_kategori();
 
-		$this->load->view('templates/header', $data);
-		$this->load->view('templates/sidebar/sidebar_a', $data);
-		$this->load->view('templates/topbar', $data);
+		$this->load->view('templates/admin/header', $data);
+		$this->load->view('templates/admin/sidebar', $data);
+		$this->load->view('templates/admin/topbar', $data);
 		$this->load->view('admin/kategori', $data);
-		$this->load->view('templates/footer');
+		$this->load->view('templates/admin/footer');
 	}
 
 	public function tambah_kategori() {

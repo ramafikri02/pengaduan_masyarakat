@@ -1,26 +1,29 @@
 <h1 style="text-align: center;">Data Pengaduan</h1>
-<?= $this->session->flashdata('message'); ?>
-<table class="table table-bordered" id="tabelPengaduan" width="100%" cellspacing="0" border="1">
-    <thead class="thead-dark">
-        <tr class="text-center">
+<table border="1" width="100%">
+
+    <thead>
+        <tr>
             <th>ID</th>
-            <th>Katogori</th>
+            <th>Kategori</th>
             <th>Judul Laporan</th>
             <th>Isi Laporan</th>
+            <th>Gambar</th>
             <th>Tanggal Pengaduan</th>
         </tr>
     </thead>
+
     <tbody>
         <?php
-        $no = 1;
-        foreach ($pengaduan as $p) : ?>
-            <tr>
+        foreach ($pengaduan as $p) { ?>
+            <tr class="text-align:center;">
                 <td><?= $p->id_pengaduan ?></td>
                 <td><?= $p->kategori ?></td>
                 <td><?= $p->judul_laporan ?></td>
                 <td><?= $p->isi_laporan ?></td>
+                <td height="80"><img src="<?= base_url('assets/img/pengaduan/') . $p->image ?>" alt="Ini Gambar" height="60"></td>
                 <td><?= date('d F Y', $p->tgl_pengaduan) ?></td>
             </tr>
-        <?php endforeach; ?>
+        <?php } ?>
     </tbody>
+
 </table>

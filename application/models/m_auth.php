@@ -10,4 +10,10 @@ class m_auth extends CI_Model
     {
         $this->db->insert('petugas', $data);
     }
+
+    public function forgot_password($email, $data)
+    {
+        $this->db->where('email', $email);
+        $this->db->update('login', $data);
+    }
 }

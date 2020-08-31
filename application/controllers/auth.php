@@ -177,6 +177,61 @@ class auth extends CI_Controller
 		}
 	}
 
+	public function forgot_password()
+	{
+		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+
+		if ($this->form_validation->run() == false) {
+			$this->load->view('auth/forgot_password');
+		} else {
+			$this->_aksi_forgot_password();
+		}
+	}
+
+	private function _aksi_forgot_password()
+	{
+		$email = $this->input->post('email');
+
+		$user = $this->db->get_where('login', ['email' => $email])->row_array();
+		// Nyari User
+		if ($user) {
+			$data = [
+				'email' => $user['email']
+			];
+			$this->session->set_userdata($data);
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Email anda Ditemukan!</div>');
+			redirect('auth/set_forgot_password');
+		} else {
+			// ini kalo email belum terdaftar
+			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email anda Tidak Ditemukan!</div>');
+			redirect('auth/forgot_password');
+		}
+	}
+
+	public function set_forgot_password()
+	{
+		$this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]', [
+			'required' => 'Mohon masukkan kata sandi!',
+			'min_length' => 'Kata Sandi terlalu pendek'
+		]);
+		$this->form_validation->set_rules('password2', 'Password', 'required|trim|min_length[3]|matches[password1]', [
+			'matches' => 'Kata sandi tidak cocok!'
+		]);
+
+		if ($this->form_validation->run() == false) {
+			$this->load->view('auth/set_password');
+		} else {
+			$email = $this->session->userdata('email');
+			$data = array(
+				'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT)
+			);
+
+			$this->m_auth->forgot_password($email, $data);
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password berhasil diubah. Silahkan Login :)</div>');
+			redirect('auth/login');
+		}
+	}
+
 	public function logout()
 	{
 		$this->_aksi_logout();

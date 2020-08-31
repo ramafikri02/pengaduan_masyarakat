@@ -70,7 +70,7 @@
                             </div>
                             <div class="col-6 text-right">
                                 <div class="custom-control custom-checkbox">
-                                    <a href="#" class="forgot-link">Lupa Kata Sandi</a>
+                                    <a href="forgot_password" class="forgot-link">Lupa Kata Sandi</a>
                                 </div>
                             </div>
                         </div>

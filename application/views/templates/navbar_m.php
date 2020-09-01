@@ -17,8 +17,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <img src="<?= base_url('assets/img/profile/default.png'); ?>" alt="User" width="45px" class="img-cir" />
-                    <a class="nav-link" href="#">Profil</a>
+                    <a class="nav-link" href="profile">Profil</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('auth/logout') ?>">Keluar</a>

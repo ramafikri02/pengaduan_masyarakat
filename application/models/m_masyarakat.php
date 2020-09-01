@@ -21,11 +21,30 @@ class m_masyarakat extends CI_Model
 		return "default.jpg";
     }
     
-    public function get_data_pengaduan($nik)
+    public function get_pengaduan_pending($nik)
     {
         $this->db->select('*');
         $this->db->from('pengaduan');
         $this->db->where('nik', $nik);
+        $this->db->where('status', 'Pending');
+        return $this->db->get()->result_array();
+    }
+
+    public function get_pengaduan_proses($nik)
+    {
+        $this->db->select('*');
+        $this->db->from('pengaduan');
+        $this->db->where('nik', $nik);
+        $this->db->where('status', 'Proses');
+        return $this->db->get()->result_array();
+    }
+
+    public function get_pengaduan_selesai($nik)
+    {
+        $this->db->select('*');
+        $this->db->from('pengaduan');
+        $this->db->where('nik', $nik);
+        $this->db->where('status', 'Selesai');
         return $this->db->get()->result_array();
     }
 
@@ -95,13 +114,5 @@ class m_masyarakat extends CI_Model
     public function view()
     {
         return $this->db->get('pengaduan')->result();
-    }
-
-    public function listing()
-    {
-        $this->db->select('*');
-        $this->db->from('pengaduan');
-        $query = $this->db->get();
-        return $query->result();
     }
 }

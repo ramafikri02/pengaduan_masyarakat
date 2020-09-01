@@ -13,7 +13,7 @@ class auth extends CI_Controller
 	private function _uploadImage()
 	{
 		$config['upload_path']          = './assets/img/profile/';
-		$config['allowed_types']        = 'gif|jpg|png|jpeg';
+		$config['allowed_types']        = 'gif|jpg|png';
 		$config['max_size']             = 5120;
 		$config['max_width']            = '4480';
 		$config['max_height']           = '4480';
@@ -123,7 +123,7 @@ class auth extends CI_Controller
 				'nama' => htmlspecialchars($this->input->post('name', true)),
 				'email' => htmlspecialchars($this->input->post('email', true)),
 				'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
-				'tel' => $this->input->post('telp', true),
+				'telp' => $this->input->post('telp', true),
 				'image' => $this->_uploadImage(),
 				'tgl_ditambahkan' => time()
 			);
@@ -233,11 +233,6 @@ class auth extends CI_Controller
 	}
 
 	public function logout()
-	{
-		$this->_aksi_logout();
-	}
-
-	private function _aksi_logout()
 	{
 		$user = $this->db->get_where('login', ['email' =>
 		$this->session->userdata('email')])->row_array();

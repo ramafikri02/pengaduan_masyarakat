@@ -46,45 +46,45 @@
                     <div class="heading mb-4">
                         <h4>Daftar</h4>
                     </div>
-                    <form method="post" action="<?= base_url('auth/m_register') ?>">
-                        <div class="form-group">
-                            <input type="number" class="form-control form-control-user" name="nik" id="nik" placeholder="NIK" value="<?= set_value('nik') ?>">
-                            <small class="text-danger text-left"><?= form_error('nik'); ?></small>
+                    <?= form_open_multipart('auth/m_register') ?>
+                    <div class="form-group">
+                        <input type="number" class="form-control form-control-user" name="nik" id="nik" placeholder="NIK" value="<?= set_value('nik') ?>">
+                        <small class="text-danger text-left"><?= form_error('nik'); ?></small>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control form-control-user" name="name" id="name" placeholder="Nama Lengkap" value="<?= set_value('name') ?>">
+                        <small class="text-danger text-left"><?= form_error('name'); ?></small>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control form-control-user" name="email" id="email" placeholder="Email" value="<?= set_value('email') ?>">
+                        <small class="text-danger text-left"><?= form_error('email'); ?></small>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control form-control-user" name="password1" id="password1" placeholder="Kata Sandi" value="<?= set_value('password1') ?>">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control form-control-user" name="password2" id="password2" placeholder="Ketik ulang kata sandi">
+                        <small class="text-danger text-left"><?= form_error('password2'); ?></small>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control form-control-user" name="telp" id="telp" placeholder="No Telepon" value="<?= set_value('telp') ?>">
+                        <small class="text-danger text-left"><?= form_error('telp'); ?></small>
+                    </div>
+                    <div class="form-group">
+                        <input type="file" class="form-control-file" name="image" id="image">
+                    </div>
+                    <div class="row mb-3">
+                        <div class="text-left mb-3">
+                            <button type="submit" class="btn">Daftar</button>
                         </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control form-control-user" name="name" id="name" placeholder="Nama Lengkap" value="<?= set_value('name') ?>">
-                            <small class="text-danger text-left"><?= form_error('name'); ?></small>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control form-control-user" name="email" id="email" placeholder="Email" value="<?= set_value('email') ?>">
-                            <small class="text-danger text-left"><?= form_error('email'); ?></small>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control form-control-user" name="password1" id="password1" placeholder="Kata Sandi" value="<?= set_value('password1') ?>">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control form-control-user" name="password2" id="password2" placeholder="Ketik ulang kata sandi">
-                            <small class="text-danger text-left"><?= form_error('password2'); ?></small>
-                        </div>
-                        <div class="form-group">
-                            <input type="number" class="form-control form-control-user" name="telp" id="telp" placeholder="No Telepon" value="<?= set_value('telp') ?>">
-                            <small class="text-danger text-left"><?= form_error('telp'); ?></small>
-                        </div>
-                        <div class="form-group">
-                            <input type="file" class="form-control-file" name="image" id="image">
-                        </div>
-                        <div class="row mb-3">
-                            <div class="text-left mb-3">
-                                <button type="submit" class="btn">Daftar</button>
-                            </div>
-                        </div>
-                        <div style="color: #777;">Sudah punya akun?
-                            <a href="login" class="login-link">Masuk disini</a>
-                        </div>
-                        <div style="color: #777;">Daftar sebagai
-                            <a href="register" class="login-link">admin atau petugas</a>
-                        </div>
-                    </form>
+                    </div>
+                    <div style="color: #777;">Sudah punya akun?
+                        <a href="login" class="login-link">Masuk disini</a>
+                    </div>
+                    <div style="color: #777;">Daftar sebagai
+                        <a href="register" class="login-link">admin atau petugas</a>
+                    </div>
+                    <?= form_close() ?>
                 </div>
             </div>
         </div>

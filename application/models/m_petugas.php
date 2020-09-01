@@ -37,7 +37,7 @@ class m_petugas extends CI_Model
         return $this->db->get()->result_array();
     }
 
-    public function ubah_profile($id)
+    public function _ubah_profile($id)
     {
         $this->form_validation->set_rules('email', 'email', 'required|trim|valid_email|is_unique[petugas.email]', [
             'required' => 'Mohon masukkan email anda!',

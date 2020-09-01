@@ -13,7 +13,7 @@ class masyarakat extends CI_Controller
 	private function _uploadImage()
 	{
 		$config['upload_path']          = './assets/img/pengaduan/';
-		$config['allowed_types']        = 'gif|jpg|png|jpeg';
+		$config['allowed_types']        = 'gif|jpg|png';
 		$config['max_size']             = 5120;
 		$config['max_width']            = '4480';
 		$config['max_height']           = '4480';
@@ -38,16 +38,40 @@ class masyarakat extends CI_Controller
 		$data['user'] = $this->db->get_where('login', ['email' =>
 		$this->session->userdata('email')])->row_array();
 
+		$data['masyarakat'] = $this->db->get_where('masyarakat', ['email' =>
+		$this->session->userdata('email')])->row_array();
+
 		$data['kategori'] = $this->m_masyarakat->get_kategori();
 
 		$email = $this->session->userdata('email');
 		$masyarakat = $this->m_masyarakat->get_nik($email);
 		$nik = $masyarakat['nik'];
-		$data['pengaduan'] = $this->m_masyarakat->get_data_pengaduan($nik);
+		$data['pengaduan'] = $this->m_masyarakat->get_pengaduan_pending($nik);
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/navbar_m', $data);
-		$this->load->view('masyarakat/pengaduan', $data);
+		$this->load->view('masyarakat/pending', $data);
+		$this->load->view('templates/footer');
+	}
+
+	public function proses()
+	{
+		$data['user'] = $this->db->get_where('login', ['email' =>
+		$this->session->userdata('email')])->row_array();
+
+		$data['masyarakat'] = $this->db->get_where('masyarakat', ['email' =>
+		$this->session->userdata('email')])->row_array();
+
+		$data['kategori'] = $this->m_masyarakat->get_kategori();
+
+		$email = $this->session->userdata('email');
+		$masyarakat = $this->m_masyarakat->get_nik($email);
+		$nik = $masyarakat['nik'];
+		$data['pengaduan'] = $this->m_masyarakat->get_pengaduan_proses($nik);
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/navbar_m', $data);
+		$this->load->view('masyarakat/proses', $data);
 		$this->load->view('templates/footer');
 	}
 
@@ -55,7 +79,16 @@ class masyarakat extends CI_Controller
 	{
 		$data['user'] = $this->db->get_where('login', ['email' =>
 		$this->session->userdata('email')])->row_array();
-		$data['pengaduan'] = $this->m_masyarakat->data_pengaduan();
+
+		$data['masyarakat'] = $this->db->get_where('masyarakat', ['email' =>
+		$this->session->userdata('email')])->row_array();
+
+		$data['kategori'] = $this->m_masyarakat->get_kategori();
+
+		$email = $this->session->userdata('email');
+		$masyarakat = $this->m_masyarakat->get_nik($email);
+		$nik = $masyarakat['nik'];
+		$data['pengaduan'] = $this->m_masyarakat->get_pengaduan_selesai($nik);
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/navbar_m', $data);

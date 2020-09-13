@@ -68,9 +68,9 @@ class masyarakat extends CI_Controller
 		}
 	}
 
-	private function _uploadImageProfile()
+	private function _editImageProfile()
 	{
-		$config['upload_path']          = './assets/img/pengaduan/';
+		$config['upload_path']          = './assets/img/profile/';
 		$config['allowed_types']        = 'gif|jpg|png';
 		$config['max_size']             = 5120;
 		$config['max_width']            = '4480';
@@ -84,7 +84,7 @@ class masyarakat extends CI_Controller
 			if ($this->upload->do_upload('image')) {
 				$old_image = $this->input->post('old_image');;
 				if ($old_image != 'default.jpg') {
-					unlink('assets/img/pengaduan/' . $old_image);
+					unlink('assets/img/profile/' . $old_image);
 				}
 				return $this->upload->data("file_name");
 			} else {
@@ -282,7 +282,7 @@ class masyarakat extends CI_Controller
 			'email'     => $this->input->post('email', TRUE),
             'password'  => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
             'telp'      => $this->input->post('telp'),
-			'image' 	=> $this->_uploadImageProfile(),
+			'image' 	=> $this->_editImageProfile(),
         );
 		
 		$nik = $this->input->post('nik');

@@ -10,13 +10,13 @@
                             <?= $this->session->flashdata('message'); ?>
                             <table class="table table-bordered" id="tabelPengaduan" width="100%" cellspacing="0">
                                 <thead style="font-weight: bold;">
-                                    <tr class="text-center">
-                                        <th>#</th>
-                                        <th>Judul Laporan</th>
-                                        <th>Kategori</th>
-                                        <th>Status</th>
-                                        <th>Tanggal Pengaduan</th>
-                                        <th width="120px">Action</th>
+                                    <tr class="">
+                                        <th style="max-width: 25px;">#</th>
+                                        <th style="max-width: 120px;">Judul Laporan</th>
+                                        <th style="max-width: 120px;">Kategori</th>
+                                        <th style="max-width: 120px;">Status</th>
+                                        <th style="max-width: 120px;">Tanggal Pengaduan</th>
+                                        <th style="width:30px; max-width: 30px;">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -33,8 +33,8 @@
                                                 <a href="<?= base_url('petugas/detail_pengaduan?id='. $p['id_pengaduan'] . ' ');?>" class="btn btn-success">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
-                                                <a href="#" class="btn btn-primary tmbl-tanggapan" data-id="<?= $p['id_pengaduan']; ?>" data-kategori="<?= $p['kategori']; ?>" data-judul="<?= $p['judul_laporan']; ?>" data-isi="<?= $p['isi_laporan']; ?>" data-gambar="<?= $p['image']; ?>">
-                                                    <i class="fas fa-eye"></i>
+                                                <a href="<?= base_url('petugas/tanggapan?id='. $p['id_pengaduan'] . ' ');?>" class="btn btn-primary">
+                                                    <i class="fas fa-comment"></i>
                                                 </a>
                                             </td>
                                         </tr>

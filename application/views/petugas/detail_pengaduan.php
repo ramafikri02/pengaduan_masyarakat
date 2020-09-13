@@ -6,45 +6,55 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title mb-4">Edit Pengaduan</h4>
-                        <?php foreach ($detail as $d) {?>
-                        <form method="" action="">
-                            <div class="form-group">
-                                <label for="inputAddress">ID Pengaduan</label>
-                                <input type="text" class="form-control" name="id" id="id" value="<?= $d['id_pengaduan'] ?>" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputAddress">Nik</label>
-                                <input type="text" class="form-control" id="inputAddress" value="<?= $d['nik'] ?>" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputAddress2">Judul Laporan</label>
-                                <input type="text" class="form-control" name="judul_laporan" value="<?= $d['judul_laporan'] ?>" id="inputAddress2" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect1">Kategori</label>
-                                <select class="form-control" name="kategori" id="kategori" readonly>
-                                    <option><?= $d['kategori'] ?></option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlTextarea1">Isi Laporan</label>
-                                <textarea class="form-control" name="isi_laporan" id="exampleFormControlTextarea1" rows="3" readonly><?= $d['isi_laporan'] ?></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputAddress2">Status</label>
-                                <input type="text" class="form-control" name="status" value="<?= $d['status'] ?>" id="inputAddress2" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputAddress2">Tanggal Pengaduan</label>
-                                <input type="text" class="form-control" name="tgl_pengaduan" value="<?= date('d F Y', $d['tgl_pengaduan']) ?>" id="inputAddress2" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlFile1">Gambar</label>
-                                <br>
-                                <img src="<?= base_url('assets/img/pengaduan/') . $d['image'] ?>" style="width: 150px;" alt="Ini Gambar">
-                            </div>
-                            <a href="<?= base_url('petugas/index') ?>" class="btn btn-primary">Kembali</a>
-                        </form>
+                        <?php foreach ($detail as $d) { ?>
+                            <form method="" action="">
+                                <div class="form-group">
+                                    <label for="inputAddress">ID Pengaduan</label>
+                                    <input type="text" class="form-control" name="id" id="id" value="<?= $d['id_pengaduan'] ?>" readonly>
+                                </div>
+                                <?php if ($d['status'] == "Proses") { ?>
+                                    <div class="form-group">
+                                        <label for="inputAddress">Nik</label>
+                                        <input type="text" class="form-control" id="inputAddress" value="<?= $d['nik'] ?>" readonly>
+                                    </div>
+                                <?php } ?>
+                                <div class="form-group">
+                                    <label for="inputAddress2">Judul Laporan</label>
+                                    <input type="text" class="form-control" name="judul_laporan" value="<?= $d['judul_laporan'] ?>" id="inputAddress2" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Kategori</label>
+                                    <select class="form-control" name="kategori" id="kategori" readonly>
+                                        <option><?= $d['kategori'] ?></option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">Isi Laporan</label>
+                                    <textarea class="form-control" name="isi_laporan" id="exampleFormControlTextarea1" rows="3" readonly><?= $d['isi_laporan'] ?></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputAddress2">Status</label>
+                                    <input type="text" class="form-control" name="status" value="<?= $d['status'] ?>" id="inputAddress2" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputAddress2">Tanggal Pengaduan</label>
+                                    <input type="text" class="form-control" name="tgl_pengaduan" value="<?= date('d F Y', $d['tgl_pengaduan']) ?>" id="inputAddress2" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlFile1">Gambar</label>
+                                    <br>
+                                    <img src="<?= base_url('assets/img/pengaduan/') . $d['image'] ?>" style="width: 150px;" alt="Ini Gambar">
+                                </div>
+                                <?php if ($d['status'] == "Selesai") {
+                                    foreach ($tanggapan as $t) : ?>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlTextarea1">Tanggapan</label>
+                                            <textarea class="form-control" name="tanggapan" id="exampleFormControlTextarea1" rows="3" readonly><?= $t['tanggapan']; ?></textarea>
+                                        </div>
+                                    <?php endforeach;
+                                } ?>
+                                <a href="<?= base_url('petugas/index') ?>" class="btn btn-primary">Kembali</a>
+                            </form>
                         <?php } ?>
                     </div>
                 </div>

@@ -20,6 +20,14 @@ class m_petugas extends CI_Model
 
 		return "default.jpg";
     }
+
+    public function get_id($email)
+    {
+        $this->db->select("id_petugas");
+        $this->db->from('petugas');
+        $this->db->where('email', $email);
+        return $this->db->get()->row_array();
+    }
     
     public function get_pengaduan_proses()
     {
@@ -51,6 +59,19 @@ class m_petugas extends CI_Model
         return $data->result();
     }
 
+    public function tambah_tanggapan($data)
+    {
+        $this->db->insert('tanggapan', $data);
+    }
+
+    public function get_tanggapan($id)
+    {
+        $this->db->select('*');
+        $this->db->from('tanggapan');
+        $this->db->where('id_pengaduan', $id);
+        return $this->db->get()->result_array();
+    }
+    
     public function _ubah_profile($id)
     {
         $this->form_validation->set_rules('email', 'email', 'required|trim|valid_email|is_unique[petugas.email]', [

@@ -31,6 +31,14 @@ class m_admin extends CI_Model
         return $this->db->get()->result_array();
     }
 
+    public function get_detail_pengaduan($id)
+    {
+        $this->db->select('*');
+        $this->db->from('pengaduan');
+        $this->db->where('id_pengaduan', $id);
+        return $this->db->get()->result_array();
+    }
+
     public function get_data_masyarakat()
     {
         $data = $this->db->get('masyarakat');

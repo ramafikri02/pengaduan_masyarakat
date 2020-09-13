@@ -43,7 +43,7 @@
                                 <br>
                                 <img src="<?= base_url('assets/img/pengaduan/') . $d['image'] ?>" style="width: 150px;" alt="Ini Gambar">
                             </div>
-                            <a href="<?= base_url('petugas/index') ?>" class="btn btn-primary">Kembali</a>
+                            <a href="<?= base_url('masyarakat/index') ?>" class="btn btn-primary">Kembali</a>
                         </form>
                         <?php } ?>
                     </div>

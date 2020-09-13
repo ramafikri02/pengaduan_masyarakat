@@ -85,6 +85,17 @@ class admin extends CI_Controller
 		$this->load->view('templates/admin/footer');
 	}
 
+	public function detail_pengaduan()
+	{
+		$id = $this->input->get('id');
+		$data['detail'] = $this->m_admin->get_detail_pengaduan($id);
+
+		$this->load->view('templates/admin/header', $data);
+		$this->load->view('templates/admin/sidebar', $data);
+		$this->load->view('admin/detail_pengaduan', $data);
+		$this->load->view('templates/admin/footer');
+	}
+
 	public function masyarakat()
 	{
 		$data['user'] = $this->db->get_where('login', ['email' =>

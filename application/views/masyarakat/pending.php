@@ -31,32 +31,32 @@
                             <table class="table table-bordered" id="tabelPengaduan" width="100%" cellspacing="0">
                                 <thead style="font-weight: bold;">
                                     <tr class="text-center">
-                                        <th>ID</th>
-                                        <th style="max-width:400px;">Judul Laporan</th>
-                                        <th style="max-width:150px;">Kategori</th>
-                                        <th style="max-width:150px;">Status</th>
-                                        <th style="max-width:150px;">Tanggal Pengaduan</th>
-                                        <th width="130px">Action</th>
+                                        <th style="max-width: 25px;">#</th>
+                                        <th style="max-width: 400px;">Judul Laporan</th>
+                                        <th style="max-width: 150px;">Kategori</th>
+                                        <th style="max-width: 150px;">Status</th>
+                                        <th style="max-width: 150px;">Tanggal Pengaduan</th>
+                                        <th style="max-width: 85px;">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php $no = 1;
                                     foreach ($pengaduan as $p) : ?>
                                         <tr>
-                                            <td><?= $p['id_pengaduan'] ?></td>
+                                            <td><?= $no++ ?></td>
                                             <td><?= $p['judul_laporan'] ?></td>
                                             <td><?= $p['kategori'] ?></td>
                                             <td><?= $p['status'] ?></td>
                                             <td><?= date('d F Y', $p['tgl_pengaduan']) ?></td>
                                             <td>
                                                 <!-- Button trigger modal -->
-                                                <a href="#" class="btn btn-success tmbl-lihat" data-id="<?= $p['id_pengaduan']; ?>" data-kategori="<?= $p['kategori']; ?>" data-judul="<?= $p['judul_laporan']; ?>" data-isi="<?= $p['isi_laporan']; ?>">
+                                                <a href="<?= base_url('masyarakat/detail_pengaduan?id=' . $p['id_pengaduan'] . ' '); ?>" class="btn btn-success">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
-                                                <a href="#" class="btn btn-warning tmbl-edit" data-id="<?= $p['id_pengaduan']; ?>" data-kategori="<?= $p['kategori']; ?>" data-judul="<?= $p['judul_laporan']; ?>" data-isi="<?= $p['isi_laporan']; ?>">
+                                                <a href="<?= base_url('masyarakat/ubah_pengaduan?id=' . $p['id_pengaduan'] . ' '); ?>" class="btn btn-warning">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
-                                                <a href="#" class="btn btn-danger tmbl-hapus" data-id="<?= $p['id_pengaduan']; ?>">
+                                                <a href="#" class="btn btn-danger tmbl-hapus" data-id="<?= $p['id_pengaduan']; ?>" data-old_image="<?= $p['image']; ?>">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </a>
                                             </td>
@@ -74,52 +74,6 @@
 <!-- End Of Content -->
 
 <!-- Modal -->
-<!-- lihat pengaduan -->
-<div class="modal fade" id="lihatPengaduan" tabindex="-1" aria-labelledby="judulUbah" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="judulUbah">Lihat Pengaduan</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body ">
-                <form>
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Kategori</label>
-                        <select class="form-control kategori" name="kategori" id="kategori" disabled>
-                            <?php
-                            foreach ($kategori as $k) : ?>
-                                <option><?= $k->kategori ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlInput1">Judul Laporan</label>
-                        <input type="text" class="form-control judul_laporan" name="judul_laporan" id="exampleFormControlInput1" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Isi Laporan</label>
-                        <textarea class="form-control isi_laporan" name="isi_laporan" id="exampleFormControlTextarea1" rows="3" disabled></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlFile1">Gambar</label> <br>
-                        <img src="<?= base_url('assets/img/pengaduan/') . $p['image'] ?>" alt="" width="200px">
-                    </div>
-                    <div class="form-group">
-                        <div class="modal-footer">
-                            <input type="hidden" name="id" class="id">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end lihat pengaduan -->
-
 <!-- tambah pengaduan -->
 <div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -228,7 +182,8 @@
                     <label for="exampleFormControlInput1">Apa anda yakin ingin menghapus pengaduan ini?</label>
                 </div>
                 <div class="modal-footer">
-                    <input type="hidden" name="id" class="id">
+                    <input type="hidden" name="id" id="id">
+                    <input type="hidden" name="old_image" id="old_image">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                     <button type="submit" class="btn btn-primary">Hapus</button>
                 </div>

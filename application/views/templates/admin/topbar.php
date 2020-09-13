@@ -20,10 +20,6 @@
                                     <a href="#">
                                         <i class="zmdi zmdi-account"></i>Akun Saya</a>
                                 </div>
-                                <div class="account-dropdown__item">
-                                    <a href="#">
-                                        <i class="zmdi zmdi-settings"></i>Pengaturan</a>
-                                </div>
                             </div>
                             <div class="account-dropdown__body">
                                 <div class="account-dropdown__item">

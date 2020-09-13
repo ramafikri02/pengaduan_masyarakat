@@ -6,40 +6,40 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title mb-4">Edit Profile</h4>
-                        <form method="POST" action="<?= base_url('masyarakat/ubah_profile') ?>">
+                        <?= form_open_multipart('masyarakat/ubah_profile') ?>
                         <?= $this->session->flashdata('message'); ?>
-                            <div class="form-group">
-                                <label for="inputAddress">NIK</label>
-                                <input type="text" class="form-control" name="nik" id="nik" value="<?= $masyarakat['nik'] ?>" readonly>
+                        <div class="form-group">
+                            <label for="inputAddress">NIK</label>
+                            <input type="text" class="form-control" name="nik" id="nik" value="<?= $masyarakat['nik'] ?>" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputAddress">Nama</label>
+                            <input type="text" class="form-control" name="nama" value="<?= $user['nama'] ?>" id="inputAddress">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail4">Email</label>
+                            <input type="email" class="form-control" name="email" value="<?= $user['email'] ?>" id="email">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">Password</label>
+                                <input type="password" class="form-control" name="password1" id="password">
                             </div>
-                            <div class="form-group">
-                                <label for="inputAddress">Nama</label>
-                                <input type="text" class="form-control" name="nama" value="<?= $user['nama'] ?>" id="inputAddress">
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">Konfirmasi Password</label>
+                                <input type="password" class="form-control" name="password2" id="password">
                             </div>
-                            <div class="form-group">
-                                <label for="inputEmail4">Email</label>
-                                <input type="email" class="form-control" name="email" value="<?= $user['email'] ?>" id="email">
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="inputPassword4">Password</label>
-                                    <input type="password" class="form-control" name="password1" id="password">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="inputPassword4">Konfirmasi Password</label>
-                                    <input type="password" class="form-control" name="password2" id="password">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputAddress2">No Telepon</label>
-                                <input type="number" class="form-control" name="telp" value="<?= $masyarakat['telp'] ?>" id="inputAddress2">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlFile1">Foto Profile</label>
-                                <input type="file" class="form-control-file" name="image" id="exampleFormControlFile1">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Simpan</button>
-                        </form>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputAddress2">No Telepon</label>
+                            <input type="number" class="form-control" name="telp" value="<?= $masyarakat['telp'] ?>" id="inputAddress2">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">Foto Profile</label>
+                            <input type="file" class="form-control-file" name="image" id="exampleFormControlFile1">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <?= form_close() ?>
                     </div>
                 </div>
             </div>

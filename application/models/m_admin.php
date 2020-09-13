@@ -43,10 +43,54 @@ class m_admin extends CI_Model
         return $data->result();
     }
 
-    // public function count_user() {
-    //     $data = $this->db->get('login');
-    //     return $data->num_rows();
-    // }
+    public function cetak_pdf_pengaduan()
+    {
+        $data = $this->db->get('pengaduan');
+        $output = '<table border="1" width="100%" cellspacing="0" cellpadding="15">';
+        $output .= '<tr align="center">
+                        <th>ID</th>
+                        <th>Kategori</th>
+                        <th>Judul Laporan</th>
+                        <th>Isi Laporan</th>
+                        <th>Status</th>
+                    </tr>';
+                    foreach ($data->result() as $p) {
+                        $output .= '<tr class="text-align:center;">
+                        <td>' . $p->id_pengaduan . '</td>
+                        <td>' . $p->kategori . '</td>
+                        <td>' . $p->judul_laporan . '</td>
+                        <td>' . $p->isi_laporan . '</td>
+                        <td>' . $p->status . '</td>
+                    </tr>';
+                    }
+    }
+
+    public function count_masyarakat() {
+        $query = $this->db->get('masyarakat');
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        } else {
+            return 0;
+        }
+    }
+
+    public function count_petugas() {
+        $query = $this->db->get('petugas');
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        } else {
+            return 0;
+        }
+    }
+
+    public function count_pengaduan() {
+        $query = $this->db->get('pengaduan');
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        } else {
+            return 0;
+        }
+    }
 
     // public function count_pengaduan() {
 
@@ -57,6 +101,16 @@ class m_admin extends CI_Model
     // }
 
     // =========================================================================
+
+    public function tambah_masyarakat($data)
+    {
+        $this->db->insert('masyarakat', $data);
+    }
+
+    public function tambah_petugas($data)
+    {
+        $this->db->insert('petugas', $data);
+    }
 
     public function tambah_kategori()
     {
@@ -97,7 +151,8 @@ class m_admin extends CI_Model
         <span aria-hidden="true">&times;</span></button></div>');
     }
 
-    public function setujui_pengaduan() {
+    public function setujui_pengaduan()
+    {
         $id = $this->input->post('id');
         $data = array(
             'status'       => 'Proses',

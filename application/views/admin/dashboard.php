@@ -29,8 +29,8 @@
             <div class="row">
                 <div class="col-md-6 col-lg-4">
                     <div class="statistic__item">
-                        <h2 class="number">10,368</h2>
-                        <span class="desc">User</span>
+                        <h2 class="number"><?= $total_masyarakat; ?></h2>
+                        <span class="desc">Masyarakat</span>
                         <div class="icon">
                             <i class="fas fa-user"></i>
                         </div>
@@ -38,19 +38,19 @@
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="statistic__item">
-                        <h2 class="number">388,688</h2>
-                        <span class="desc">Pengaduan</span>
+                        <h2 class="number"><?= $total_petugas ?></h2>
+                        <span class="desc">Petugas</span>
                         <div class="icon">
-                            <i class="fas fa-book"></i>
+                            <i class="fas fa-user"></i>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="statistic__item">
-                        <h2 class="number">1,086</h2>
-                        <span class="desc">Kategori</span>
+                        <h2 class="number"><?= $total_pengaduan ?></h2>
+                        <span class="desc">Pengaduan</span>
                         <div class="icon">
-                            <i class="fas fa-bars"></i>
+                            <i class="fas fa-book"></i>
                         </div>
                     </div>
                 </div>

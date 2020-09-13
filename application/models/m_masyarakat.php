@@ -20,6 +20,14 @@ class m_masyarakat extends CI_Model
 
 		return "default.jpg";
     }
+
+    public function get_pengaduan($nik)
+    {
+        $this->db->select('*');
+        $this->db->from('pengaduan');
+        $this->db->where('nik', $nik);
+        return $this->db->get()->result_array();
+    }
     
     public function get_pengaduan_pending($nik)
     {

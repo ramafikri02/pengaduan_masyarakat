@@ -1,33 +1,3 @@
-<!-- BREADCRUMB-->
-<section class="au-breadcrumb m-t-75">
-    <div class="section__content section__content--p30">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="au-breadcrumb-content">
-                        <div class="au-breadcrumb-left">
-                            <span class="au-breadcrumb-span">Kamu sedang berada di :</span>
-                            <ul class="list-unstyled list-inline au-breadcrumb__list">
-                                <li class="list-inline-item seprate">
-                                    <span>/</span>
-                                </li>
-                                <li class="list-inline-item">Pengaduan/selesai</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- END BREADCRUMB-->
-
-<!-- STATISTIC-->
-<section class="statistic">
-
-</section>
-<!-- END STATISTIC-->
-
 <!-- Content -->
 <section>
     <div class="container-fluid">
@@ -66,8 +36,8 @@
                                             <td><?= date('d F Y', $p['tgl_pengaduan']) ?></td>
                                             <td>
                                                 <!-- Button trigger modal -->
-                                                <a href="#" class="btn btn-warning tmbl-edit" data-id="<?= $p['id_pengaduan']; ?>" data-kategori="<?= $p['kategori']; ?>" data-judul="<?= $p['judul_laporan']; ?>" data-isi="<?= $p['isi_laporan']; ?>">
-                                                    <i class="fas fa-edit"></i>
+                                                <a href="#" class="btn btn-success tmbl-lihat" data-id="<?= $p['id_pengaduan']; ?>" data-kategori="<?= $p['kategori']; ?>" data-judul="<?= $p['judul_laporan']; ?>" data-isi="<?= $p['isi_laporan']; ?>">
+                                                    <i class="fas fa-eye"></i>
                                                 </a>
                                             </td>
                                         </tr>

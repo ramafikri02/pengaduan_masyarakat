@@ -37,19 +37,19 @@
                             <table class="table table-bordered" id="tabelPengaduan" width="100%" cellspacing="0">
                                 <thead style="font-weight: bold;">
                                     <tr class="text-center">
-                                        <th>ID</th>
+                                        <th>#</th>
                                         <th style="max-width:400px;">Judul Laporan</th>
                                         <th style="max-width:150px;">Kategori</th>
                                         <th style="max-width:150px;">Status</th>
                                         <th style="max-width:150px;">Tanggal Pengaduan</th>
-                                        <th width="130px">Action</th>
+                                        <th width="40px">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php $no = 1;
                                     foreach ($pengaduan as $p) : ?>
                                         <tr>
-                                            <td><?= $p['id_pengaduan'] ?></td>
+                                            <td><?= $no++ ?></td>
                                             <td><?= $p['judul_laporan'] ?></td>
                                             <td><?= $p['kategori'] ?></td>
                                             <td><?= $p['status'] ?></td>

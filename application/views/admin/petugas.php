@@ -159,16 +159,21 @@
             <div class="modal-body ">
                 <?= form_open_multipart('admin/tambah_Petugas') ?>
                 <div class="form-group">
-                    <label for="exampleFormControlInput1">id_petugas</label>
-                    <input type="text" class="form-control" name="id_petugas" id="exampleFormControlInput1" placeholder="">
-                </div>
-                <div class="form-group">
                     <label for="exampleFormControlInput1">Nama</label>
                     <input type="text" class="form-control" name="nama" id="exampleFormControlInput1" placeholder="">
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Email</label>
                     <input type="email" class="form-control" name="email" id="exampleFormControlInput1" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="">Kata Sandi</label>
+                    <input type="password" class="form-control form-control-user" name="password1" id="password1" value="<?= set_value('password1') ?>">
+                </div>
+                <div class="form-group">
+                    <label for="">Ketik ulang Kata Sandi</label>
+                    <input type="password" class="form-control form-control-user" name="password2" id="password2">
+                    <small class="text-danger text-left"><?= form_error('password2'); ?></small>
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">No Telepon</label>

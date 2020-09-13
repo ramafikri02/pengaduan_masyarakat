@@ -37,6 +37,20 @@ class m_petugas extends CI_Model
         return $this->db->get()->result_array();
     }
 
+    public function get_detail_pengaduan($id)
+    {
+        $this->db->select('*');
+        $this->db->from('pengaduan');
+        $this->db->where('id_pengaduan', $id);
+        return $this->db->get()->result_array();
+    }
+
+    public function get_kategori()
+    {
+        $data = $this->db->get('kategori');
+        return $data->result();
+    }
+
     public function _ubah_profile($id)
     {
         $this->form_validation->set_rules('email', 'email', 'required|trim|valid_email|is_unique[petugas.email]', [

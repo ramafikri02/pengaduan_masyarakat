@@ -11,13 +11,12 @@
                         Pengaduan
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" style="color: #32349f !important;" href="#">Pending</a>
-                        <a class="dropdown-item" style="color: #32349f !important;" href="#">Proses</a>
-                        <a class="dropdown-item" style="color: #32349f !important;" href="#">Selesai</a>
+                        <a class="dropdown-item" style="color: #32349f !important;" href="index">Proses</a>
+                        <a class="dropdown-item" style="color: #32349f !important;" href="selesai">Selesai</a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Profil</a>
+                    <a class="nav-link" href="profile">Profil</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('auth/logout') ?>">Keluar</a>

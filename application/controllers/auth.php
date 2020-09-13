@@ -54,7 +54,6 @@ class auth extends CI_Controller
 		if ($user) {
 			// Ini kalo passwordnya bener
 			if (password_verify($password, $user['password']))
-			// ini gua gk tau apaan namanya
 			{
 				$data = array(
 					'status'       => 'Online',
@@ -89,27 +88,27 @@ class auth extends CI_Controller
 
 	public function m_register()
 	{
-		$this->form_validation->set_rules('nik', 'Nik', 'required|trim|min_length[15]|max_length[16]', [
+		$this->form_validation->set_rules('nik', 'Nik', 'required|min_length[15]|max_length[16]', [
 			'required' => 'Mohon masukkan NIK!',
 			'min_length' => 'NIK tidak boleh kurang dari 15 suku kata',
 			'max_length' => 'NIK tidak boleh melibihi 16 suku kata'
 		]);
-		$this->form_validation->set_rules('name', 'Name', 'required|trim', [
+		$this->form_validation->set_rules('name', 'Name', 'required', [
 			'required' => 'Mohon masukkan nama lengkap anda!'
 		]);
-		$this->form_validation->set_rules('email', 'email', 'required|trim|valid_email|is_unique[masyarakat.email]', [
+		$this->form_validation->set_rules('email', 'email', 'required|valid_email|is_unique[masyarakat.email]', [
 			'required' => 'Mohon masukkan email anda!',
 			'valid_email' => 'Mohon masukkan email yang tepat!',
 			'is_unique' => 'Email ini sudah terdaftar!'
 		]);
-		$this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]', [
+		$this->form_validation->set_rules('password1', 'Password', 'required|min_length[3]|matches[password2]', [
 			'required' => 'Mohon masukkan kata sandi!',
 			'min_length' => 'Kata Sandi terlalu pendek'
 		]);
-		$this->form_validation->set_rules('password2', 'Password', 'required|trim|min_length[3]|matches[password1]', [
+		$this->form_validation->set_rules('password2', 'Password', 'required|min_length[3]|matches[password1]', [
 			'matches' => 'Kata sandi tidak cocok!'
 		]);
-		$this->form_validation->set_rules('telp', 'Telephone', 'required|trim|min_length[10]|max_length[13]', [
+		$this->form_validation->set_rules('telp', 'Telephone', 'required|min_length[10]|max_length[13]', [
 			'required' => 'Mohon masukkan Nomor Telepon!',
 			'min_length' => 'Nomor terlalu pendek',
 			'max_length' => 'Nomor tidak boleh melebihi 13 angka'
@@ -136,22 +135,22 @@ class auth extends CI_Controller
 
 	public function register()
 	{
-		$this->form_validation->set_rules('name', 'Name', 'required|trim', [
+		$this->form_validation->set_rules('name', 'Name', 'required', [
 			'required' => 'Mohon masukkan nama lengkap anda!'
 		]);
-		$this->form_validation->set_rules('email', 'email', 'required|trim|valid_email|is_unique[petugas.email]', [
+		$this->form_validation->set_rules('email', 'email', 'required|valid_email|is_unique[petugas.email]', [
 			'required' => 'Mohon masukkan email anda!',
 			'valid_email' => 'Mohon masukkan email yang tepat!',
 			'is_unique' => 'Email ini sudah terdaftar!'
 		]);
-		$this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]', [
+		$this->form_validation->set_rules('password1', 'Password', 'required|min_length[3]|matches[password2]', [
 			'required' => 'Mohon masukkan kata sandi!',
 			'min_length' => 'Kata Sandi terlalu pendek'
 		]);
-		$this->form_validation->set_rules('password2', 'Password', 'required|trim|min_length[3]|matches[password1]', [
+		$this->form_validation->set_rules('password2', 'Password', 'required|min_length[3]|matches[password1]', [
 			'matches' => 'Kata sandi tidak cocok!'
 		]);
-		$this->form_validation->set_rules('telp', 'Telephone', 'required|trim|min_length[10]|max_length[13]', [
+		$this->form_validation->set_rules('telp', 'Telephone', 'required|min_length[10]|max_length[13]', [
 			'required' => 'Mohon masukkan Nomor Telepon!',
 			'min_length' => 'Nomor terlalu pendek',
 			'max_length' => 'Nomor tidak boleh melebihi 13 angka'
@@ -210,11 +209,11 @@ class auth extends CI_Controller
 
 	public function set_forgot_password()
 	{
-		$this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]', [
+		$this->form_validation->set_rules('password1', 'Password', 'required|min_length[3]|matches[password2]', [
 			'required' => 'Mohon masukkan kata sandi!',
 			'min_length' => 'Kata Sandi terlalu pendek'
 		]);
-		$this->form_validation->set_rules('password2', 'Password', 'required|trim|min_length[3]|matches[password1]', [
+		$this->form_validation->set_rules('password2', 'Password', 'required|min_length[3]|matches[password1]', [
 			'matches' => 'Kata sandi tidak cocok!'
 		]);
 

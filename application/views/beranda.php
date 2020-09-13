@@ -40,13 +40,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Beranda</a>
+                        <a class="nav-link active" href="<? base_url('beranda/index') ?>">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Kontak</a>
+                        <a class="nav-link" href="<?= base_url('beranda/lacak') ?>">Lacak</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link nav-login" href="auth/login">Login</a>
+                        <a class="nav-link nav-login" href="<?= base_url('auth/login') ?>">Login</a>
                     </li>
                 </ul>
             </div>
@@ -60,18 +60,30 @@
                     <p class="title">Layanan Pengaduan Masyarakat</p>
                     <p>Merupakan aplikasi yang dibuat pemerintah yang bersifat dua arah dan dibuat untuk masyarakat dalam memudahkan membuat pegaduan.
                         <br>Laporkan kepada kami jika anda mempunyai keluhan.</p>
-                    <a href="<?php echo base_url() . 'auth/login' ?>" class="menuju-lapor">Lapor Sekarang</a>
+                    <form action="<?= base_url('auth/login') ?>">
+                        <button type="submit" class="btn btn-light" style="color: #32349f;">Lapor Sekarang</button>
+                    </form>
                 </div>
                 <div class="col-md-6 text-center">
-                    <img src="<?php echo base_url() . 'assets/img/group2.png' ?>" class="img-fluid">
+                    <img src="<?= base_url() . 'assets/img/group2.png' ?>" class="img-fluid">
                 </div>
             </div>
         </div>
-        <img src="<?php echo base_url() . 'assets/img/wave4.png' ?>" class="bottom-img">
+        <img src="<?= base_url() . 'assets/img/wave4.png' ?>" class="bottom-img">
     </section>
 
     <section id="service">
         <div class="container">
+            <div class="row">
+                <div class="offset-2">
+                    <video width="720" height="auto" controls>
+                        <source src="<?= base_url('assets/video/pengaduan.mp4') ?>" type="video/mp4" />
+                        <source src="<?= base_url('assets/video/pengaduan.mp4') ?>" type="video/webm" />
+                        <source src="<?= base_url('assets/video/pengaduan.mp4') ?>" type="video/oog" />
+                        Browser Anda Tidak Mensupport HTML 5 Video
+                    </video>
+                </div>
+            </div>
             <p class="title-service">Alur Pengaduan</p>
             <div class="row">
                 <div class="col-md-2 service">
@@ -107,7 +119,7 @@
             </div>
         </div>
     </section>
-    
+
 </body>
 <!-- Jquery JS-->
 <script src="<?= base_url('assets/vendor/jquery-3.2.1.min.js') ?>"></script>

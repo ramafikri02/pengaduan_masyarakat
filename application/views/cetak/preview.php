@@ -9,30 +9,32 @@
 <body>
     <main>
         <h1>Laporan Excel</h1>
-        <p><a href="<?= base_url('sistem/cetak') ?>">Export ke Pdf</a></p>
+        <p><a href="<?= base_url('sistem/cetak_pdf') ?>">Export ke Pdf</a></p>
         <a href="<?= base_url('sistem/cetak_xls') ?>">Export ke Excel</a>
         <table border="1" width="100%">
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Kategori</th>
                     <th>Judul Laporan</th>
                     <th>Isi Laporan</th>
-                    <th>Tanggal Kejadian</th>
+                    <th>Gambar</th>
                     <th>Tanggal Pengaduan</th>
                 </tr>
             </thead>
+
             <tbody>
-                <?php $i = 1;
+                <?php
                 foreach ($pengaduan as $p) { ?>
-                    <tr>
-                        <td><?= $p->id_pengaduan ?></td>
-                        <td><?= $p->judul_laporan ?></td>
-                        <td><?= $p->isi_laporan ?></td>
-                        <td><?= $p->tgl_kejadian ?></td>
-                        <td><?= date('d F Y', $p->tgl_pengaduan) ?></td>
+                    <tr class="text-align:center;">
+                        <td><?= $p['id_pengaduan'] ?></td>
+                        <td><?= $p['kategori'] ?></td>
+                        <td><?= $p['judul_laporan'] ?></td>
+                        <td><?= $p['isi_laporan'] ?></td>
+                        <td><img style="width: 100px;" src="<?= base_url('assets/img/pengaduan/') . $p['image'] ?>"></td>
+                        <td><?= date('d F Y', $p['tgl_pengaduan']) ?></td>
                     </tr>
-                <?php $i++;
-                } ?>
+                <?php } ?>
             </tbody>
         </table>
     </main>

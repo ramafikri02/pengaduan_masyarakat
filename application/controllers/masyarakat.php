@@ -17,11 +17,11 @@ class masyarakat extends CI_Controller
 		$config['max_size']             = 5120;
 		$config['max_width']            = '4480';
 		$config['max_height']           = '4480';
-		$config['file_name']            = $_FILES['image']['name'];
+		$config['file_name']            = 'image'.time();
 
 		$this->upload->initialize($config);
 
-		if (!empty($_FILES['image']['name'])) {
+		if (!empty('image'.time())) {
 			if ($this->upload->do_upload('image')) {
 				return $this->upload->data("file_name");
 			} else {

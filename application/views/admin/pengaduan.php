@@ -62,7 +62,7 @@
                                             <td><?= date('d F Y', $p['tgl_pengaduan']) ?></td>
                                             <td>
                                                 <!-- Button trigger modal -->
-                                                <a href="#" class="btn btn-success tmbl-lihat" data-id="<?= $p['id_pengaduan'];?>" data-kategori="<?= $p['kategori']; ?>" data-judul="<?= $p['judul_laporan']; ?>" data-isi="<?= $p['isi_laporan']; ?>">
+                                                <a href="#" class="btn btn-success tmbl-lihat" data-id="<?= $p['id_pengaduan'];?>" data-kategori="<?= $p['kategori']; ?>" data-judul="<?= $p['judul_laporan']; ?>" data-isi="<?= $p['isi_laporan']; ?>" data-image="<?= $p['image']; ?>">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
                                                 <a href="#" class="btn btn-primary tmbl-setuju" data-id="<?= $p['id_pengaduan']; ?>">
@@ -151,7 +151,7 @@
                                             <td><?= date('d F Y', $s['tgl_pengaduan']) ?></td>
                                             <td>
                                                 <!-- Button trigger modal -->
-                                                <a href="#" class="btn btn-success tmbl-lihat" data-id="<?= $s['id_pengaduan']; ?>" data-kategori="<?= $p['kategori']; ?>" data-judul="<?= $p['judul_laporan']; ?>" data-isi="<?= $p['isi_laporan']; ?>">
+                                                <a href="#" class="btn btn-success tmbl-lihat" data-id="<?= $s['id_pengaduan']; ?>" data-kategori="<?= $s['kategori']; ?>" data-judul="<?= $s['judul_laporan']; ?>" data-isi="<?= $s['isi_laporan']; ?>" data-image="<?= $s['image']; ?>">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
                                             </td>
@@ -200,7 +200,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlFile1">Gambar</label> <br>
-                        <img src="<?= base_url('assets/img/pengaduan/') . $p['image'] ?>" alt="" width="200px">
+                        <img class="image" src="" alt="" width="200px">
                     </div>
                     <div class="form-group">
                         <div class="modal-footer">

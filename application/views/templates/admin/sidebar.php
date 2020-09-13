@@ -7,8 +7,8 @@
     </div>
     <div class="menu-sidebar2__content js-scrollbar1">
         <div class="account2">
-            <div class="image img-cir img-120">
-                <img src="<?= base_url('assets/img/profile/') . $admin['image']; ?>" alt="User" />
+            <div>
+                <img src="<?= base_url('assets/img/profile/') . $admin['image']; ?>" alt="User" style="border-radius: 100%; width:150px; height:150px" />
             </div>
             <h4 class="name"><?= $user['nama'] ?></h4>
             <p><?= $user['level'] ?></p>

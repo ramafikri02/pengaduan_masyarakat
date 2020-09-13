@@ -62,7 +62,7 @@
                                             <td><?= date('d F Y', $m->tgl_ditambahkan) ?></td>
                                             <td>
                                                 <!-- Button trigger modal -->
-                                                <a href="#" class="btn btn-success tmbl-lihat-masyarakat" data-nik="<?= $m->nik; ?>" data-nama="<?= $m->nama; ?>" data-email="<?= $m->email; ?>" data-telp="<?= $m->telp; ?>">
+                                                <a href="#" class="btn btn-success tmbl-lihat-masyarakat" data-nik="<?= $m->nik; ?>" data-nama="<?= $m->nama; ?>" data-email="<?= $m->email; ?>" data-telp="<?= $m->telp; ?>" data-image="<?= $m->image; ?>">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
                                                 <a href="#" class="btn btn-danger tmbl-hapus-masyarakat" data-nik="<?= $m->nik; ?>">
@@ -151,6 +151,15 @@
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Email</label>
                     <input type="email" class="form-control" name="nik" id="exampleFormControlInput1" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="">Kata Sandi</label>
+                    <input type="password" class="form-control form-control-user" name="password1" id="password1" value="<?= set_value('password1') ?>">
+                </div>
+                <div class="form-group">
+                    <label for="">Ketik ulang Kata Sandi</label>
+                    <input type="password" class="form-control form-control-user" name="password2" id="password2">
+                    <small class="text-danger text-left"><?= form_error('password2'); ?></small>
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlFile1">Gambar</label>

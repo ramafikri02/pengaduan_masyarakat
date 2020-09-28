@@ -87,11 +87,17 @@ class admin extends CI_Controller
 
 	public function detail_pengaduan()
 	{
+		$data['user'] = $this->db->get_where('login', ['email' =>
+		$this->session->userdata('email')])->row_array();
+		$data['admin'] = $this->db->get_where('petugas', ['email' =>
+		$this->session->userdata('email')])->row_array();
+		
 		$id = $this->input->get('id');
 		$data['detail'] = $this->m_admin->get_detail_pengaduan($id);
 
 		$this->load->view('templates/admin/header', $data);
 		$this->load->view('templates/admin/sidebar', $data);
+		$this->load->view('templates/admin/topbar', $data);
 		$this->load->view('admin/detail_pengaduan', $data);
 		$this->load->view('templates/admin/footer');
 	}

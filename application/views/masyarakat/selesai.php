@@ -11,7 +11,7 @@
                             <p><?= $user['level'] ?></p>
                         </div>
                         <button class="au-btn au-btn-icon au-btn--green" data-toggle="modal" data-target="#mediumModal">
-                            <i class="zmdi zmdi-plus"></i>Tambah Pengaduan Selesai</button>
+                            <i class="zmdi zmdi-plus"></i>Tambah Pengaduan</button>
                     </div>
                 </div>
             </div>
@@ -26,19 +26,13 @@
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-body">
-                        <form action="<?= base_url('sistem/cetak_xls') ?>">
-                            <button class="btn btn-primary tmbl-excel" style="float: right;">Export Excel</button>
-                        </form>
-                        <form action="<?= base_url('sistem/cetak_pdf') ?>">
-                            <button class="btn btn-primary tmbl-pdf" style="float: right; margin-right:10px; margin-bottom:20px">Export PDF</button>
-                        </form>
                         <div class="table-responsive">
                             <?= $this->session->flashdata('message'); ?>
                             <table class="table table-bordered" id="tabelPengaduan" width="100%" cellspacing="0">
                                 <thead style="font-weight: bold;">
                                     <tr class="text-center">
                                         <th style="max-width: 25px;">#</th>
-                                        <th style="width: 150px;">Judul Laporan</th>
+                                        <th style="max-width: 400px;">Judul Laporan</th>
                                         <th style="max-width: 150px;">Kategori</th>
                                         <th style="max-width: 150px;">Status</th>
                                         <th style="max-width: 150px;">Tanggal Pengaduan</th>
@@ -73,7 +67,6 @@
 </section>
 <!-- End Of Content -->
 
-<!-- Modal -->
 <!-- tambah pengaduan -->
 <div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">

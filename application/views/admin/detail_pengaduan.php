@@ -1,51 +1,44 @@
+<!-- BREADCRUMB-->
+<section class="au-breadcrumb m-t-75">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="au-breadcrumb-content">
+                        <div class="au-breadcrumb-left">
+                            <span class="au-breadcrumb-span">Kamu sedang berada di :</span>
+                            <ul class="list-unstyled list-inline au-breadcrumb__list">
+                                <li class="list-inline-item seprate">
+                                    <span>/</span>
+                                </li>
+                                <li class="list-inline-item">Pengaduan/pending</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END BREADCRUMB-->
+
+<!-- STATISTIC-->
+<section class="statistic">
+
+</section>
+<!-- END STATISTIC-->
+
 <!-- Content -->
-<section class="mt-5">
+<section>
     <div class="container-fluid">
+
+        <!-- Pending -->
         <div class="row">
-            <div class="col-xl-8 offset-xl-2">
+            <div class="col-xl-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title mb-4">Edit Pengaduan</h4>
-                        <?php foreach ($detail as $d) {?>
-                        <form method="" action="">
-                            <div class="form-group">
-                                <label for="inputAddress">ID Pengaduan</label>
-                                <input type="text" class="form-control" name="id" id="id" value="<?= $d['id_pengaduan'] ?>" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputAddress">Nik</label>
-                                <input type="text" class="form-control" id="inputAddress" value="<?= $d['nik'] ?>" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputAddress2">Judul Laporan</label>
-                                <input type="text" class="form-control" name="judul_laporan" value="<?= $d['judul_laporan'] ?>" id="inputAddress2" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect1">Kategori</label>
-                                <select class="form-control" name="kategori" id="kategori" readonly>
-                                    <option><?= $d['kategori'] ?></option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlTextarea1">Isi Laporan</label>
-                                <textarea class="form-control" name="isi_laporan" id="exampleFormControlTextarea1" rows="3" readonly><?= $d['isi_laporan'] ?></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputAddress2">Status</label>
-                                <input type="text" class="form-control" name="status" value="<?= $d['status'] ?>" id="inputAddress2" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputAddress2">Tanggal Pengaduan</label>
-                                <input type="text" class="form-control" name="tgl_pengaduan" value="<?= date('d F Y', $d['tgl_pengaduan']) ?>" id="inputAddress2" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlFile1">Gambar</label>
-                                <br>
-                                <img src="<?= base_url('assets/img/pengaduan/') . $d['image'] ?>" style="width: 150px;" alt="Ini Gambar">
-                            </div>
-                            <a href="<?= base_url('admin/index') ?>" class="btn btn-primary">Kembali</a>
-                        </form>
-                        <?php } ?>
+                        <h5 class="card-title">Menunggu Persetujuan</h5>
+
                     </div>
                 </div>
             </div>

@@ -1,6 +1,26 @@
 <?php
 class m_masyarakat extends CI_Model
 {
+    private function _uploadImage()
+    {
+        $this->load->helper('file');
+        $config['upload_path']             = '.assets/img/pengaduan/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['file_name']            = 'item-' . date('ymd');
+        $config['overwrite']            = true;
+        $config['max_size']             = 2048;
+
+        $this->load->library('upload');
+        $this->upload->initialize($config);
+
+        if ($this->upload->do_upload('image')) {
+            return $this->upload->data('file_name');
+        }
+        print_r($this->upload->display_errors());
+
+        return "default.jpg";
+    }
+
     public function get_pengaduan($nik)
     {
         $this->db->select('*');
@@ -8,7 +28,7 @@ class m_masyarakat extends CI_Model
         $this->db->where('nik', $nik);
         return $this->db->get()->result_array();
     }
-    
+
     public function get_pengaduan_pending($nik)
     {
         $this->db->select('*');
@@ -50,8 +70,37 @@ class m_masyarakat extends CI_Model
         return $data->result();
     }
 
-    public function tambah_pengaduan($data)
+    public function validation($mode)
     {
+        $this->load->library('form_validation'); // Load library form_validation untuk proses validasinya
+
+        // Tambahkan if apakah $mode save atau update
+        // Karena ketika update, NIS tidak harus divalidasi
+        // Jadi NIS di validasi hanya ketika menambah data siswa saja
+        if ($mode == "save")
+            $this->form_validation->set_rules('kategori', 'kategori', 'required');
+        $this->form_validation->set_rules('judul_laporan', 'judul_laporan', 'required');
+        $this->form_validation->set_rules('isi_laporan', 'isi_laporan', 'required');
+        $this->form_validation->set_rules('image', 'image', 'required');
+
+        if ($this->form_validation->run()) // Jika validasi benar
+            return true; // Maka kembalikan hasilnya dengan TRUE
+        else // Jika ada data yang tidak sesuai validasi
+            return false; // Maka kembalikan hasilnya dengan FALSE
+    }
+
+    public function tambah_pengaduan()
+    {
+        $email = $this->session->userdata('email');
+        $masyarakat = $this->m_masyarakat->get_nik($email);
+        $data = [
+            'nik'            => $masyarakat['nik'],
+            'kategori'       => $this->input->post('kategori'),
+            'judul_laporan'  => $this->input->post('judul_laporan'),
+            'isi_laporan'    => $this->input->post('isi_laporan'),
+            'image'          => $this->input->post('image'),
+            'tgl_pengaduan'  => time(),
+        ];
         $this->db->insert('pengaduan', $data);
     }
 
@@ -63,7 +112,7 @@ class m_masyarakat extends CI_Model
         return $this->db->get()->row_array();
     }
 
-    public function ubah_profile($data,$nik)
+    public function ubah_profile($data, $nik)
     {
         $this->db->where('nik', $nik);
         $this->db->update('masyarakat', $data);

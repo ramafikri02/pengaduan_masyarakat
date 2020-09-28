@@ -12,29 +12,20 @@ class masyarakat extends CI_Controller
 
 	private function _uploadImage()
 	{
-		$config['upload_path']          = './assets/img/pengaduan/';
+		$this->load->helper('file');
+		$config['upload_path'] 			= '.assets/img/pengaduan/';
 		$config['allowed_types']        = 'gif|jpg|png';
-		$config['max_size']             = 5120;
-		$config['max_width']            = '4480';
-		$config['max_height']           = '4480';
-		$config['file_name']            = 'image' . time();
+		$config['file_name']            = 'item-' . date('ymd');
+		$config['overwrite']            = true;
+		$config['max_size']             = 2048;
 
+		$this->load->library('upload');
 		$this->upload->initialize($config);
-		$id = $this->input->post('id');
 
-		if (!empty('image' . time())) {
-			if ($this->upload->do_upload('image')) {
-				return $this->upload->data("file_name");
-			} else {
-				$this->session->set_flashdata('message', '<div class="alert alert-danger  alert-dismissible fade show" role="alert"> Gambar gagal di Upload!.<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-				</button></div>');
-				redirect('masyarakat/index');
-				print_r($this->upload->display_errors());
-			}
-		} else {
-			$this->input->post('image');
+		if ($this->upload->do_upload('image')) {
+			return $this->upload->data('file_name');
 		}
+		print_r($this->upload->display_errors());
 	}
 
 	private function _editImagePengaduan()
@@ -128,6 +119,14 @@ class masyarakat extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 
+	public function data_pengaduan()
+	{
+		$email = $this->session->userdata('email');
+		$masyarakat = $this->m_masyarakat->get_nik($email);
+		$nik = $masyarakat['nik'];
+		$data['pengaduan'] = $this->m_masyarakat->get_pengaduan_pending($nik);
+	}
+
 	public function proses()
 	{
 		$data['user'] = $this->db->get_where('login', ['email' =>
@@ -196,23 +195,28 @@ class masyarakat extends CI_Controller
 
 	public function tambah_pengaduan()
 	{
-		$email = $this->session->userdata('email');
-		$masyarakat = $this->m_masyarakat->get_nik($email);
-		$data = [
-			'nik' 			 => $masyarakat['nik'],
-			'kategori'       => $this->input->post('kategori'),
-			'judul_laporan'  => $this->input->post('judul_laporan'),
-			'isi_laporan'    => $this->input->post('isi_laporan'),
-			'image' 		 => $this->_uploadImage(),
-			'tgl_pengaduan'  => time(),
-		];
+		if ($this->m_masyarakat->validation("save")) { // Jika validasi sukses atau hasil validasi adalah true
+			$this->m_masyarakat->tambah_pengaduan(); // Panggil fungsi save() yang ada di SiswaModel.php
 
-		$this->m_masyarakat->tambah_pengaduan($data);
+			// Load ulang view.php agar data yang baru bisa muncul di tabel pada view.php
+			$email = $this->session->userdata('email');
+			$masyarakat = $this->m_masyarakat->get_nik($email);
+			$nik = $masyarakat['nik'];
+			$html = $this->load->view('masyarakat/view', array('pengaduan' => $this->m_masyarakat->get_pengaduan_pending($nik)), true);
 
-		$this->session->set_flashdata('message', '<div class="alert alert-success  alert-dismissible fade show" role="alert"> Data Berhasil ditambahkan.<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button></div>');
-		redirect('masyarakat/index');
+			$callback = array(
+				'status' => 'sukses',
+				'pesan' => 'Data berhasil disimpan',
+				'html' => $html
+			);
+		} else {
+			$callback = array(
+				'status' => 'gagal',
+				'pesan' => validation_errors()
+			);
+		}
+
+		echo json_encode($callback);
 	}
 
 	public function ubah_pengaduan()
@@ -260,31 +264,31 @@ class masyarakat extends CI_Controller
 	public function ubah_profile()
 	{
 		$this->form_validation->set_rules('email', 'email', 'required|trim|valid_email|is_unique[petugas.email]', [
-            'required' => 'Mohon masukkan email anda!',
-            'valid_email' => 'Mohon masukkan email yang tepat!',
-            'is_unique' => 'Email ini sudah terdaftar!'
-        ]);
-        $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]', [
-            'required' => 'Mohon masukkan kata sandi!',
-            'min_length' => 'Kata Sandi terlalu pendek'
-        ]);
-        $this->form_validation->set_rules('password2', 'Password', 'required|trim|min_length[3]|matches[password1]', [
-            'matches' => 'Kata sandi tidak cocok!'
-        ]);
-        $this->form_validation->set_rules('telp', 'Telephone', 'required|trim|min_length[10]|max_length[13]', [
-            'required' => 'Mohon masukkan Nomor Telepon!',
-            'min_length' => 'Nomor terlalu pendek',
-            'max_length' => 'Nomor tidak boleh melebihi 13 angka'
-        ]);
+			'required' => 'Mohon masukkan email anda!',
+			'valid_email' => 'Mohon masukkan email yang tepat!',
+			'is_unique' => 'Email ini sudah terdaftar!'
+		]);
+		$this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]', [
+			'required' => 'Mohon masukkan kata sandi!',
+			'min_length' => 'Kata Sandi terlalu pendek'
+		]);
+		$this->form_validation->set_rules('password2', 'Password', 'required|trim|min_length[3]|matches[password1]', [
+			'matches' => 'Kata sandi tidak cocok!'
+		]);
+		$this->form_validation->set_rules('telp', 'Telephone', 'required|trim|min_length[10]|max_length[13]', [
+			'required' => 'Mohon masukkan Nomor Telepon!',
+			'min_length' => 'Nomor terlalu pendek',
+			'max_length' => 'Nomor tidak boleh melebihi 13 angka'
+		]);
 
 		$data = array(
 			'nama'      => $this->input->post('nama', TRUE),
 			'email'     => $this->input->post('email', TRUE),
-            'password'  => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
-            'telp'      => $this->input->post('telp'),
+			'password'  => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
+			'telp'      => $this->input->post('telp'),
 			'image' 	=> $this->_editImageProfile(),
-        );
-		
+		);
+
 		$nik = $this->input->post('nik');
 		$this->m_masyarakat->ubah_profile($data, $nik);
 

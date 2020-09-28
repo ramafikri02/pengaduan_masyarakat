@@ -76,7 +76,7 @@
 <!-- end tambah pengaduan -->
 
 <!-- Delete Pengaduan-->
-<div class="modal fade" id="hapusPengaduan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-hapus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -89,10 +89,8 @@
                 <label for="exampleFormControlInput1">Apa anda yakin ingin menghapus pengaduan ini?</label>
             </div>
             <div class="modal-footer">
-                <input type="hidden" name="id" id="id">
-                <input type="hidden" name="old_image" id="old_image">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                <button type="submit" class="btn btn-primary">Hapus</button>
+                <button type="button" class="btn btn-primary" id="btn-hapus">Hapus</button>
             </div>
         </div>
     </div>

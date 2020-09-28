@@ -202,6 +202,8 @@ class masyarakat extends CI_Controller
 			$email = $this->session->userdata('email');
 			$masyarakat = $this->m_masyarakat->get_nik($email);
 			$nik = $masyarakat['nik'];
+			$this->session->set_flashdata('message', '<div class="alert alert-success  alert-dismissible fade show" role="alert"> Data Berhasil ditambah.<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        	<span aria-hidden="true">&times;</span></button></div>');
 			$html = $this->load->view('masyarakat/view', array('pengaduan' => $this->m_masyarakat->get_pengaduan_pending($nik)), true);
 
 			$callback = array(
@@ -249,16 +251,24 @@ class masyarakat extends CI_Controller
 		redirect('masyarakat/index');
 	}
 
-	public function hapus_pengaduan()
+	public function hapus_pengaduan($id)
 	{
-		$id = $this->input->post('id');
-		$this->_deleteImagePengaduan();
-
 		$this->m_masyarakat->hapus_pengaduan($id);
 
 		$this->session->set_flashdata('message', '<div class="alert alert-success  alert-dismissible fade show" role="alert"> Data Berhasil dihapus.<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span></button></div>');
-		redirect('masyarakat/index');
+		<span aria-hidden="true">&times;</span></button></div>');
+		$email = $this->session->userdata('email');
+		$masyarakat = $this->m_masyarakat->get_nik($email);
+		$nik = $masyarakat['nik'];
+		$html = $this->load->view('masyarakat/view', array('pengaduan' => $this->m_masyarakat->get_pengaduan_pending($nik)), true);
+
+		$callback = array(
+			'status' => 'sukses',
+			'pesan' => 'Data berhasil dihapus',
+			'html' => $html
+		);
+
+		echo json_encode($callback);
 	}
 
 	public function ubah_profile()

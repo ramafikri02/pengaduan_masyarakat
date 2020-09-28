@@ -47,28 +47,49 @@ $(document).ready(function () {
 
 	// Masyarakat
 	$('#tabelPengaduan').DataTable();
-	$('#btn-simpan').click(function () {
-		$('#loading-simpan').show()
 
+	$('#btn-simpan').click(function () {
 		$.ajax({
 			url: base_url + 'masyarakat/tambah_pengaduan',
 			type: 'POST',
 			data: $('#form-tambah form').serialize(),
 			dataType: 'json',
 			success: function (response) {
-				if (response.status == 'sukses') { // Jika Statusnya = sukses
-					// Ganti isi dari div view dengan view yang diambil dari proses_simpan.php
+				if (response.status == 'sukses') {
 					$('#view').html(response.html)
 					$('#tabelPengaduan').DataTable().ajax.reload;
 					$('#pesan-sukses').html(response.pesan).fadeIn().delay(10000).fadeOut()
 
-					$('#form-tambah').modal('hide') // Close / Tutup Modal Dialog
-				} else { 
+					$('#form-tambah').modal('hide')
+				} else {
 					$('#pesan-error').html(response.pesan).show()
 				}
 			},
-			error: function (xhr, ajaxOptions, thrownError, response) { // Ketika terjadi error
-				alert(xhr.responseText) // munculkan alert
+			error: function (xhr, ajaxOptions, thrownError, response) {
+				alert(xhr.responseText)
+			}
+		})
+	})
+
+	$('#view').on('click', '.btn-hapus', function(){ // Ketika tombol dengan class btn-alert-hapus pada div view di klik
+		id = $(this).data('id') // Set variabel id dengan id yang kita set pada atribut data-id pada tag button hapus
+	})
+
+	$('#btn-hapus').click(function () {
+
+		$.ajax({
+			url: base_url + 'masyarakat/hapus_pengaduan/' + id, 
+			type: 'GET',
+			dataType: 'json',
+			beforeSend: function (e) {
+				if (e && e.overrideMimeType) {
+					e.overrideMimeType('application/jsoncharset=UTF-8')
+				}
+			},
+			success: function (response) {
+				$('#view').html(response.html)
+				$('#tabelPengaduan').DataTable().ajax.reload;
+				$('#modal-hapus').modal('hide')
 			}
 		})
 	})

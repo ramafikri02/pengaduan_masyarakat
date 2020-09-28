@@ -33,7 +33,7 @@
                                             <a href="<?= base_url('masyarakat/ubah_pengaduan?id=' . $p['id_pengaduan'] . ' '); ?>" class="btn btn-warning">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <a href="#" class="btn btn-danger tmbl-hapus" data-id="<?= $p['id_pengaduan']; ?>" data-old_image="<?= $p['image']; ?>">
+                                            <a href="#" class="btn btn-danger btn-hapus" data-id="<?= $p['id_pengaduan']; ?>" data-toggle="modal" data-target="#modal-hapus">
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
                                         </td>

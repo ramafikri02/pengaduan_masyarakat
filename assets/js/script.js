@@ -31,7 +31,7 @@ $(document).ready(function () {
 		$('#judul_laporan').val(judul_laporan)
 		$('#kategori').val(kategori)
 		$('#isi_laporan').val(isi_laporan)
-		$('#image').val(image)
+		$('#show-image').attr('src', base_url + 'assets/img/pengaduan/' + image)
 	})
 
 	$('#view').on('click', '.btn-hapus', function () {
@@ -40,11 +40,20 @@ $(document).ready(function () {
 
 	$('#btn-simpan').click(function () {
 		$('#loading-simpan').show()
+		var data = new FormData();		
+		
+		data.append('kategori', $("#kategori").val());
+		data.append('judul_laporan', $("#judul_laporan").val());
+		data.append('isi_laporan', $("#isi_laporan").val());
+		data.append('image', $("#image")[0].files[0]);
 
 		$.ajax({
 			url: base_url + 'masyarakat/tambah_pengaduan',
 			type: 'POST',
-			data: $('#form-modal form').serialize(),
+			data: data,
+			cache: false,
+			processData: false,
+			contentType: false,
 			dataType: 'json',
 			success: function (response) {
 				if (response.status == 'sukses') {
@@ -66,11 +75,20 @@ $(document).ready(function () {
 
 	$('#btn-ubah').click(function () {
 		$('#loading-ubah').show()
+		var data = new FormData();		
+		
+		data.append('kategori', $("#kategori").val());
+		data.append('judul_laporan', $("#judul_laporan").val());
+		data.append('isi_laporan', $("#isi_laporan").val());
+		data.append('image', $("#image")[0].files[0]);
 
 		$.ajax({
 			url: base_url + 'masyarakat/ubah_pengaduan/' + id,
 			type: 'POST',
-			data: $('#form-modal form').serialize(),
+			data: data,
+			cache: false,
+			processData: false,
+			contentType: false,
 			dataType: 'json',
 			success: function (response) {
 				if (response.status == 'sukses') {

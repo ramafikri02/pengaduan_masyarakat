@@ -62,8 +62,10 @@
                         <textarea class="form-control" name="isi_laporan" id="isi_laporan" rows="3"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">gambar</label>
-                        <input type="text" class="form-control" name="image" id="image" placeholder="">
+                        <img src="" width="150" height="150" id="show-image">
+                        <br>
+                        <label for="exampleFormControlFile1">Masukkan Gambar</label>
+                        <input type="file" class="form-control-file" name="image" id="image">
                     </div>
                     <div class="form-group">
                         <div class="modal-footer">

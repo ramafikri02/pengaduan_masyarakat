@@ -4,7 +4,7 @@ class m_masyarakat extends CI_Model
     private function _uploadImage()
     {
         $this->load->helper('file');
-        $config['upload_path']             = '.assets/img/pengaduan/';
+        $config['upload_path']             = './assets/img/pengaduan/';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['file_name']            = 'item-' . date('ymd');
         $config['overwrite']            = true;
@@ -20,6 +20,33 @@ class m_masyarakat extends CI_Model
 
         return "default.jpg";
     }
+
+    private function _editImagePengaduan()
+	{
+		$config['upload_path']          = './assets/img/pengaduan/';
+		$config['allowed_types']        = 'gif|jpg|png';
+		$config['max_size']             = 5120;
+		$config['max_width']            = '4480';
+		$config['max_height']           = '4480';
+		$config['file_name']            = 'item-' . date('ymd');
+
+		$this->upload->initialize($config);
+		$id = $this->input->post('id');
+
+		if (!empty('image' . time())) {
+			if ($this->upload->do_upload('image')) {
+				$old_image = $this->input->post('old_image');;
+				if ($old_image != 'default.jpg') {
+					unlink('assets/img/pengaduan/' . $old_image);
+				}
+				return $this->upload->data("file_name");
+			} else {
+				print_r($this->upload->display_errors());
+			}
+		} else {
+			$this->input->post('image');
+		}
+	}
 
     public function get_nik($email)
     {
@@ -86,7 +113,6 @@ class m_masyarakat extends CI_Model
             $this->form_validation->set_rules('kategori', 'Kategori', 'required');
         $this->form_validation->set_rules('judul_laporan', 'Judul Laporan', 'required');
         $this->form_validation->set_rules('isi_laporan', 'Isi Laporan', 'required');
-        $this->form_validation->set_rules('image', 'image', 'required');
 
         if ($this->form_validation->run())
             return true;
@@ -103,7 +129,7 @@ class m_masyarakat extends CI_Model
             'kategori'       => $this->input->post('kategori'),
             'judul_laporan'  => $this->input->post('judul_laporan'),
             'isi_laporan'    => $this->input->post('isi_laporan'),
-            'image'          => $this->input->post('image'),
+            'image'          => $this->_uploadImage(),
             'tgl_pengaduan'  => time(),
         ];
         $this->db->insert('pengaduan', $data);
@@ -115,7 +141,7 @@ class m_masyarakat extends CI_Model
 			'kategori'       => $this->input->post('kategori'),
 			'judul_laporan'  => $this->input->post('judul_laporan'),
 			'isi_laporan'    => $this->input->post('isi_laporan'),
-			'image' 		 => $this->input->post('image'),
+			'image' 		 => $this->_uploadImage(),
 		);
         
         $this->db->where('id_pengaduan', $id);

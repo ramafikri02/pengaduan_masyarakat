@@ -21,6 +21,14 @@ class m_masyarakat extends CI_Model
         return "default.jpg";
     }
 
+    public function get_nik($email)
+    {
+        $this->db->select("nik");
+        $this->db->from('masyarakat');
+        $this->db->where('email', $email);
+        return $this->db->get()->row_array();
+    }
+
     public function get_pengaduan($nik)
     {
         $this->db->select('*');
@@ -72,21 +80,18 @@ class m_masyarakat extends CI_Model
 
     public function validation($mode)
     {
-        $this->load->library('form_validation'); // Load library form_validation untuk proses validasinya
+        $this->load->library('form_validation');
 
-        // Tambahkan if apakah $mode save atau update
-        // Karena ketika update, NIS tidak harus divalidasi
-        // Jadi NIS di validasi hanya ketika menambah data siswa saja
         if ($mode == "save")
-            $this->form_validation->set_rules('kategori', 'kategori', 'required');
-        $this->form_validation->set_rules('judul_laporan', 'judul_laporan', 'required');
-        $this->form_validation->set_rules('isi_laporan', 'isi_laporan', 'required');
+            $this->form_validation->set_rules('kategori', 'Kategori', 'required');
+        $this->form_validation->set_rules('judul_laporan', 'Judul Laporan', 'required');
+        $this->form_validation->set_rules('isi_laporan', 'Isi Laporan', 'required');
         $this->form_validation->set_rules('image', 'image', 'required');
 
-        if ($this->form_validation->run()) // Jika validasi benar
-            return true; // Maka kembalikan hasilnya dengan TRUE
-        else // Jika ada data yang tidak sesuai validasi
-            return false; // Maka kembalikan hasilnya dengan FALSE
+        if ($this->form_validation->run())
+            return true;
+        else
+            return false;
     }
 
     public function tambah_pengaduan()
@@ -104,22 +109,15 @@ class m_masyarakat extends CI_Model
         $this->db->insert('pengaduan', $data);
     }
 
-    public function get_nik($email)
+    public function ubah_pengaduan($id)
     {
-        $this->db->select("nik");
-        $this->db->from('masyarakat');
-        $this->db->where('email', $email);
-        return $this->db->get()->row_array();
-    }
-
-    public function ubah_profile($data, $nik)
-    {
-        $this->db->where('nik', $nik);
-        $this->db->update('masyarakat', $data);
-    }
-
-    public function ubah_pengaduan($data, $id)
-    {
+        $data = array(
+			'kategori'       => $this->input->post('kategori'),
+			'judul_laporan'  => $this->input->post('judul_laporan'),
+			'isi_laporan'    => $this->input->post('isi_laporan'),
+			'image' 		 => $this->input->post('image'),
+		);
+        
         $this->db->where('id_pengaduan', $id);
         $this->db->update('pengaduan', $data);
     }
@@ -133,5 +131,11 @@ class m_masyarakat extends CI_Model
     public function view()
     {
         return $this->db->get('pengaduan')->result();
+    }
+
+    public function ubah_profile($data, $nik)
+    {
+        $this->db->where('nik', $nik);
+        $this->db->update('masyarakat', $data);
     }
 }

@@ -10,7 +10,7 @@
                             <h4>Selamat Datang <?= $user['nama'] ?></h4>
                             <p><?= $user['level'] ?></p>
                         </div>
-                        <button type="button" class="au-btn au-btn-icon au-btn--green" data-toggle="modal" data-target="#form-tambah" id="btn-tambah">
+                        <button type="button" class="au-btn au-btn-icon au-btn--green" data-toggle="modal" data-target="#form-modal" id="btn-tambah">
                             <i class="zmdi zmdi-plus"></i>Tambah Pengaduan</button>
                     </div>
                 </div>
@@ -30,17 +30,20 @@
 
 <!-- Modal -->
 <!-- tambah pengaduan -->
-<div class="modal fade" id="form-tambah" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
+<div class="modal fade" id="form-modal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="judulTambah">Buat Pengaduan</h5>
+                <h5 class="modal-title" id="judulTambah">
+                    <span id="modal-title"></span>
+                </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body ">
-                <form>
+                <div id="pesan-error" class="alert alert-danger"></div>
+                <form id="input-pengaduan">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Kategori</label>
                         <select class="form-control" name="kategori" id="kategori">
@@ -64,8 +67,16 @@
                     </div>
                     <div class="form-group">
                         <div class="modal-footer">
+                            <div id="loading-simpan" class="pull-left">
+                                <b>Sedang menyimpan...</b>
+                            </div>
+                            <div id="loading-ubah" class="pull-left">
+                                <b>Sedang mengubah...</b>
+                            </div>
+
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                            <button type="button" class="btn btn-primary" id="btn-simpan"><i class="fas fa-save"></i> Simpan Pengaduan</button>
+                            <button type="button" class="btn btn-primary" id="btn-simpan"><i class="fas fa-save"></i> Simpan</button>
+                            <button type="button" class="btn btn-primary" id="btn-ubah"><i class="fas fa-save"></i> Ubah</button>
                         </div>
                     </div>
                 </form>
@@ -89,6 +100,9 @@
                 <label for="exampleFormControlInput1">Apa anda yakin ingin menghapus pengaduan ini?</label>
             </div>
             <div class="modal-footer">
+                <div id="loading-hapus" class="pull-left">
+                    <b>Sedang menghapus...</b>
+                </div>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                 <button type="button" class="btn btn-primary" id="btn-hapus">Hapus</button>
             </div>

@@ -195,20 +195,18 @@ class masyarakat extends CI_Controller
 
 	public function tambah_pengaduan()
 	{
-		if ($this->m_masyarakat->validation("save")) { // Jika validasi sukses atau hasil validasi adalah true
-			$this->m_masyarakat->tambah_pengaduan(); // Panggil fungsi save() yang ada di SiswaModel.php
+		if ($this->m_masyarakat->validation("save")) {
+			$this->m_masyarakat->tambah_pengaduan();
 
-			// Load ulang view.php agar data yang baru bisa muncul di tabel pada view.php
 			$email = $this->session->userdata('email');
 			$masyarakat = $this->m_masyarakat->get_nik($email);
 			$nik = $masyarakat['nik'];
-			$this->session->set_flashdata('message', '<div class="alert alert-success  alert-dismissible fade show" role="alert"> Data Berhasil ditambah.<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        	<span aria-hidden="true">&times;</span></button></div>');
 			$html = $this->load->view('masyarakat/view', array('pengaduan' => $this->m_masyarakat->get_pengaduan_pending($nik)), true);
 
 			$callback = array(
 				'status' => 'sukses',
-				'pesan' => 'Data berhasil disimpan',
+				'pesan' => '<div class="alert alert-success  alert-dismissible fade show" role="alert" id="pesan-simpan"> Data Berhasil ditambah.<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span></button></div>',
 				'html' => $html
 			);
 		} else {
@@ -220,35 +218,31 @@ class masyarakat extends CI_Controller
 
 		echo json_encode($callback);
 	}
-
-	public function ubah_pengaduan()
+	
+	public function ubah_pengaduan($id)
 	{
-		$id = $this->input->get('id');
-		$data['edit'] = $this->m_masyarakat->get_detail_pengaduan($id);
+		if ($this->m_masyarakat->validation("update")) {
+			$this->m_masyarakat->ubah_pengaduan($id);
 
-		$data['kategori'] = $this->m_masyarakat->get_kategori();
+			$email = $this->session->userdata('email');
+			$masyarakat = $this->m_masyarakat->get_nik($email);
+			$nik = $masyarakat['nik'];
+			$html = $this->load->view('masyarakat/view', array('pengaduan' => $this->m_masyarakat->get_pengaduan_pending($nik)), true);
 
-		$this->load->view('templates/header', $data);
-		$this->load->view('templates/navbar_p', $data);
-		$this->load->view('masyarakat/form-edit', $data);
-		$this->load->view('templates/footer');
-	}
+			$callback = array(
+				'status' => 'sukses',
+				'pesan' => '<div class="alert alert-success  alert-dismissible fade show" role="alert" id="pesan-simpan"> Data Berhasil diubah.<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span></button></div>',
+				'html' => $html
+			);
+		} else {
+			$callback = array(
+				'status' => 'gagal',
+				'pesan' => validation_errors()
+			);
+		}
 
-	public function proses_ubah_pengaduan()
-	{
-		$id = $this->input->post('id');
-
-		$data = array(
-			'kategori'       => $this->input->post('kategori'),
-			'judul_laporan'  => $this->input->post('judul_laporan'),
-			'isi_laporan'    => $this->input->post('isi_laporan'),
-			'image' 		 => $this->_editImagePengaduan(),
-		);
-		$this->m_masyarakat->ubah_pengaduan($data, $id);
-
-		$this->session->set_flashdata('message', '<div class="alert alert-success  alert-dismissible fade show" role="alert"> Data Berhasil diubah.<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span></button></div>');
-		redirect('masyarakat/index');
+		echo json_encode($callback);
 	}
 
 	public function hapus_pengaduan($id)
@@ -264,7 +258,8 @@ class masyarakat extends CI_Controller
 
 		$callback = array(
 			'status' => 'sukses',
-			'pesan' => 'Data berhasil dihapus',
+			'pesan' => '<div class="alert alert-danger  alert-dismissible fade show" role="alert" id="pesan-simpan"> Data Berhasil dihapus.<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span></button></div>',
 			'html' => $html
 		);
 

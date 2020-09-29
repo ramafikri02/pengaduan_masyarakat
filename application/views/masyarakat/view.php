@@ -4,7 +4,9 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <?= $this->session->flashdata('message'); ?>
+                        <span id="pesan-simpan"></span>
+                        <span id="pesan-ubah"></span>
+                        <span id="pesan-hapus"></span>
                         <table class="table table-bordered" id="tabelPengaduan" width="100%" cellspacing="0">
                             <thead style="font-weight: bold;">
                                 <tr class="text-center">
@@ -30,8 +32,12 @@
                                             <a href="<?= base_url('masyarakat/detail_pengaduan?id=' . $p['id_pengaduan'] . ' '); ?>" class="btn btn-success">
                                                 <i class="fas fa-eye"></i>
                                             </a>
-                                            <a href="<?= base_url('masyarakat/ubah_pengaduan?id=' . $p['id_pengaduan'] . ' '); ?>" class="btn btn-warning">
+                                            <a href="#" class="btn btn-warning btn-edit" data-id="<?= $p['id_pengaduan']; ?>" data-toggle="modal" data-target="#form-modal">
                                                 <i class="fas fa-edit"></i>
+                                                <input type="hidden" class="judul_laporan" value="<?= $p['judul_laporan']; ?>">
+                                                <input type="hidden" class="kategori" value="<?= $p['kategori']; ?>">
+                                                <input type="hidden" class="isi_laporan" value="<?= $p['isi_laporan']; ?>">
+                                                <input type="hidden" class="image" value="<?= $p['image']; ?>">
                                             </a>
                                             <a href="#" class="btn btn-danger btn-hapus" data-id="<?= $p['id_pengaduan']; ?>" data-toggle="modal" data-target="#modal-hapus">
                                                 <i class="fas fa-trash-alt"></i>
